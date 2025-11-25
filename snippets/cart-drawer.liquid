@@ -74,8 +74,15 @@
           </span>
         </button>
       </div>
+      {% assign free_shipping_threshold = 50000 %}
+      {%- assign cart_total = 0 -%}
+      {% for item in cart.items %}
+      {% if item.requires_shipping %}
+       {%- assign cart_total = cart_total | plus: item.final_line_price -%}
+       {% endif %}
+      {% endfor %}
       <div>
-      Free SHIPPING BAR CODE
+      Free SHIPPING BAR CODE: {{ cart_total }}
       </div>
       <cart-drawer-items
         {% if cart == empty %}
