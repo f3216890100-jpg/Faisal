@@ -1,0 +1,207 @@
+<style>
+  *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-boxs;
+}
+.go-tab-sec {
+    padding: 50px 0;
+}
+.go-tab-heading {
+    font-weight: 500;
+    color: #003733;
+    font-size: 47px;
+    font-family: "Avenir-Next", sans-serif;
+    text-align: center;
+    padding-bottom: 30px;
+}
+.go-tab-flx {
+    margin: 0 auto;
+    background: #e0d5bc;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+      width: 37%;
+}
+
+.go-tab-flx-span {
+    font-size: 18px;
+    font-family: "Avenir-next", sans-serif;
+    font-weight: 500;
+    color: #000000;
+      padding: 10px 25px;
+    width: 50%;
+    text-align: center;
+    cursor: pointer;
+        letter-spacing: 1px;
+}
+.go-tab-flx-span.active {
+    background: #006638;
+    color: #fff;
+    border-radius: 50px;
+}
+
+.go-tab-content {
+    
+    display: none;
+   transition: all 0.5s ease-in-out;
+}
+.go-tab-content.active{
+    display: block;
+}
+.go-tab-content-flx {
+    width: 36%;
+    margin: 0 auto;
+       padding-top: 50px;
+}
+
+.go-tab-content-span {
+    font-size: 41px;
+    font-family: "Avenir-Next", sans-serif;
+    color: #003734;
+    font-weight: 500;
+     letter-spacing: 1px;
+}
+.go-tab-content-des {
+       font-size: 18px;
+    font-family:"Avenir-Next",sans-serif;
+    color: #000000;
+    font-weight: 500;
+    padding-top: 25px;
+    line-height: 28px;
+     letter-spacing: 1px;
+}
+@media screen and (max-width:767px){
+   .go-tab-sec {
+     padding: 20px 0;
+}
+    .go-tab-container {
+    padding: 0 10px;
+}
+.go-tab-heading {
+    font-size: 30px;
+    font-weight: 500;
+        padding-bottom: 20px;
+}
+    .go-tab-flx {
+    width: 100%;
+}
+.go-tab-flx-span {
+    width: 100%;
+    font-size: 16px;
+     padding: 7px 6px;
+}
+.go-tab-content-flx {
+    width: 100%;
+    text-align: center;
+        padding-top: 30px;
+}
+.go-tab-content-span {
+    font-size: 30px;
+}
+.go-tab-content-des {
+    font-size: 16px;
+    text-align: center;
+}
+}
+
+
+</style>
+<section class="go-tab-sec">
+  <div class="go-tab-container">
+    <h3 class="go-tab-heading">{{ section.settings.heading }}</h3>
+    <div class="go-tab-flx">
+      {% for block in section.blocks %}
+        <span class="go-tab-flx-span">{{ block.settings.tab_title }}</span>
+      {% endfor %}
+    </div>
+
+    {% for block in section.blocks %}
+      <div class="go-tab-content">
+        <div class="go-tab-content-flx">
+          <span class="go-tab-content-span">{{ block.settings.tab_title }}</span>
+          <div class="go-tab-content-desp">
+            <p class="go-tab-content-des">{{ block.settings.tab_content }}</p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+<script>
+  const tabButtons = document.querySelectorAll('.go-tab-flx-span');
+  const tabContents = document.querySelectorAll('.go-tab-content');
+
+  tabButtons.forEach((btn, index) => {
+    btn.addEventListener('click', () => {
+      tabButtons.forEach(b => b.classList.remove('active'));
+      tabContents.forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      tabContents[index].classList.add('active');
+    });
+  });
+
+  tabButtons[0].classList.add('active');
+  tabContents[0].classList.add('active');
+</script>
+
+
+
+{% schema %}
+{
+  "name": "Tabing",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "Industries We Serve"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Tab Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_title",
+          "label": "Tab Title",
+          "default": "Example Tab"
+        },
+        {
+          "type": "textarea",
+          "id": "tab_content",
+          "label": "Tab Content",
+          "default": "Tab description and details here..."
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Tabing",
+      "category": "Custom",
+      "blocks": [
+        {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Multi Unit Residential",
+            "tab_content": "We deliver customized heating, cooling, and energy solutions for multi-unit residential buildings, ensuring comfort, efficiency, and long-term reliability for residents and property managers alike.<br>• Rental Units<br>• REITS<br>• Retirement Homes<br>• Condos"
+          }
+        },
+        {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Small Commercial",
+            "tab_content": "We provide specialized HVAC and energy solutions designed to meet the unique needs of small commercial spaces, helping businesses run smoothly and efficiently.<br>• Restaurants<br>• Daycares<br>• Retail<br>• Cafés<br>• Liquidation Stores"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

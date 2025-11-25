@@ -1,0 +1,413 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+<style>
+
+    .card-product-sec {
+        padding: 50px 0;
+    }
+    .card-product-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 50px;
+        width: 100%;
+    }
+    .cpl-content {
+      padding-bottom: 110px;
+      text-align: center;
+          width: 60%;
+      margin: 0 auto;
+  }
+  .cpl-desp p {
+      font-size: 20px;
+      color: #454545;
+      font-weight: 500;
+      line-height: 28px;
+  }
+  .cpl-text {
+      font-size: 40px;
+      color: #454545;
+      font-weight: 600;
+         padding: 0 90px 25px;
+  }
+    .card-product-flx {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        column-gap: 15px;
+        row-gap: 30px;
+    }
+    .card-product-col{
+            width: 24%;
+    }
+    .card-product-box {
+        background: #f9f7f2;
+        padding: 20px;
+        border-radius: 22px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 453px;
+        text-align:center;
+    }
+    .cust-product-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .cust-product-anker {
+        text-decoration: none;
+        color: #454545;
+    }
+   .cust-product-text {
+      font-size: 18px;
+      text-align: center;
+      font-weight: 600;
+      line-height: 28px;
+      padding-bottom: 20px;
+  }
+    .cust-product-reviwes {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+    .cust-prod-star-icn {
+        color: #f6ae02;
+    }
+    .cust-product-span {
+        font-size: 12px;
+        color: #00000050;
+    }
+    .cust-prod-desp p {
+        font-size: 14px;
+        color: #454545;
+        font-weight: 500;
+    }
+    .cust-product-button {
+        margin-top: 10px;
+    }
+    .cust-product-btn {
+        text-decoration: none;
+        color: #fff;
+        background: #085a54;
+        padding: 14px 36px;
+        display: inline-block;
+        border-radius: 48px;
+         transition: all .5s ease-in-out;
+    }
+
+    .cust-product-btn:hover {
+      background: #84adaa;
+  }
+    .cust-product-faq {
+        background: #eee;
+        border-radius: 10px;
+           transition: padding .5s ease-in-out;
+    }
+    .cust-product.question {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 15px;
+        align-items: center;
+    }
+    .cust-product-faq-div {
+        margin-top: 20px;
+    }
+    .cust-prod-icn-flx {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .cust-product-question-icon {
+        border: 2px solid #454545;
+        display: flex;
+        color: #454545;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50px;
+    width: 20px;
+        height: 20px;
+        font-size: 12px;
+    }
+    .cust-product-heading {
+        font-size: 12px;
+        font-weight: 600;
+        color: #454545;
+    }
+    .cust-product-des p {
+        font-size: 12px;
+        font-weight: 500;
+        color: #454545;
+       padding: 0 15px;
+        line-height: 16px;
+    }
+    .cust-product-faq-span-div {
+        color: #70bc0e;
+        text-align: center;
+        margin-top: 15px;
+    }
+    .cust-product-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height .5s ease-in-out;
+    }
+
+    .cust-product-faq.active .cust-product-answer {
+        max-height: 200px;
+    }
+    .cust-product-faq.active{
+        padding-bottom: 20px;
+    }
+    .cust-product-faq.active .cust-product-arrow-icon i {
+        transform: rotate(180deg);
+        transition: transform 0.3s ease;
+    }
+
+    .cust-product-arrow-icon i {
+        transition: transform 0.3s ease;
+    }
+    .cust-product-faq-span {
+        font-size: 16px;
+        font-weight: 600;
+    }
+    i.fa-solid.fa-chevron-right {
+        font-size: 15px;
+    }
+    @media screen and (max-width:767px){
+     .card-product-container {
+      padding: 0 20px;
+  }
+      .card-product-col {
+      width: calc(50% - 10.5px);
+  }
+  .cpl-content {
+      width: 100%;
+      padding-bottom: 65px;
+  }
+  .cpl-text {
+      font-size: 24px;
+      padding: 0px 0px 15px;
+      text-align:center;
+  }
+  .cpl-desp p {
+      font-size: 18px;
+      line-height: 20px;
+       text-align:center;
+  }
+  .card-product-box {
+      padding: 16px;
+          min-height: 437px;
+  }
+  .cust-product-btn {
+      font-size: 16px;
+      padding: 10px 20px;
+  }
+  .cust-product-text {
+      font-size: 17px;
+  }
+
+  .cust-prod-desp p {
+      font-size: 10px;
+  }
+  i.fa-solid.fa-star {
+      font-size: 6px;
+  }
+
+  .cust-product-span {
+      font-size: 10px;
+  }
+  .cust-product-heading {
+      font-size: 10px;
+  }
+  .cust-product.question {
+      padding: 8px;
+  }
+  .cust-product-des p {
+      font-family: Assistant, sans-serif;
+      font-size: 8px;
+      font-weight: 500;
+      color: #454545;
+      padding: 0px 10px;
+      line-height: 16px;
+  }
+  }
+</style>
+<section class="card-product-sec">
+  <div class="card-product-container">
+    <div class="cpl-content">
+      <h2 class="cpl-text">{{ section.settings['cpl-text'] }}</h2>
+      <div class="cpl-desp">
+        {{ section.settings['cpl-desp'] }}
+      </div>
+    </div>
+    <div class="card-product-flx">
+      {% for block in section.blocks %}
+        {% assign rproduct = all_products[block.settings.custom_product] %}
+        
+          <div class="card-product-col">
+            <div class="card-product-box">
+              <a href="{{ rproduct.url }}" class="cust-product-anker">
+                <h3 class="cust-product-text">
+                  {{ rproduct.title }}
+                </h3>
+              </a>
+              <div class="cust-product-image">
+                <a href="{{ rproduct.url }}" class="cust-product-anker">
+                  {% if block.settings['sub-cust-product-img'] != blank %}
+                    <img
+                      src="{{ rproduct.featured_image |img_url:'master' }}"
+                      alt="{{ rproduct.title }}"
+                      class="cust-product-img"
+                    >
+                  {% endif %}
+                </a>
+              </div>
+              <div class="cust-product-content">
+                <div class="cust-product-reviwes">
+                  <div class="cust-product-star">
+                    <span class="cust-prod-star-icn"><i class="fa-solid fa-star"></i></span>
+                    <span class="cust-prod-star-icn"><i class="fa-solid fa-star"></i></span>
+                    <span class="cust-prod-star-icn"><i class="fa-solid fa-star"></i></span>
+                    <span class="cust-prod-star-icn"><i class="fa-solid fa-star"></i></span>
+                    <span class="cust-prod-star-icn"><i class="fa-solid fa-star"></i></span>
+                  </div>
+                  <span class="cust-product-span">
+                    {{ block.settings['sub-cust-product-span'] }}
+                  </span>
+                </div>
+                <div class="cust-prod-desp">
+                  {{ rproduct.desp}}
+                </div>
+                <div class="cust-product-button">
+                  <a href="{{ rproduct.url }}" class="cust-product-btn">
+                    {{ block.settings['sub-cust-product-btn'] }}
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="cust-product-faq-div">
+              <div class="cust-product-faq">
+                <div class="cust-product question">
+                  <div class="cust-prod-icn-flx">
+                    <div class="cust-product-question-icon"><i class="fa-solid fa-question"></i></div>
+                    <h4 class="cust-product-heading">
+                      {{ block.settings['sub-cust-product-heading'] }}
+                    </h4>
+                  </div>
+                  <div class="cust-product-arrow-icon">
+                    <i class="fa-solid fa-chevron-down"></i>
+                  </div>
+                </div>
+                <div class="cust-product-answer">
+                  <div class="cust-product-des">
+                    {{ block.settings['sub-cust-product-des'] }}
+                  </div>
+                </div>
+              </div>
+              <div class="cust-product-faq-span-div">
+                <span class="cust-product-faq-span">
+                  {{ block.settings['sub-cust-product-faq-span'] }}
+                </span>
+                <i class="fa-solid fa-chevron-right"></i>
+              </div>
+            </div>
+          </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const faqItems = document.querySelectorAll('.cust-product-faq');
+
+    faqItems.forEach(function (faqItem) {
+      const question = faqItem.querySelector('.cust-product.question');
+
+      question.addEventListener('click', function () {
+        faqItem.classList.toggle('active');
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Cust Product",
+  "settings": [
+    {
+      "type": "text",
+      "id": "cpl-text",
+      "label": "Text"
+    },
+    {
+      "type": "richtext",
+      "id": "cpl-desp",
+      "label": "Para"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "Cust-Product",
+      "name": "Cust Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "custom_product",
+          "label": "Select Product"
+        },
+        {
+          "type": "url",
+          "id": "sub-cust-product-anker",
+          "label": "Product Btn"
+        },
+        {
+          "type": "text",
+          "id": "sub-cust-product-text",
+          "label": "Text"
+        },
+        {
+          "type": "image_picker",
+          "id": "sub-cust-product-img",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "sub-cust-product-span",
+          "label": "Text"
+        },
+        {
+          "type": "richtext",
+          "id": "sub-cust-prod-desp",
+          "label": "Para"
+        },
+        {
+          "type": "text",
+          "id": "sub-cust-product-btn",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "sub-cust-product-heading",
+          "label": "Text"
+        },
+        {
+          "type": "richtext",
+          "id": "sub-cust-product-des",
+          "label": "Para"
+        },
+        {
+          "type": "text",
+          "id": "sub-cust-product-faq-span",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Cust Product"
+    }
+  ]
+}
+{% endschema %}

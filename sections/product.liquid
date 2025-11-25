@@ -1,0 +1,92 @@
+{% schema %}
+{
+  "name": "Free Product Section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "free_image",
+      "label": "Product Image"
+    },
+    {
+      "type": "text",
+      "id": "free_title",
+      "label": "Product Title",
+      "default": "Free Sample Product"
+    },
+    {
+      "type": "textarea",
+      "id": "free_description",
+      "label": "Product Description",
+      "default": "Try this free sample now!"
+    },
+    {
+      "type": "url",
+      "id": "free_link",
+      "label": "Product Page Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Free Product",
+      "category": "Products"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="free-product-sec">
+  <div class="free-product-inner">
+    {% if section.settings.free_image != blank %}
+      <img
+        src="{{ section.settings.free_image | img_url: '300x300' }}"
+        alt="{{ section.settings.free_title }}"
+        class="free-product-img"
+      >
+    {% endif %}
+    <div class="free-product-info">
+      <h3 class="free-product-title">{{ section.settings.free_title }}</h3>
+      <p class="free-product-desc">{{ section.settings.free_description }}</p>
+      {% if section.settings.free_link != blank %}
+        <a href="{{ section.settings.free_link }}" class="free-product-btn">Get it Free</a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<style>
+  .free-product-sec {
+    padding: 40px 20px;
+    background: #f9f9f9;
+    text-align: center;
+  }
+  .free-product-inner {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  .free-product-img {
+    width: 100%;
+    max-width: 250px;
+    border-radius: 10px;
+  }
+  .free-product-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 15px 0 5px;
+  }
+  .free-product-desc {
+    color: #555;
+    margin-bottom: 15px;
+  }
+  .free-product-btn {
+    display: inline-block;
+    background: #000;
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background 0.3s;
+  }
+  .free-product-btn:hover {
+    background: #333;
+  }
+</style>

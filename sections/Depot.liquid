@@ -1,0 +1,135 @@
+<style>
+      .depot-sec{
+        padding:50px 0;
+    }
+    .depot-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 50px;
+    width: 100%;
+}
+    .depot-main {
+    background-image: url(//faisalvibe.myshopify.com/cdn/shop/files/Frame_11711_3c161e69-c23d-47d5-a04e-869d0b210ddd.webp?v=1762867636);
+    width: 100%;
+    height: 400px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 22px;
+    position:relative;
+}
+.depot-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: end;
+    position: absolute;
+    right: 60px;
+    top: 100px;
+}
+.depot-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 400px;
+}
+.depot-span {
+    font-size: 20px;
+    color: #fff;
+    font-weight: 600;
+}
+.depot-text {
+    margin: 0;
+    color: #cef34e;
+    font-size: 40px;
+    font-weight: 600;
+}
+.depot-desp p {
+    font-size: 20px;
+    margin: 0;
+    text-align: center;
+    color: #fff;
+    font-weight: 500;
+}
+@media screen and (max-width:767px){
+      .depot-sec{
+        padding:30px 0;
+    }   
+    .depot-container {
+    padding: 0 20px;
+}
+.depot-main {
+    height: 500px;
+}
+.depot-span {
+    font-size: 18px;
+    text-align: center;
+}
+.depot-text {
+    font-size: 24px;
+    text-align: center;
+}
+.depot-desp p {
+    font-size: 18px;
+    line-height:20px;
+}
+
+.depot-content {
+    right: 10px;
+    top: 160px;
+}
+}
+</style>
+<section class="depot-sec">
+    <div class="depot-container">
+        <div class="depot-main">
+            <div class="depot-overly"></div>
+            <div class="depot-content">
+                <div class="depot-title">
+                <span class="depot-span">
+                    {{ section.settings.depot-span }}
+                </span>
+                <h1 class="depot-text">
+                    {{ section.settings.depot-text }}
+                </h1>
+                <div class="depot-desp">
+                    {{ section.settings.depot-desp }}
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% schema %}
+{
+    "name": "Depot",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "depot-main",
+            "label": "Image"
+        },
+        {
+            "type": "text",
+            "id": "depot-span",
+            "label": "Text"
+        },
+        {
+            "type": "text",
+            "id": "depot-text",
+            "label": "Text"
+        },
+        {
+            "type": "richtext",
+            "id": "depot-desp",
+            "label": "para"
+        },
+    ],
+    "presets": [
+        {
+            "name": "Depot",
+        },
+    ],
+}
+{% endschema %}

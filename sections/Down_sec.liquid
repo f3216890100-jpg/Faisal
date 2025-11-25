@@ -1,0 +1,250 @@
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+<style>
+  .hp-down-sec {
+      padding: 50px 0;
+  }
+  .hp-down-container {
+      max-width: 1330px;
+      margin: 0 auto;
+      padding: 0 50px;
+      width: 100%;
+  }
+  .hp-down-flx {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 25px;
+      background: #f9f7f2;
+      border-radius: 20px;
+  }
+  .hp-down-content {
+      width: 59%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+  .hp-down-div {
+      width: 70%;
+  }
+  .hp-down-content-img {
+      width: 100%;
+      max-width: 40px;
+      height: 40px;
+      object-fit: contain;
+  }
+  .hp-down-text {
+      font-size: 28px;
+      font-weight: 600;
+      color: #454545;
+      padding-bottom: 20px;
+      padding-top: 20px;
+      line-height: 26px;
+  }
+  .hp-down-desp p {
+      font-size: 14px;
+      font-weight: 500;
+      color: #454545;
+      padding-bottom: 15px;
+      line-height: 21px;
+  }
+  .hp-down-anker {
+      font-size: 20px;
+      text-decoration: none;
+      color: #70bc0e;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+  }
+  .hp-down-rigth-col {
+      width: 40%;
+  }
+  .hp-down-rigth-flx {
+      display: flex;
+     gap: 10px;
+  }
+  .hp-down-right-image {
+      width: 49%;
+  }
+  .hp-down-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+  }
+  .hp-down-img-1 {
+      width: 100%;
+      object-fit: cover;
+   height: 270px;
+     border-radius: 22px;
+  }
+  .hp-down-img-2 {
+      width: 100%;
+         border-radius: 22px;
+      height: 190px;
+      object-fit: cover;
+  }
+  .hp-down-img-3 {
+      width: 100%;
+  height: 190px;
+      object-fit: cover;
+      border-radius: 22px;
+  }
+  .hp-down-img-4 {
+      width: 100%;
+        object-fit: cover;
+   height: 270px;
+      border-radius: 22px;
+  }
+
+  @media screen and (max-width:767px){
+  .hp-down-container {
+      padding: 0 20px;
+  }
+      .hp-down-content {
+      width: 100%;
+  }
+  .hp-down-rigth-col {
+      width: 100%;
+  }
+  .hp-down-flx {
+          padding: 15px;
+          display: flex;
+          flex-direction: column-reverse;
+      }
+      .hp-down-div {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+      }
+      .hp-down-img-1 {
+      width: 100%;
+      object-fit: cover;
+      height: 210px;
+      border-radius: 22px;
+  }
+  .hp-down-img-4 {
+      width: 100%;
+      object-fit: cover;
+      height: 210px;
+      border-radius: 22px;
+  }
+  .hp-down-text {
+      font-size: 21px;
+      font-weight: 800;
+      text-align: center;
+          padding-bottom: 10px;
+      padding-top: 10px;
+  }
+  .hp-down-desp p {
+      font-size: 13px;
+      line-height: 21px;
+      font-weight: 600;
+      text-align: center;
+  }
+
+  }
+</style>
+<section class="hp-down-sec">
+  <div class="hp-down-container">
+    <div class="hp-down-flx">
+      <div class="hp-down-content">
+        <div class="hp-down-div">
+          <div class="hp-down-content-image">
+            {% if section.settings['sub-hp-down-content-img'] != blank %}
+              <img
+                src="{{ section.settings.sub-hp-down-content-img |img_url:'master' }}"
+                alt=""
+                class="hp-down-content-img"
+              >
+            {% endif %}
+          </div>
+          <h3 class="hp-down-text">
+            {{ section.settings['sub-hp-down-text'] }}
+          </h3>
+          <div class="hp-down-desp">
+            {{ section.settings['sub-hp-down-desp'] }}
+          </div>
+          <a href="#" class="hp-down-anker">
+            <span class="hp-down-span">
+              {{ section.settings['sub-hp-down-span'] }}
+            </span>
+            <span class="hd-down-icon">
+              <i class="fa fa-chevron-right"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+      <div class="hp-down-rigth-col">
+        <div class="hp-down-rigth-flx">
+          {% for block in section.blocks %}
+            <div class="hp-down-right-image">
+              <div class="hp-down-image">
+                {% if block.settings['sub-hp-down-img-1'] != blank %}
+                  <img src="{{ block.settings.sub-hp-down-img-1 |img_url:'master' }}" alt="" class="hp-down-img-1">
+                {% endif %}
+              </div>
+              <div class="hp-down-image-1">
+                {% if block.settings['sub-hp-down-img-2'] != blank %}
+                  <img src="{{ block.settings.sub-hp-down-img-2 |img_url:'master' }}" alt="" class="hp-down-img-2">
+                {% endif %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Down Sec",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "sub-hp-down-content-img",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "sub-hp-down-text",
+      "label": "Text"
+    },
+    {
+      "type": "richtext",
+      "id": "sub-hp-down-desp",
+      "label": "Para"
+    },
+    {
+      "type": "text",
+      "id": "sub-hp-down-span",
+      "label": "Text"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "Down-Sec",
+      "name": "Down Sec",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "sub-hp-down-img-1",
+          "label": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "sub-hp-down-img-2",
+          "label": "Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Down Sec"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,602 @@
+<style>
+        .switch-bnr-flx {
+        display: flex;
+    }
+        .switch-left-col
+        {
+            background-image:url({{ section.settings.switch-left-col |img_url:'master' }});
+            width:50%;
+                background-position: bottom right;
+        background-repeat: no-repeat;
+        background-size: cover;
+            height: 80vh;
+             position:relative;
+             transition: all .3s
+    ease-in-out;
+        }
+
+        .switch-right-col
+        {
+            background-image:url({{ section.settings.switch-right-col |img_url:'master' }});
+                  width:50%;
+                      background-position: bottom right;
+        background-repeat: no-repeat;
+        background-size: cover;
+            height: 80vh;
+            transition: all .3s
+    ease-in-out;
+        }
+         .switch-left-col:hover{
+           background-image:url({{ section.settings.switch-left-col-1 |img_url:'master' }});
+        }
+          .switch-right-col:hover{
+           background-image:url({{ section.settings.switch-right-col-1 |img_url:'master' }});
+        }
+       .switch-text {
+        font-size: 20px;
+        font-weight: 600;
+        color: #454545;
+            margin: 0;
+            position:relative;
+    }
+    .switch-price {
+        text-align: center;
+            padding: 6px 0 ;
+    }
+    .switch-span {
+        font-size: 18px;
+        font-weight: 500;
+        color: #454545;
+            text-decoration: line-through;
+    }
+    .switch-price-span {
+        font-size: 28px;
+        font-weight: 600;
+        color: #454545;
+            text-decoration: line-through;
+    }
+    .switch-left-content {
+           position: absolute;
+            top: 35%;
+           max-width: 330px;
+        text-align:center;
+         margin: 0 0 0 8%;
+    }
+    .switch-right-content {
+           position: absolute;
+        top:25%;
+        right:0;
+          max-width: 330px;
+        text-align:center;
+     margin: 0 8% 0 0;
+    }
+    .switch-price {
+        display: flex;
+        flex-direction: column;
+    }
+    .switch-btn {
+        font-size: 20px;
+        font-weight: 600;
+        background: #085a54;
+        text-decoration: none;
+        color: #fff;
+        padding: 4px 25px;
+        display: inline-block;
+        border-radius: 50px;
+    }
+    .switch-logo-img {
+        width: 100%;
+           height: 35px;
+        max-width: 35px;
+        object-fit: cover;
+    }
+    .switch-div {
+        font-size: 14px;
+        font-weight: 500;
+        color: #454545;
+    }
+    .switch-logo {
+        display: flex;
+        justify-content: space-between;
+            margin-top: 25px;
+    }
+    .switch-mobile-container{
+      display:none;
+    }
+    @media screen and (max-width:767px){
+       .switch-mobile-container{
+      display:block;
+    }
+    .switch-bnr-container{
+      display:none;
+    }
+    .switch-mobile-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+  }
+  .switch-mobile-col {
+      position: relative;
+      overflow: hidden;
+  }
+  .switch-mobile-logo {
+      width: 100%;
+      height: 100%;
+      max-width: 30px;
+  }
+  .switch-mobile-logo-1 {
+      width: 100%;
+      height: 100%;
+      max-width: 30px;
+  }
+    .switch-mobile-content {
+        position: absolute;
+        top: 25%;
+        display: flex;
+        align-items: center;
+        left: 60px;
+                width: 300px;
+    }s
+     .switch-mobile-span {
+        font-size: 18px;
+        font-weight: 600;
+        color: #454545;
+            text-decoration: line-through;
+    }
+
+   .switch-mobile-span-1 {
+      font-size: 20px;
+      font-weight: 600;
+      color: #454545;
+  }
+  .switch-moible-span {
+    font-size: 18px;
+    font-weight: 600;
+    color: #454545;
+        text-decoration: line-through;
+}
+.switch-moible-span-3{
+    font-size: 20px;
+    font-weight: 600;
+    color: #454545;
+}
+   .switch-mobile-button {
+        position: absolute;
+        bottom: 11%;
+        left: 55px;
+    }
+.switch-bt {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+.switch-mobile-btn {
+    background: #085A54;
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 5px 20px;
+    display: inline-block;
+    border-radius: 50px;
+    text-align: center;
+}
+.switch-mobile-btn-1 {
+    background: #085A54;
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 5px 20px;
+    display: inline-block;
+    border-radius: 50px;
+    text-align: center;
+}
+    .switch-logo-div {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 25px 0 15px;
+    }
+.switch-mobile-div {
+    font-size: 14px;
+    color: #fff;
+    font-weight: 600;
+}
+.switch-logo-div-1 {
+    display: flex;
+    align-items: center;
+        gap: 10px;
+                justify-content: center;
+}
+.switch-mobile-div-1 {
+    font-size: 14px;
+    color: #fff;
+    font-weight: 600;
+}
+}
+</style>
+<section class="switch-bnr-sec">
+  <div class="switch-bnr-container">
+    <div class="switch-bnr-flx">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'LeftCol' %}
+            <div class="switch-left-col">
+              <div class="switch-left-content">
+                <h1 class="switch-text">
+                  {{ block.settings['switch-text'] }}
+                </h1>
+                <div class="switch-price">
+                  <span class="switch-span">
+                    {{ block.settings['switch-span'] }}
+                  </span>
+                  <span class="switch-price-span">
+                    {{ block.settings['switch-price-span'] }}
+                  </span>
+                </div>
+                <div class="switch-button">
+                  <a href="" class="switch-btn">
+                    {{ block.settings['switch-btn'] }}
+                  </a>
+                </div>
+                <div class="switch-logo">
+                  <div class="switch-logo-image">
+                    {% if block.settings['switch-logo-img'] != blank %}
+                      <img src="{{ block.settings.switch-logo-img |img_url:'master' }}" alt="" class="switch-logo-img">
+                    {% endif %}
+                    <div class="switch-div">
+                      {{ block.settings['switch-div'] }}
+                    </div>
+                  </div>
+                  <div class="switch-logo-image">
+                    {% if block.settings['switch-logo-img-1'] != blank %}
+                      <img
+                        src="{{ block.settings.switch-logo-img-1 |img_url:'master' }}"
+                        alt=""
+                        class="switch-logo-img"
+                      >
+                    {% endif %}
+                    <div class="switch-div">
+                      {{ block.settings['switch-div-1'] }}
+                    </div>
+                  </div>
+                  <div class="switch-logo-image">
+                    {% if block.settings['switch-logo-img-2'] != blank %}
+                      <img
+                        src="{{ block.settings.switch-logo-img-2 |img_url:'master' }}"
+                        alt=""
+                        class="switch-logo-img"
+                      >
+                    {% endif %}
+                    <div class="switch-div">
+                      {{ block.settings['switch-div-2'] }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        {% endcase %}
+      {% endfor %}
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'RightCol' %}
+            <div class="switch-right-col">
+              <div class="switch-right-content">
+                <h1 class="switch-text">
+                  {{ block.settings['switch-text-1'] }}
+                </h1>
+                <div class="switch-price">
+                  <span class="switch-span">
+                    {{ block.settings['switch-span-1'] }}
+                  </span>
+                  <span class="switch-price-span">
+                    {{ block.settings['switch-price-span-1'] }}
+                  </span>
+                </div>
+                <div class="switch-button">
+                  <a href="" class="switch-btn">
+                    {{ block.settings['switch-btn-1'] }}
+                  </a>
+                </div>
+                <div class="switch-logo">
+                  <div class="switch-logo-image">
+                    {% if block.settings['switch-logo-img-3'] != blank %}
+                      <img
+                        src="{{ block.settings.switch-logo-img-3 |img_url:'master' }}"
+                        alt=""
+                        class="switch-logo-img"
+                      >
+                    {% endif %}
+                    <div class="switch-div">
+                      {{ block.settings['switch-div-3'] }}
+                    </div>
+                  </div>
+                  <div class="switch-logo-image">
+                    {% if block.settings['switch-logo-img-4'] != blank %}
+                      <img
+                        src="{{ block.settings.switch-logo-img-4 |img_url:'master' }}"
+                        alt=""
+                        class="switch-logo-img"
+                      >
+                    {% endif %}
+                    <div class="switch-div">
+                      {{ block.settings['switch-div-4'] }}
+                    </div>
+                  </div>
+                  <div class="switch-logo-image">
+                    {% if block.settings['switch-logo-img-5'] != blank %}
+                      <img
+                        src="{{ block.settings.switch-logo-img-5 |img_url:'master' }}"
+                        alt=""
+                        class="switch-logo-img"
+                      >
+                    {% endif %}
+                    <div class="switch-div">
+                      {{ block.settings['switch-div-5'] }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        {% endcase %}
+      {% endfor %}
+    </div>
+  </div>
+  <div class="switch-mobile-container">
+    <div class="switch-mobile-col">
+      <div class="switch-mobile-image">
+        {% if section.settings['switch-mobile-img'] != blank %}
+          <img src="{{ section.settings.switch-mobile-img |img_url:'master' }}" alt="" class="switch-mobile-img">
+        {% endif %}
+      </div>
+      <div class="switch-mobile-content">
+        <div class="switch-mobile-price">
+        <span class="switch-mobile-span">
+          {{ section.settings['switch-mobile-span'] }}
+        </span>
+        <span class="switch-mobile-span-1">
+          {{ section.settings['switch-mobile-span-1'] }}
+        </span>
+        </div>
+          <div class="switch-mobile-price-1">
+        <span class="switch-moible-span">
+          {{ section.settings['switch-mobile-span-2'] }}
+        </span>
+        <span class="switch-moible-span-3">
+          {{ section.settings['switch-mobile-span-3'] }}
+        </span>
+        </div>
+      </div>
+    </div>
+    <div class="switch-mobile-button">
+      <div class="switch-bt">
+        <a href="" class="switch-mobile-btn">
+          {{ section.settings['switch-mobile-btn'] }}
+        </a>
+        <a href="" class="switch-mobile-btn-1">
+           {{ section.settings['switch-mobile-btn-1'] }}
+        </a>
+       
+        
+      </div>
+      <div class="switch-logo-div">
+        {% if section.settings['switch-mobile-logo'] != blank %}
+          <img src="{{ section.settings.switch-mobile-logo |img_url:'master' }}" alt="" class="switch-mobile-logo">
+        {% endif %}
+        <div class="switch-mobile-div">
+          {{ section.settings['switch-mobile-div'] }}
+        </div>
+      </div>
+      <div class="switch-logo-div-1">
+        {% if section.settings['switch-mobile-logo-1'] != blank %}
+          <img src="{{ section.settings.switch-mobile-logo-1 |img_url:'master' }}" alt="" class="switch-mobile-logo-1">
+        {% endif %}
+        <div class="switch-mobile-div-1">
+          {{ section.settings['switch-mobile-div-1'] }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Switch Bnr",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "switch-left-col",
+      "label": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "switch-right-col",
+      "label": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "switch-left-col-1",
+      "label": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "switch-right-col-1",
+      "label": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "switch-mobile-img",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "switch-mobile-span",
+      "label": "Text"
+    },
+    {
+      "type": "text",
+      "id": "switch-mobile-span-1",
+      "label": "Text"
+    },
+    {
+      "type": "text",
+      "id": "switch-mobile-span-2",
+      "label": "Text"
+    },
+    {
+      "type": "text",
+      "id": "switch-mobile-span-3",
+      "label": "Text"
+    },
+    {
+      "type": "text",
+      "id": "switch-mobile-btn",
+      "label": "Text"
+    },
+    {
+      "type": "text",
+      "id": "switch-mobile-btn-1",
+      "label": "Text"
+    },
+    {
+      "type": "image_picker",
+      "id": "switch-mobile-logo",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "switch-mobile-div",
+      "label": "Text"
+    },
+    {
+      "type": "image_picker",
+      "id": "switch-mobile-logo-1",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "switch-mobile-div-1",
+      "label": "Text"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "LeftCol",
+      "name": "Left Col",
+      "settings": [
+        {
+          "type": "text",
+          "id": "switch-text",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "switch-span",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "switch-price-span",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "switch-btn",
+          "label": "Text"
+        },
+        {
+          "type": "image_picker",
+          "id": "switch-logo-img",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "switch-div",
+          "label": "Text"
+        },
+        {
+          "type": "image_picker",
+          "id": "switch-logo-img-1",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "switch-div-1",
+          "label": "Text"
+        },
+        {
+          "type": "image_picker",
+          "id": "switch-logo-img-2",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "switch-div-2",
+          "label": "Text"
+        }
+      ]
+    },
+    {
+      "type": "RightCol",
+      "name": "Right Col",
+      "settings": [
+        {
+          "type": "text",
+          "id": "switch-text-1",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "switch-span-1",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "switch-price-span-1",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "switch-btn-1",
+          "label": "Text"
+        },
+        {
+          "type": "image_picker",
+          "id": "switch-logo-img-3",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "switch-div-3",
+          "label": "Text"
+        },
+        {
+          "type": "image_picker",
+          "id": "switch-logo-img-4",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "switch-div-4",
+          "label": "Text"
+        },
+        {
+          "type": "image_picker",
+          "id": "switch-logo-img-5",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "switch-div-5",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Switch Bnr"
+    }
+  ]
+}
+{% endschema %}

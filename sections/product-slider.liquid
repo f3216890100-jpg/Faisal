@@ -1,0 +1,985 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
+<style>
+  .cst-slider-sec {
+      padding: 40px 0;
+  }
+  .cst-slider-container {
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 0px;
+  }
+  .cst-slider-flx {
+      display: flex;
+        justify-content: center;
+      flex-wrap: wrap;
+      gap: 80px;
+  }
+  .cst-slider-col {
+            width: 35%;
+  }
+  .cst-slider-col-1{
+              width: 35%;
+          position: sticky;
+          z-index: 2;
+          display: block;
+  }
+  .cst-product-faq-div {
+      position: absolute;
+      z-index: 1;
+      width: 100%;
+      display: block;
+  }
+  .slider-nav img {
+      height: 80px;
+      object-fit: cover;
+      width: 90%;
+  }
+          .cst-slider-img {
+              width: 100%;
+              object-fit: cover;
+              border: 1px solid #ddd;
+              cursor: pointer;
+          }
+          .slider-nav .slick-current img {
+              border: 2px solid black;
+          }
+
+          .cst-slider-img-1 {
+              width: 100%;
+              object-fit: cover;
+                  height: 100%;
+          }
+
+
+  .title-h1 {
+      font-size: 20px;
+      font-weight: 500;
+      color: #454545;
+      font-family: Assistant, sans-serif;
+          padding-bottom: 10px;
+            margin:0;
+  }
+
+  .cst-prod-reviews-icon {
+      color: #f6ae02;
+  }
+  .cst-product-star-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+  }
+  .reviews-text {
+      font-size: 14px;
+      font-weight: 500;
+      color: #454545;
+      font-family: Assistant, sans-serif;
+  }
+  .cst-product-heading {
+      font-size: 16px;
+      font-weight: 600;
+      color: #454545;
+      font-family: Assistant, sans-serif;
+      padding-bottom: 14px;
+      margin:0;
+  }
+  .cst-product-dot {
+      display: inline-block;
+      width: 26px;
+      height: 26px;
+      position: relative;
+      margin-right: 24px;
+  }
+  .cst-product-dot::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 16px;
+      height: 16px;
+      background-color: #015b53;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+  }
+  .cst-product-dot::before {
+      content: "";
+      width: 85%;
+      height: 85%;
+
+      border: 2px solid #ddd;
+      border-radius: 50%;
+      background-color: #fff;
+      display: block;
+      transition: all .3s ease-in-out;
+  }
+  .cst-product-go-flx {
+      background: #f1fbcc;
+      padding: 12px;
+      border: 1px solid #70BC0E;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+   display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+  }
+  .cst-product-dot-flx {
+      display: flex;
+      align-items: center;
+  }
+  .cst-product-anker-span {
+      font-size: 14px;
+      font-family: Assistant, sans-serif;
+      font-weight: 500;
+      color: #454545;
+
+  }
+  .cst-product-anker {
+      font-size: 16px;
+      font-weight: 500;
+          font-family: Assistant, sans-serif;
+      text-decoration: none;
+      color: #70bc0e;
+      margin-top: 10px;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+  }
+  .cst-product-value {
+      color: #70bc0e;
+      font-size: 20px;
+       font-weight: 600;
+          font-family: Assistant, sans-serif;
+              letter-spacing: 1px;
+  }
+  .cst-product-go-out-dots{
+      display: inline-block;
+      width: 26px;
+      height: 26px;
+      position: relative;
+      border-radius: 50px;
+      border: 2px solid #d9d9d9;
+      margin-right: 24px;
+
+  }
+  .cst-product-go-out-dots::before {
+      width: 100%;
+      height: 100%;
+      border: 2px solid #333;
+      border-radius: 50%;
+      background-color: #fff;
+      display: block;
+      transition: all .3s
+  ease;
+  }
+  .cst-product-go-out-flx {
+      background: rgba(255, 255, 255);
+      border: 2px solid #ddd;
+      padding: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+       border-bottom-left-radius: 12px;
+      border-bottom-right-radius: 12px;
+      border-top: none;
+      height: 68px;
+      margin-bottom: 15px;
+  }
+  .go-out-dot-flx {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }
+  .cst-product-go-out-text {
+      font-size: 14px;
+      font-weight: 500;
+      font-family: Assistant, sans-serif;
+      color: #454545;
+  }
+  .go-out-price {
+      font-size: 20px;
+       font-weight: 600;
+      font-family: Assistant, sans-serif;
+      color: #454545;
+  }
+  .cst-prod-faq {
+      border: 1px solid #a3a3a3;
+
+      border-radius: 10px;
+  }
+  .cst-prod-quesstion {
+      display: flex;
+      justify-content: space-between;
+        padding: 15px 15px;
+      align-items: center;
+  }
+
+  .cst-faq{
+        padding:0 10px;
+  }
+  .cst-prod-faq-answer,
+  .cst-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .5s ease-in-out;
+  }
+
+  .cst-prod-faq.active .cst-prod-faq-answer,
+  .cst-faq.active .cst-answer {
+      max-height: 1000px;
+  }
+
+  .cst-prod-quesstion,
+  .cst-quesrion {
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }
+
+  .cst-prod-quesstion i,
+  .cst-quesrion i {
+      transition: transform .5s ease-in-out;
+  }
+
+  .cst-prod-faq.active .cst-prod-quesstion i,
+  .cst-faq.active .cst-quesrion i {
+      transform: rotate(180deg);
+  }
+
+  .cst-quesrion {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #a3a3a3;
+      padding:15px 0;
+  }
+  .cst-prod-faq-span {
+      font-size: 14px;
+        font-weight: 500;
+      font-family: Assistant, sans-serif;
+      color: #454545;
+  }
+  .cst-prod-faq-span-1 {
+      font-size: 16px;
+         font-weight: 500;
+      font-family: Assistant, sans-serif;
+      color: #454545;
+  }
+  .cst-desp p {
+       font-size: 14px;
+        font-weight: 500;
+      font-family: Assistant, sans-serif;
+      color: #454545;
+      padding-top: 10px;
+  }
+  .cst-ankr-div {
+      margin-top: 80px;
+  }
+  .cst-product-faq-div {
+      position: absolute;
+      z-index: 1;
+      width: 100%;
+      display: block;
+          background: #fff;
+  }
+  .cst-btn {
+      background: #7ccb1f;
+      color: #fff;
+      text-decoration: none;
+      width: 100%;
+      display: inline-block;
+      padding: 10px;
+      border-radius: 50px;
+      font-size: 20px;
+      font-family: Assistant, sans-serif;
+      text-transform: uppercase;
+      font-weight: 500;
+      text-align: center;
+
+  }
+  .cst-bt-div {
+      margin: 15px 10px;
+  }
+  .cst-bt {
+      color: #7ccb1f;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 500;
+      font-family: Assistant, sans-serif;
+  }
+  i.fa-solid.fa-chevron-right {
+      color: #7ccb1f;
+      font-size: 16px;
+  }
+  .cst-heading {
+      font-size: 20px;
+      font-weight: 500;
+      font-family: Assistant, sans-serif;
+      color: #454545;
+      padding-bottom: 10px;
+      padding:0 10px;
+      margin:0;
+  }
+  .cst-div{
+      font-size: 12px;
+       font-weight: 500;
+      font-family: Assistant, sans-serif;
+      color: #454545;
+      padding:0 10px;
+  }
+  @media screen and (max-width:767px){
+     .cst-slider-container {
+      padding: 0 20px;
+  }
+  .cst-slider-col {
+      width: 100%;
+  }
+  .cst-slider-col-1 {
+      width: 100%;
+  }
+  .slider-for{
+      width: 100%;
+  }
+  .slider-nav img {
+      height: 70px;
+      object-fit: cover;
+      width: 90%;
+  }
+  .cst-product-title h1 {
+      display: none;
+  }
+  .cst-product-anker-span {
+      font-size: 12px;
+  }
+  .cst-product-value {
+      font-size: 15px;
+  }
+  .cst-content {
+      margin-top: 50px;
+  }
+  }
+</style>
+<section class="cst-slider-sec">
+  <div class="cst-slider-container">
+    <div class="cst-slider-flx">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'Sliderimage' %}
+            <div class="cst-slider-col">
+              <div class="cst-prd-image-flx">
+                <div class="slider-for">
+                  <div class="cst-slider-image">
+                    {% if block.settings['cst-slider-img-1'] != blank %}
+                      <img
+                        src="{{ block.settings.cst-slider-img-1 |img_url:'master' }}"
+                        alt=""
+                        class="cst-slider-img-1"
+                      >
+                    {% endif %}
+                  </div>
+                  <div class="cst-slider-image">
+                    {% if block.settings['cst-slider-img-2'] != blank %}
+                      <img
+                        src="{{ block.settings.cst-slider-img-2 |img_url:'master' }}"
+                        alt=""
+                        class="cst-slider-img-1"
+                      >
+                    {% endif %}
+                  </div>
+                  <div class="cst-slider-image">
+                    {% if block.settings['cst-slider-img-3'] != blank %}
+                      <img
+                        src="{{ block.settings.cst-slider-img-3 |img_url:'master' }}"
+                        alt=""
+                        class="cst-slider-img-1"
+                      >
+                    {% endif %}
+                  </div>
+                  <div class="cst-slider-image">
+                    {% if block.settings['cst-slider-img-4'] != blank %}
+                      <img
+                        src="{{ block.settings.cst-slider-img-4 |img_url:'master' }}"
+                        alt=""
+                        class="cst-slider-img-1"
+                      >
+                    {% endif %}
+                  </div>
+                </div>
+                <div class="slider-nav">
+                  <div class="cst-slider-image">
+                    {% if block.settings['cst-slider-img-5'] != blank %}
+                      <img src="{{ block.settings.cst-slider-img-5 |img_url:'master' }}" alt="" class="cst-slider-img">
+                    {% endif %}
+                  </div>
+                  <div class="cst-slider-image">
+                    {% if block.settings['cst-slider-img-6'] != blank %}
+                      <img src="{{ block.settings.cst-slider-img-6 |img_url:'master' }}" alt="" class="cst-slider-img">
+                    {% endif %}
+                  </div>
+                  <div class="cst-slider-image">
+                    {% if block.settings['cst-slider-img-7'] != blank %}
+                      <img src="{{ block.settings.cst-slider-img-7 |img_url:'master' }}" alt="" class="cst-slider-img">
+                    {% endif %}
+                  </div>
+                  <div class="cst-slider-image">
+                    {% if block.settings['cst-slider-img-8'] != blank %}
+                      <img src="{{ block.settings.cst-slider-img-8 |img_url:'master' }}" alt="" class="cst-slider-img">
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+        {% endcase %}
+      {% endfor %}
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'SliderContent' %}
+            <div class="cst-slider-col-1">
+              <div class="cst-product-title">
+                <h1 class="title-h1">
+                  {{ block.settings['title-h1'] }}
+                </h1>
+              </div>
+              <div class="cst-product-star-row">
+                <div class="cst-prod-reviews">
+                  <span class="cst-prod-reviews-icon"><i class="fa-solid fa-star"></i></span>
+                  <span class="cst-prod-reviews-icon"><i class="fa-solid fa-star"></i></span>
+                  <span class="cst-prod-reviews-icon"><i class="fa-solid fa-star"></i></span>
+                  <span class="cst-prod-reviews-icon"><i class="fa-solid fa-star"></i></span>
+                  <span class="cst-prod-reviews-icon"><i class="fa-solid fa-star"></i></span>
+                </div>
+                <span class="reviews-text">
+                  {{ block.settings['reviews-text'] }}
+                </span>
+              </div>
+              <h5 class="cst-product-heading">
+                {{ block.settings['cst-product-heading'] }}
+              </h5>
+              <div class="cst-product-go-flx">
+                <div class="cst-product-dot-flx">
+                  <div class="cst-product-dot"></div>
+                  <div class="cst-product-anker-flx">
+                    <span class="cst-product-anker-span">
+                      {{ block.settings['cst-product-anker-span'] }}
+                      <a class="cst-product-anker" href="#">
+                        {{ block.settings['cst-product-anker'] }}
+                        <i class="fa-solid fa-chevron-right"></i>
+                      </a>
+                    </span>
+                  </div>
+                </div>
+                <div class="cst-product-value">
+                  {{ block.settings['cst-product-value'] }}
+                </div>
+              </div>
+              <div class="cst-product-go-out-flx">
+                <div class="go-out-dot-flx">
+                  <div class="cst-product-go-out-dots"></div>
+                  <h5 class="cst-product-go-out-text">
+                    {{ block.settings['cst-product-go-out-text'] }}
+                  </h5>
+                </div>
+                <div class="go-out-price">
+                  {{ block.settings['go-out-price'] }}
+                </div>
+              </div>
+              <h5 class="cst-product-heading">
+                {{ block.settings['cst-product-heading-1'] }}
+              </h5>
+              <div class="cst-product-faq-div">
+                <div class="cst-prod-faq">
+                  <div class="cst-prod-quesstion">
+                    <span class="cst-prod-faq-span">
+                      {{ block.settings['cst-prod-faq-span'] }}
+                    </span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                  </div>
+                  <div class="cst-prod-faq-answer">
+                    <div class="cst-faq">
+                      <div class="cst-quesrion">
+                        <span class="cst-prod-faq-span-1">
+                          {{ block.settings['cst-prod-faq-span-1'] }}
+                        </span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                      </div>
+                      <div class="cst-answer">
+                        <div class="cst-desp">
+                          {{ block.settings['cst-desp'] }}
+                        </div>
+                        <div class="cst-desp">
+                          {{ block.settings['cst-desp-1'] }}
+                        </div>
+                        <div class="cst-desp">
+                          {{ block.settings['cst-desp-2'] }}
+                        </div>
+                        <div class="cst-desp">
+                          {{ block.settings['cst-desp-3'] }}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="cst-faq">
+                      <div class="cst-quesrion">
+                        <span class="cst-prod-faq-span-1">
+                          {{ block.settings['cst-prod-faq-span-2'] }}
+                        </span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                      </div>
+                      <div class="cst-answer">
+                        <div class="cst-desp">
+                          {{ block.settings['cst-desp-4'] }}
+                        </div>
+                        <div class="cst-desp">
+                          {{ block.settings['cst-desp-5'] }}
+                        </div>
+                        <div class="cst-desp">
+                          {{ block.settings['cst-desp-6'] }}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="cst-faq">
+                      <div class="cst-quesrion">
+                        <span class="cst-prod-faq-span-1">
+                          {{ block.settings['cst-prod-faq-span-3'] }}
+                        </span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                      </div>
+                      <div class="cst-answer">
+                        <div class="cst-desp">
+                          {{ block.settings['cst-desp-7'] }}
+                        </div>
+                        <div class="cst-desp">
+                          {{ block.settings['cst-desp-8'] }}
+                        </div>
+                        <div class="cst-desp">
+                          {{ block.settings['cst-desp-9'] }}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="cst-faq">
+                      <div class="cst-quesrion">
+                        <span class="cst-prod-faq-span-1">
+                          {{ block.settings['cst-prod-faq-span-4'] }}
+                        </span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                      </div>
+                      <div class="cst-answer">
+                        <div class="cst-desp">
+                          {{ block.settings['cst-desp-10'] }}
+                        </div>
+                        <div class="cst-desp">
+                          {{ block.settings['cst-desp-11'] }}
+                        </div>
+                        <div class="cst-desp">
+                          {{ block.settings['cst-desp-12'] }}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="cst-faq">
+                      <div class="cst-quesrion">
+                        <span class="cst-prod-faq-span-1">
+                          {{ block.settings['cst-prod-faq-span-5'] }}
+                        </span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                      </div>
+                      <div class="cst-answer">
+                        <div class="cst-desp">
+                          {{ block.settings['cst-desp-13'] }}
+                        </div>
+                        <div class="cst-desp">
+                          {{ block.settings['cst-desp-14'] }}
+                        </div>
+                        <div class="cst-desp">
+                          {{ block.settings['cst-desp-15'] }}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="cst-faq">
+                      <div class="cst-quesrion">
+                        <span class="cst-prod-faq-span-1">
+                          {{ block.settings['cst-prod-faq-span-6'] }}
+                        </span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                      </div>
+                      <div class="cst-answer">
+                        <div class="cst-desp">
+                          {{ block.settings['cst-desp-16'] }}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="cst-faq">
+                      <div class="cst-quesrion">
+                        <span class="cst-prod-faq-span-1">
+                          {{ block.settings['cst-prod-faq-span-7'] }}
+                        </span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                      </div>
+                      <div class="cst-answer">
+                        <div class="cst-desp">
+                          {{ block.settings['cst-desp-17'] }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="cst-ankr-div">
+                {% render 'buy-buttons',
+                  block: block,
+                  product: product,
+                  product_form_id: product_form_id,
+                  section_id: section.id,
+                  show_pickup_availability: true
+                %}
+              </div>
+              <div class="cst-bt-div">
+                <a href="#" class="cst-bt">
+                  {{ block.settings['cst-bt'] }}
+                </a>
+                <i class="fa-solid fa-chevron-right"></i>
+              </div>
+              <div class="cst-content">
+                <h4 class="cst-heading">
+                  {{ block.settings['cst-heading'] }}
+                </h4>
+                <div class="cst-div">
+                  {{ block.settings['cst-div'] }}
+                </div>
+              </div>
+            </div>
+        {% endcase %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+
+<script>
+  $('.slider-for').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    fade: false,
+    asNavFor: '.slider-nav',
+    prevArrow: '<button class="slick-prev"><i class="fa-solid fa-chevron-left"></i></button>',
+    nextArrow: '<button class="slick-next"><i class="fa-solid fa-chevron-right"></i></button>',
+  });
+
+  $('.slider-nav').slick({
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    asNavFor: '.slider-for',
+    dots: false,
+    centerMode: false,
+    focusOnSelect: true,
+    arrows: false,
+  });
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const mainToggle = document.querySelector('.cst-prod-quesstion');
+    const mainContainer = document.querySelector('.cst-prod-faq');
+    const mainAnswer = document.querySelector('.cst-prod-faq-answer');
+
+    mainToggle.addEventListener('click', () => {
+      const isOpen = mainContainer.classList.toggle('active');
+      if (isOpen) {
+        mainAnswer.style.maxHeight = mainAnswer.scrollHeight + 'px';
+      } else {
+        mainAnswer.style.maxHeight = '0px';
+      }
+    });
+
+    const innerToggles = document.querySelectorAll('.cst-quesrion');
+
+    innerToggles.forEach((toggle) => {
+      toggle.addEventListener('click', () => {
+        const parent = toggle.parentElement;
+        const answer = toggle.nextElementSibling;
+        const isOpen = parent.classList.contains('active');
+
+        document.querySelectorAll('.cst-faq').forEach((faq) => {
+          if (faq !== parent) {
+            faq.classList.remove('active');
+            faq.querySelector('.cst-answer').style.maxHeight = '0px';
+          }
+        });
+
+        if (!isOpen) {
+          parent.classList.add('active');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        } else {
+          parent.classList.remove('active');
+          answer.style.maxHeight = '0px';
+        }
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Product Slider",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "Sliderimage",
+      "name": "Slider image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "cst-slider-img-1",
+          "label": "Slider Img"
+        },
+        {
+          "type": "image_picker",
+          "id": "cst-slider-img-2",
+          "label": "Slider Img"
+        },
+        {
+          "type": "image_picker",
+          "id": "cst-slider-img-3",
+          "label": "Slider Img"
+        },
+        {
+          "type": "image_picker",
+          "id": "cst-slider-img-4",
+          "label": "Slider Img"
+        },
+        {
+          "type": "image_picker",
+          "id": "cst-slider-img-5",
+          "label": "Slider Img"
+        },
+        {
+          "type": "image_picker",
+          "id": "cst-slider-img-6",
+          "label": "Slider Img"
+        },
+        {
+          "type": "image_picker",
+          "id": "cst-slider-img-7",
+          "label": "Slider Img"
+        },
+        {
+          "type": "image_picker",
+          "id": "cst-slider-img-8",
+          "label": "Slider Img"
+        }
+      ]
+    },
+    {
+      "type": "SliderContent",
+      "name": "Slider Content",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title-h1",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "reviews-text",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "cst-product-heading",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "cst-product-anker-span",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "cst-product-anker",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "cst-product-value",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "cst-product-go-out-text",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "go-out-price",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "cst-product-heading-1",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "cst-prod-faq-span",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "cst-prod-faq-span-1",
+          "label": "Text"
+        },
+        {
+          "type": "richtext",
+          "id": "cst-desp",
+          "label": "Faq Para"
+        },
+        {
+          "type": "richtext",
+          "id": "cst-desp-1",
+          "label": "Faq Para"
+        },
+        {
+          "type": "richtext",
+          "id": "cst-desp-2",
+          "label": "Faq Para"
+        },
+        {
+          "type": "richtext",
+          "id": "cst-desp-3",
+          "label": "Faq Para"
+        },
+        {
+          "type": "text",
+          "id": "cst-prod-faq-span-2",
+          "label": "Text"
+        },
+        {
+          "type": "richtext",
+          "id": "cst-desp-4",
+          "label": "Faq Para"
+        },
+        {
+          "type": "richtext",
+          "id": "cst-desp-5",
+          "label": "Faq Para"
+        },
+        {
+          "type": "richtext",
+          "id": "cst-desp-6",
+          "label": "Faq Para"
+        },
+        {
+          "type": "text",
+          "id": "cst-prod-faq-span-3",
+          "label": "Text"
+        },
+        {
+          "type": "richtext",
+          "id": "cst-desp-7",
+          "label": "Faq Para"
+        },
+        {
+          "type": "richtext",
+          "id": "cst-desp-8",
+          "label": "Faq Para"
+        },
+        {
+          "type": "richtext",
+          "id": "cst-desp-9",
+          "label": "Faq Para"
+        },
+        {
+          "type": "text",
+          "id": "cst-prod-faq-span-4",
+          "label": "Text"
+        },
+        {
+          "type": "richtext",
+          "id": "cst-desp-10",
+          "label": "Faq Para"
+        },
+        {
+          "type": "richtext",
+          "id": "cst-desp-11",
+          "label": "Faq Para"
+        },
+        {
+          "type": "richtext",
+          "id": "cst-desp-12",
+          "label": "Faq Para"
+        },
+        {
+          "type": "text",
+          "id": "cst-prod-faq-span-5",
+          "label": "Text"
+        },
+        {
+          "type": "richtext",
+          "id": "cst-desp-13",
+          "label": "Faq Para"
+        },
+        {
+          "type": "richtext",
+          "id": "cst-desp-14",
+          "label": "Faq Para"
+        },
+        {
+          "type": "richtext",
+          "id": "cst-desp-15",
+          "label": "Faq Para"
+        },
+        {
+          "type": "text",
+          "id": "cst-prod-faq-span-6",
+          "label": "Text"
+        },
+        {
+          "type": "richtext",
+          "id": "cst-desp-16",
+          "label": "Faq Para"
+        },
+        {
+          "type": "text",
+          "id": "cst-prod-faq-span-7",
+          "label": "Text"
+        },
+        {
+          "type": "richtext",
+          "id": "cst-desp-17",
+          "label": "Faq Para"
+        },
+        {
+          "type": "text",
+          "id": "cst-btn",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "cst-bt",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "cst-heading",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "cst-div",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Slider"
+    }
+  ]
+}
+{% endschema %}

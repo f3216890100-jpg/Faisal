@@ -1,0 +1,100 @@
+<style>
+    .Search-sec{
+        padding:60px 0;
+    }
+    .Search-container{
+        max-width:1400px;
+        margin:0 auto;
+        padding:0 50px;
+        width:100%;
+    }
+    .Search-flx {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+      column-gap: 60px;
+}
+    .search-anker {
+    font-size: 16px;
+    font-weight: 600;
+    color: #454545;
+}
+.Search-text {
+    font-size: 28px;
+    font-weight: 600;
+    color: #454545;
+    text-align: center;
+    padding: 0 0 30px;
+}
+@media screen and (max-width:767px){
+   .Search-sec{
+        padding:30px 0;
+    }
+    .Search-text {
+    font-size: 20px;
+    padding: 0 0 20px;
+}
+  .Search-flx {
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 10px;
+    }
+    .Search-container{
+        padding:0 20px;
+    }
+    .search-anker {
+    font-size: 14px;
+    font-weight: 600;
+    color: #454545;
+}
+}
+
+</style>
+<div class="Search-sec">
+    <div class="Search-container">
+        <h2 class="Search-text">
+            {{ section.settings.Search-text }}
+        </h2>
+        <div class="Search-flx">
+            {% for block in section.blocks %}
+            <div class="Search-col">
+                <a href="" class="search-anker">
+                    {{ block.settings.search-anker }}
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% schema %}
+{
+    "name": "Search Sec",
+    "settings": [
+  {
+                    "type": "text",
+                    "id": "Search-text",
+                    "label": "Text"
+                },
+    ],
+    "blocks": [
+        {
+            "type": "Search-Sec",
+            "name": "Search Sec",
+            "settings": [
+               
+                {
+                    "type": "text",
+                    "id": "search-anker",
+                    "label": "Text"
+                },
+            ],
+        },
+    ],
+    "presets": [
+        {
+            "name": "Search Sec",
+        },
+    ],
+}
+{% endschema %}

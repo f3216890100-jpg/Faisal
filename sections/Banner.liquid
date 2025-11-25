@@ -1,0 +1,246 @@
+<style>
+  *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.banner-content {
+    position: relative;
+}
+.banner-desktop-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.banner-mobile-img{
+display: none;
+}
+.main--inner__content {
+    position: absolute;
+    top: 45%;
+    left: 5%;
+    transform: translateY(-50%);
+    width: 30%;
+}
+.title__heading-uppeer {
+    font-size: 30px;
+    font-family: "Avenir-next", sans-serif;
+    color: #000000;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+.title-block_title {
+    font-family: "Avenir-next", sans-serif;
+    color: #000000;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 28px;
+    margin: 12px 0;
+}
+.banner-des {
+    font-family: "Avenir-next", sans-serif;
+    color: #000000;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 25px;
+}
+.content__tick--image {
+    margin-top: 60px;
+}
+.banner-img {
+    width: 100%;
+    max-width: 20px;
+    height: 100%;
+}
+.image__block-tick {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+.flex__main-tick-cnt {
+    display: flex;
+    align-items: center;
+}
+
+
+
+.tick-content-des {
+    font-family: "Avenir-next", sans-serif;
+    font-size: 13px;
+    color: #000000;
+}
+@media screen and (max-width:767px){
+    .banner-mobile-img{
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        }
+        .banner-desktop-img {
+            display: none;
+        }
+        .main--inner__content {
+            width: 100%;
+            top: 28%;
+            left: 0;
+            padding: 0 15px;
+        }
+}
+</style>
+  <section class="banner-content-sec">
+    <div class="banner-content-container">
+      <div class="banner-main">
+        {% for block in section.blocks %}
+        <div class="banner-content">
+          {% if block.settings.sub-banner-desktop-img !=blank%}
+          <img src="{{ block.settings.sub-banner-desktop-img |img_url:'master' }}" alt="" class="banner-desktop-img">
+          {% endif %}
+          {% if block.settings.sub-banner-mobile-img !=blank%}
+          <img src="{{block.settings.sub-banner-mobile-img |img_url:'master'}}" alt="" class="banner-mobile-img">
+            {% endif %}
+          <div class="main--inner__content">
+            <div class="main-uuperr-content">
+              <div class="inner__imageheading">
+                <h1 class="title__heading-uppeer">
+                {{ block.settings.sub-title__heading-uppeer }}
+                </h1>
+              </div>
+              <div class="subheading__upper-tit">
+                <h4 class="title-block_title">
+                  {{ block.settings.sub-title-block_title }}
+                </h4>
+              </div>
+              <div class="description__banner__main">
+                <p class="banner-des">
+                  {{ block.settings.sub-banner-des }}
+                </p>
+              </div>
+            </div>
+            <div class="content__tick--image">
+
+              <div class="image__block-tick">
+
+                <div class="flex__main-tick-cnt">
+                  {% if block.settings.sub-banner-img !=blank%}
+                  <img src="{{ block.settings.sub-banner-img |img_url:'master' }}" alt="" class="banner-img">
+                  {% endif %}
+                </div>
+
+                <div class="tick-content__tick">
+                  <p class="tick-content-des">
+                    {{ block.settings.sub-tick-content-des }}
+                  </p>
+                </div>
+              </div>
+
+          <div class="image__block-tick">
+
+                <div class="flex__main-tick-cnt">
+                  {% if block.settings.sub-banner-img-1 !=blank%}
+                  <img src="{{ block.settings.sub-banner-img-1 |img_url:'master' }}" alt="" class="banner-img">
+                  {% endif %}
+                </div>
+
+                <div class="tick-content__tick">
+                  <p class="tick-content-des">
+                    {{ block.settings.sub-tick-content-des-1 }}
+                  </p>
+                </div>
+              </div>
+              <div class="image__block-tick">
+
+                <div class="flex__main-tick-cnt">
+                  {% if block.settings.sub-banner-img-2 !=blank%}
+                  <img src="{{ block.settings.sub-banner-img-2 |img_url:'master' }}" alt="" class="banner-img">
+                  {% endif %}
+                </div>
+
+                <div class="tick-content__tick">
+                  <p class="tick-content-des">
+                    {{ block.settings.sub-tick-content-des-2 }}
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+{% schema %}
+  {
+    "name": "Banner",
+    "settings": [],
+    "blocks": [
+      {
+        "type": "banner",
+        "name": "Banner",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "sub-banner-desktop-img",
+            "label": "Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "sub-banner-mobile-img",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "sub-title__heading-uppeer",
+            "label": "Text"
+          },
+          {
+            "type": "text",
+            "id": "sub-title-block_title",
+            "label": "Text"
+          },
+          {
+            "type": "text",
+            "id": "sub-banner-des",
+            "label": "Text"
+          },
+          {
+            "type": "image_picker",
+            "id": "sub-banner-img",
+            "label": "Image"
+          },
+           {
+            "type": "text",
+            "id": "sub-tick-content-des",
+            "label": "Text"
+          },
+            {
+            "type": "image_picker",
+            "id": "sub-banner-img-1",
+            "label": "Image"
+          },
+           {
+            "type": "text",
+            "id": "sub-tick-content-des-1",
+            "label": "Text"
+          },
+            {
+            "type": "image_picker",
+            "id": "sub-banner-img-2",
+            "label": "Image"
+          },
+           {
+            "type": "text",
+            "id": "sub-tick-content-des-2",
+            "label": "Text"
+          },
+        ],
+      },
+    ],
+    "presets": [
+      {
+        "name": "Banner",
+      },
+    ],
+  }
+{% endschema %}

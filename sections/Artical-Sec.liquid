@@ -1,0 +1,215 @@
+<style>
+  @font-face {
+    font-family:"Avenir-Next", sans-serif ;
+    src: url(/font/Avenir\ Next\ LT\ Pro\ Bold.otf);
+}
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.cst-art-sec {
+   padding: 60px 0;
+}
+.cst-art-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+.cst-art-flx {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 15px;
+}
+.cst-art-heading {
+    font-size: 22px;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #003733;
+       font-family: "Avenir-Next", sans-serif;
+       font-weight: 700;
+}
+.cst-art-col {
+    width: 32%;
+    border: 1px solid #ccc;
+    border-radius: 22px;
+}
+.cst-art-image-flx {
+    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.cst-art-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+.cst-art-title {
+    padding: 10px 20px;
+}
+.cst-art-text {
+    font-size: 20px;
+    color: #000000;
+    font-family: "Avenir-Next", sans-serif;
+    font-weight: 700;
+    line-height: 26px;
+}
+.cst-art-desp {
+    font-size: 15px;
+    color: #000000;
+    font-family: "Avenir-Next", sans-serif;
+    font-weight: 500;
+    line-height: 25px;
+    padding: 8px 0;
+}
+.cst-art-content {
+    padding: 0 20px 20px;
+}
+.cst-art-span {
+    font-size: 12px;
+    font-family: "Avenir-Next", sans-serif;
+    font-weight: 400;
+    color: #9E9E9E;
+}
+.cst-art-span-1 {
+    font-size: 12px;
+    font-family: "Avenir-Next", sans-serif;
+    font-weight: 500;
+    color: #9E9E9E;
+}
+.cst-art-content {
+    padding: 0 20px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.cst-art-button{
+text-align: center;
+margin-top: 30px;
+}
+.cst-art-btn {
+    text-decoration: none;
+    background: #085a54;
+    color: #fff;
+    font-size: 18px;
+    font-family: "Avenir-Next", sans-serif;
+    padding: 15px 40px;
+    display: inline-block;
+    font-weight: 500;
+    border-radius: 8px;
+}
+@media screen and (max-width:767px){
+.cst-art-sec {
+    padding: 30px 0;
+}
+    .cst-art-col {
+    width: 100%;
+}
+.cst-art-container {
+    padding: 0 15px;
+}
+}
+</style>
+  <section class="cst-art-sec">
+        <div class="cst-art-container">
+            <h3 class="cst-art-heading">
+              {{ section.settings.sub-cst-art-heading }}
+</h3>
+            <div class="cst-art-flx">
+              {% for block in section.blocks %}
+                <div class="cst-art-col">
+                    <div class="cst-art-image-flx">
+                        <div class="cst-art-image-content">
+                    <div class="cst-art-image">
+                      {% if block.settings.sub-cst-art-img !=blank%}
+                        <img src="{{ block.settings.sub-cst-art-img |img_url:'master' }}" alt="" class="cst-art-img">
+                      {% endif %}
+                    </div>
+                    <div class="cst-art-title">
+                        <h3 class="cst-art-text">
+                          {{ block.settings.sub-cst-art-text }}
+                        </h3>
+                        <div class="cst-art-desp">
+                          {{ block.settings.sub-cst-art-desp }}
+ </div>
+                    </div>
+                    </div>
+                    <div class="cst-art-content">
+                        <span class="cst-art-span">
+                          {{ block.settings.sub-cst-art-span }}
+                        </span>
+                        <span class="cst-art-span-1">
+                           {{ block.settings.sub-cst-art-span-1 }}
+                        </span>
+                    </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+            <div class="cst-art-button">
+                <a href="#" class="cst-art-btn">
+                  {{ section.settings.sub-cst-art-btn }}
+                </a>
+            </div>
+        </div>
+    </section>
+{% schema %}
+  {
+    "name": "Section name",
+    "settings": [
+      {
+        "type": "text",
+        "id": "sub-cst-art-heading",
+        "label": "Text"
+      },
+      {
+        "type": "text",
+        "id": "sub-cst-art-btn",
+        "label": "Text"
+      },
+    ],
+    "blocks": [
+      {
+        "type": "Artical-Sec",
+        "name": "Artical Sec",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "sub-cst-art-img",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "sub-cst-art-text",
+            "label": "Text"
+          },
+           {
+            "type": "text",
+            "id": "sub-cst-art-desp",
+            "label": "Text"
+          },
+           {
+            "type": "text",
+            "id": "sub-cst-art-span",
+            "label": "Text"
+          },
+           {
+            "type": "text",
+            "id": "sub-cst-art-span-1",
+            "label": "Text"
+          },
+        ],
+      },
+    ],
+    "presets": [
+      {
+        "name": "Artical Sec",
+      },
+    ],
+  }
+{% endschema %}

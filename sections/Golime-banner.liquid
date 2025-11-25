@@ -1,0 +1,185 @@
+<style>
+  *{
+padding: 0;
+margin: 0;
+box-sizing: border-box;
+}
+.prod-bnr-image {
+    position: relative;
+}
+.prod-bnr-desktop-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.prod-bnr-text {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    background: #f5ede7;
+    padding: 26px;
+    border-radius: 22px;
+    width: 36%;
+    transform: translateY(-50%);
+}
+.prod-bnr-image-1 {
+    margin-bottom: 10px;
+}
+.prod-bnr-img-1 {
+    width: 100%;
+    max-width: 100px;
+}
+.prod-bnr-title {
+    font-size: 35px;
+    font-family: "Avenir-next", sans-serif;
+    font-weight: 700;
+    color: #003733;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+.prod-des {
+    font-size: 20px;
+    font-family: "Avenir-next", sans-serif;
+    font-weight: 700;
+    color: #000000;
+    line-height: 26px;
+}
+.prod-span {
+    font-weight: 400;
+}
+.prod-bnr-btn {
+    background: #075a54;
+    font-size: 18px;
+    font-family: "Avenir-next", sans-serif;
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+    padding: 15px;
+    width: 49%;
+    text-align: center;
+    font-weight: 400;
+    border-radius: 10px;
+    margin-top: 40px;
+}
+.prod-bnr-mobile-img {
+    display: none;
+}
+@media screen and (max-width:767px){
+    .prod-bnr-desktop-img {
+        display: none;
+    }
+   .prod-bnr-mobile-img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .prod-bnr-text {
+        width: 85%;
+        padding: 20px;
+        left: 6%;
+        top: 33%;
+    }
+    h1.prod-bnr-title {
+        font-size: 20px;
+        margin-bottom: 6px;
+    }
+    .prod-des {
+        font-size: 16px;
+        line-height: 18px;
+    }
+    .prod-bnr-btn {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+        margin-top: 20px;
+    }
+}
+
+
+</style>
+<section class="prod-bnr-sec">
+        <div class="prod-bnr-container">
+            <div class="prod-bnr-row">
+                <div class="prod-bnr-image">
+                  {% if section.settings.sub-prod-bnr-desktop-img !=blank%}
+                    <img src="{{ section.settings.sub-prod-bnr-desktop-img |img_url:'master' }}" alt="" class="prod-bnr-desktop-img">
+                  {% endif %}
+                  {% if section.settings.sub-prod-bnr-mobile-img !=blank%}
+                    <img src="{{ section.settings.sub-prod-bnr-mobile-img |img_url:'master' }}" alt="" class="prod-bnr-mobile-img">
+                  {% endif %}
+                    <div class="prod-bnr-text">
+                        <div class="prod-bnr-image-1">
+                          {% if section.settings.sub-prod-bnr-img-1 !=blank%}
+                            <img src="{{ section.settings.sub-prod-bnr-img-1 |img_url:'master' }}" alt="" class="prod-bnr-img-1">
+                          {% endif %}
+                        </div>
+                        <h1 class="prod-bnr-title">
+                          {{ section.settings.sub-prod-bnr-title }}
+                        </h1>
+                        <div class="prod-bnr-des">
+                            <p class="prod-des">
+                               {{ section.settings.sub-prod-des }}
+                                <span class="prod-span">
+                                {{ section.settings.sub-prod-span }}
+                            </span>
+                              </p>
+                        </div>
+                        <div class="prod-bnr-button">
+                            <a href="#" class="prod-bnr-btn">
+                              {{ section.settings.sub-prod-bnr-btn }}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% schema %}
+  {
+    "name": "Go Lime Banner",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "sub-prod-bnr-desktop-img",
+        "label": "Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "sub-prod-bnr-mobile-img",
+        "label": "Image"
+      },
+       {
+        "type": "image_picker",
+        "id": "sub-prod-bnr-img-1",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "sub-prod-bnr-title",
+        "label": "Text"
+      },
+      {
+        "type": "text",
+        "id": "sub-prod-des",
+        "label": "Text"
+      },
+      {
+        "type": "text",
+        "id": "sub-prod-span",
+        "label": "Text"
+      },
+      {
+        "type": "text",
+        "id": "sub-prod-bnr-btn",
+        "label": "Text"
+      },
+    ],
+    "presets": [
+      {
+        "name": "Go Lime Banner"
+      }
+    ]
+  }
+{% endschema %}

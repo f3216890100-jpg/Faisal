@@ -1,0 +1,147 @@
+<style>
+  
+.social-link-sec {
+    padding: 30px 0;
+}
+  .social-link-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 50px;
+      width: 100%;
+  }
+  .social-link-content {
+      text-align: center;
+      margin-bottom: 30px;
+  }
+  .social-link-text {
+      font-size: 40px;
+      font-weight: 600;
+      color: #454545;
+      padding-bottom: 20px;
+  }
+  .social-link-des p {
+      font-size: 20px;
+      font-weight: 500;
+      color: #454545;
+      width: 45%;
+      margin: 0 auto;
+  }
+  .social-link-flx {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+  }
+  .social-link-box {
+      width: 16%;
+      border: 1px solid #d9d9d9;
+      padding: 25px;
+      text-align: center;
+      border-radius: 12px;
+  }
+  .social-link-img {
+      width: 100%;
+      height: 100%;
+      max-width: 50px;
+  }
+  .social-link-desp p {
+      font-size: 16px;
+      font-weight: 600;
+      color: #454545;
+      padding-top: 20px;
+  }
+
+  @media screen and (max-width:767px){
+    .social-link-sec {
+    padding: 20px 0;
+}
+    .social-link-des p {
+      font-size: 18px;
+      width: 100%;
+  }
+  .social-link-text {
+      font-size: 25px;
+      padding-bottom: 10px;
+  }
+  .social-link-container {
+      padding: 0 20px;
+  }
+  .social-link-box {
+      width: 48%;
+  }
+  .social-link-flx {
+      display: flex;
+      row-gap: 10px;
+  }
+  }
+</style>
+<section class="social-link-sec">
+  <div class="social-link-container">
+    <div class="social-link-content">
+      <h2 class="social-link-text">
+        {{ section.settings.sub-social-link-text }}
+      </h2>
+      <div class="social-link-des">
+       {{ section.settings.sub-social-link-des }}
+      </div>
+    </div>
+    <div class="social-link-flx">
+        {% for block in section.blocks %}
+      <div class="social-link-box">
+        <a href="https://www.facebook.com/profile.php?id=61561879859376" target="_blank" class="social-link-col">
+          <div class="social-link-image">
+            {% if block.settings.sub-social-link-img !=blank %}
+            <img src="{{ block.settings.sub-social-link-img |img_url:'master' }}" alt="" class="social-link-img">
+            {% endif %}
+          </div>
+          <div class="social-link-desp">
+           {{ block.settings.sub-social-link-desp }}
+          </div>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+{% schema %}
+{
+    "name": "Go Lime Link",
+    "settings": [
+        {
+            "type": "text",
+            "id": "sub-social-link-text",
+            "label": "Text"
+        },
+        {
+            "type": "richtext",
+            "id": "sub-social-link-des",
+            "label": "Para"
+        },
+    ],
+    "blocks": [
+        {
+            "type": "Go-Lime-Link",
+            "name": "Go Lime Link",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "sub-social-link-img",
+                    "label": "Image"
+                },
+               {
+            "type": "richtext",
+            "id": "sub-social-link-desp",
+            "label": "Para"
+        },
+            ],
+        },
+    ],
+    "presets": [
+        {
+            "name": "Go Lime Link",
+        },
+    ],
+
+}
+{% endschema %}

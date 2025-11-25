@@ -1,0 +1,183 @@
+<style>
+  *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Avenir Next", sans-serif;
+}
+
+.good-by-sec {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.gd-by-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+.gd-by-flx {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 20px;
+}
+.gd-col {
+    border: 1px solid #A3A3A3;
+    border-radius: 15px;
+    padding: 30px 26px;
+}
+.gd-col:first-child {
+    width: 66%;
+}
+.gd-img {
+    width: 100%;
+    max-width: 51px;
+    height: 46px;
+}
+.gd-col-title {
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 17px;
+    color: #075a54;
+    padding-bottom: 8px;
+    padding-top: 8px;
+}
+.gd-col-des {
+    font-size: 15px;
+    font-weight: 500;
+    color: #000000;
+    line-height: 20px;
+    text-align: justify;
+    margin-bottom: 6px;
+    margin-top: 6px;
+}
+  .gd-col {
+    width: 32%;
+}
+.gd-by {
+        width: 32%;
+    border: 1px solid #A3A3A3;
+    padding: 30px 26px;
+    border-radius: 15px;
+}
+.gd-by-title {
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 17px;
+    color: #075a54;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+.gd-by-des {
+    font-size: 15px;
+    font-weight: 500;
+    color: #000000;
+    line-height: 20px;
+    text-align: justify;
+    margin-bottom: 6px;
+    margin-top: 6px;
+
+}
+
+@media screen and (max-width:767px){
+    .good-by-sec {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    .gd-col:first-child {
+        width: 100%;
+        padding: 14px;
+        border-radius:20px;
+    }
+
+   .gd-img {
+        max-width: 27px;
+        height: auto;
+    }
+ .gd-col-title {
+        font-size: 15px;
+        line-height: 20px;
+        margin: 8px 0 0;
+    }
+  .gd-col-des {
+        font-size: 12px;
+        line-height: 17px;
+    }
+    .gd-by-flx {
+        row-gap: 8px;
+        margin: 30px 0;
+    }
+    .gd-by-title {
+        font-size: 15px;
+        line-height: 20px;
+        margin-top: 8px;
+        margin-bottom: 8px;
+    }
+    .gd-by-des {
+        font-size: 12px;
+        line-height: 15px;
+    }
+    .gd-col {
+                width: 49%;
+        padding: 14px;
+        border-radius: 20px;
+    }
+}
+</style>
+    <section class="good-by-sec">
+    <div class="gd-by-container">
+        <div class="gd-by-flx">
+          {% for block in section.blocks %}
+                <div class="gd-col">
+                    <div class="gd-cool-main">
+                    <div class="gd-col-imagediv">
+                      {% if block.settings.sub-gd-img !=blank%}
+                        <img src="{{ block.settings.sub-gd-img |img_url:'master' }}" alt="" class="gd-img">
+                      {% endif %}
+                    </div>
+                    <h3 class="gd-col-title">
+                      {{ block.settings.sub-gd-col-title }}
+                    </h3>
+                    <h4 class="gd-col-des">
+                      {{ block.settings.sub-gd-col-des }}
+                    </h4>
+                </div>
+            </div>
+          {% endfor %}
+        </div>
+    </div>
+  </section>
+{% schema %}
+  {
+    "name": "Logo Section",
+    "settings": [],
+    "blocks": [
+      {
+        "type": "Logo-Section",
+        "name": "Logo Section",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "sub-gd-img",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "sub-gd-col-title",
+            "label": "Text"
+          },
+           {
+            "type": "text",
+            "id": "sub-gd-col-des",
+            "label": "Text"
+          },
+        ],
+      }
+    ],
+    "presets": [
+      {
+        "name": "Logo Section",
+      },
+    ],
+  }
+{% endschema %}

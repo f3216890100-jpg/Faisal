@@ -1,0 +1,375 @@
+<style>
+      *{
+      padding: 0;
+      margin: 0;
+      box-sizing: border-boxs;
+  }
+  .title-sec{
+  background: #e4f0e1;
+  padding: 60px 0;
+  }
+  .title-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 50px;
+  }
+  .title-link {
+      text-align: center;
+      padding-bottom: 50px;
+   width: 63%;
+      margin: 0 auto;
+  }
+  .title-btn {
+      background: #b8d9b0;
+      font-size: 16px;
+      padding: 10px 15px;
+      display: inline-block;
+      border-radius: 50px;
+      margin-bottom: 20px;
+      text-decoration: none;
+      color: #454545;
+          font-family: Assistant, sans-serif;
+  }
+  .title {
+      font-size: 28px;
+      font-family: Assistant, sans-serif;
+      font-weight: 600;
+      padding-bottom: 10px;
+      color: #454545;
+  }
+  .title-des p {
+      font-size: 18px;
+      font-family: Assistant, sans-serif;
+      font-weight: 500;
+      line-height: 22px;
+  }
+
+  .title-flx {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+  }
+  .title-col {
+      width: 45%;
+  }
+  .title-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+  }
+  .title-content-col {
+      width: 52%;
+  }
+  .title-content-img {
+     max-width: 25px;
+     height: 25px;
+      object-fit: cover;
+  }
+  .title-content {
+      margin-bottom: 20px;
+  }
+  .title-heading {
+      font-size: 16px;
+      color: #454545;
+      font-family: Assistant, sans-serif;
+      padding-bottom: 10px;
+          font-weight: 600;
+  }
+  .title-desp p {
+      font-size: 14px;
+      color: #454545;
+       font-family: Assistant, sans-serif;
+       font-weight: 500;
+       padding-bottom: 10px;
+  }
+  .title-content-flx {
+      display: flex;
+      gap: 20px;
+  }
+  .title-anker {
+      color: #70bc0e;
+      font-size: 14px;
+        font-family: Assistant, sans-serif;
+        text-decoration: none;
+           font-weight: 600;
+  }
+  @media screen and (max-width:767px){
+     .title-sec {
+      padding: 30px 0;
+  }
+      .title-container {
+      padding: 0 20px;
+  }
+  .title-link {
+      padding-bottom: 30px;
+      width: 100%;
+  }
+  .title {
+      font-size: 20px;
+      line-height: 26px;
+  }
+  .title-des p {
+      font-size: 16px;
+      line-height: 20px;
+      text-align: center;
+  }
+
+  .title-flx {
+      display: flex;
+      flex-direction: column;
+      row-gap: 25px;
+  }
+      .title-col {
+      width: 100%;
+  }
+  .title-content-col {
+      width: 100%;
+  }
+  .title-content-flx {
+      display: flex;
+      gap: 10px;
+  }
+  .title-heading {
+      font-size: 14px;
+  }
+  .title-anker {
+      font-size: 14px;
+  }
+  .title-desp p {
+      font-size: 14px;
+      line-height: 20px;
+  }
+  }
+</style>
+<section class="title-sec">
+  <div class="title-container">
+    <div class="title-link">
+      <a href="#" class="title-btn">
+        {{ section.settings.title-btn }}
+      </a>
+      <h2 class="title">
+        {{ section.settings.title }}
+      </h2>
+      <div class="title-des">
+       {{ section.settings.title-des }}
+      </div>
+    </div>
+    <div class="title-flx">
+      <div class="title-col">
+        <div class="title-image">
+            {% if section.settings.title-img !=blank %}
+          <img src="{{ section.settings.title-img |img_url:'master' }}" alt="" class="title-img">
+          {% endif %}
+        </div>
+      </div>
+      <div class="title-content-col">
+        <div class="title-content-flx">
+          <div class="title-content-image">
+            {% if section.settings.title-content-img !=blank %}
+            <img src="{{ section.settings.title-content-img |img_url:'master' }}" alt="" class="title-content-img">
+            {% endif %}
+          </div>
+          <div class="title-content">
+            <h3 class="title-heading">
+                {{ section.settings.title-heading }}
+            </h3>
+            <div class="title-desp">
+             {{ section.settings.title-desp }}
+            </div>
+          </div>
+        </div>
+        <div class="title-content-flx">
+          <div class="title-content-image">
+            {% if section.settings.title-content-img-1 !=blank %}
+            <img src="{{ section.settings.title-content-img-1 |img_url:'master' }}" alt="" class="title-content-img">
+            {% endif %}
+          </div>
+          <div class="title-content">
+            <h3 class="title-heading">
+                    {{ section.settings.title-heading-1 }}
+            </h3>
+            <div class="title-desp">
+              {{ section.settings.title-desp-1 }}
+            </div>
+            <a href="#" class="title-anker">
+              {{ section.settings.title-anker }}
+              <i class="fa-solid fa-chevron-right zing-rightleft"></i>
+            </a>
+          </div>
+        </div>
+        <div class="title-content-flx">
+          <div class="title-content-image">
+            {% if section.settings.title-content-img-2 !=blank %}
+            <img src="{{ section.settings.title-content-img-2 |img_url:'master' }}" alt="" class="title-content-img">
+            {% endif %}
+          </div>
+          <div class="title-content">
+            <h3 class="title-heading">
+                {{ section.settings.title-heading-2 }}
+            </h3>
+            <div class="title-desp">
+              {{ section.settings.title-desp-2 }}
+            </div>
+          </div>
+        </div>
+        <div class="title-content-flx">
+          <div class="title-content-image">
+          {% if section.settings.title-content-img-3 !=blank %}
+            <img src="{{ section.settings.title-content-img-3 |img_url:'master' }}" alt="" class="title-content-img">
+            {% endif %}
+          </div>
+          <div class="title-content">
+            <h3 class="title-heading">{{ section.settings.title-heading-3 }}</h3>
+            <div class="title-desp">
+             {{ section.settings.title-desp-3 }}
+            </div>
+            <a href="#" class="title-anker">
+              {{ section.settings.title-anker-1 }}
+              <i class="fa-solid fa-chevron-right zing-rightleft"></i>
+            </a>
+          </div>
+        </div>
+        <div class="title-content-flx">
+          <div class="title-content-image">
+             {% if section.settings.title-content-img-4 !=blank %}
+            <img src="{{ section.settings.title-content-img-4 |img_url:'master' }}" alt="" class="title-content-img">
+            {% endif %}
+          </div>
+          <div class="title-content">
+            <h3 class="title-heading">{{ section.settings.title-heading-4 }}</h3>
+            <div class="title-desp">
+              {{ section.settings.title-desp-4 }}
+            </div>
+            <a href="#" class="title-anker">
+              {{ section.settings.title-anker-2 }}
+              <i class="fa-solid fa-chevron-right zing-rightleft"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+    "name": "Title Sec",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title-btn",
+            "label": "Text"
+        },
+         {
+            "type": "text",
+            "id": "title",
+            "label": "Text"
+        },
+         {
+            "type": "richtext",
+            "id": "title-des",
+            "label": "Para"
+        },
+        {
+            "type": "image_picker",
+            "id": "title-img",
+            "label": "Image"
+        },
+        {
+            "type": "image_picker",
+            "id": "title-content-img",
+            "label": "Image"
+        },
+          {
+            "type": "text",
+            "id": "title-heading",
+            "label": "Text"
+        },
+         {
+            "type": "richtext",
+            "id": "title-desp",
+            "label": "Para"
+        },
+        {
+            "type": "image_picker",
+            "id": "title-content-img-1",
+            "label": "Image"
+        },
+          {
+            "type": "text",
+            "id": "title-heading-1",
+            "label": "Text"
+        },
+         {
+            "type": "richtext",
+            "id": "title-desp-1",
+            "label": "Para"
+        },
+         {
+            "type": "text",
+            "id": "title-anker",
+            "label": "Text"
+        },
+         {
+            "type": "image_picker",
+            "id": "title-content-img-2",
+            "label": "Image"
+        },
+          {
+            "type": "text",
+            "id": "title-heading-2",
+            "label": "Text"
+        },
+         {
+            "type": "richtext",
+            "id": "title-desp-2",
+            "label": "Para"
+        },
+         {
+            "type": "image_picker",
+            "id": "title-content-img-3",
+            "label": "Image"
+        },
+          {
+            "type": "text",
+            "id": "title-heading-3",
+            "label": "Text"
+        },
+         {
+            "type": "richtext",
+            "id": "title-desp-3",
+            "label": "Para"
+        },
+         {
+            "type": "text",
+            "id": "title-anker-2",
+            "label": "Text"
+        },
+         {
+            "type": "image_picker",
+            "id": "title-content-img-4",
+            "label": "Image"
+        },
+          {
+            "type": "text",
+            "id": "title-heading-4",
+            "label": "Text"
+        },
+         {
+            "type": "richtext",
+            "id": "title-desp-4",
+            "label": "Para"
+        },
+         {
+            "type": "text",
+            "id": "title-anker-3",
+            "label": "Text"
+        },
+    ],
+    "presets": [
+        {
+            "name": "Title Sec",
+        },
+    ],
+}
+{% endschema %}

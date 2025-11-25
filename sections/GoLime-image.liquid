@@ -1,0 +1,211 @@
+<style>
+ *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+section.lime.sec {
+    padding: 40px 0;
+}
+.lime-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 1.5rem;
+}
+.lime-heading {
+    font-size: 24px;
+    text-transform: uppercase;
+    font-family: "Avenir-next", sans-serif;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2d3d4d;
+}
+.image-box-flex {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.lime-image {
+    width: 32.5%;
+}
+.lime-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+}
+.lime-main-dots {
+    display: flex;
+    justify-content: space-between;
+    width: 66%;
+    margin: 0 auto;
+    background: #f0f1ec;
+    margin-top: 20px;
+}
+.lime-dot {
+    border-radius: 50%;
+    width: 18px;
+    background-color: #003733;
+    height: 18px;
+}
+.lime-title-main {
+    display: flex;
+    text-align: center;
+    margin-top: 30px;
+}
+.lime-title {
+    width: 33%;
+}
+span.lime-text {
+    font-size: 19px;
+    font-family: "Avenir-next", sans-serif;
+    color: #003733;
+    font-weight: 600;
+}
+.lime-des {
+    font-size: 16px;
+    font-family: "Avenir-next", sans-serif;
+    text-align: center;
+        width: 80%;
+    margin: 0 auto;
+    line-height: 25px;
+    color: #003733;
+    margin-top: 5px;
+}
+.lime-mobile-container{
+display: none;
+}
+@media screen and (max-width:767px){
+    .lime-container {
+        display: none;
+    }
+    .lime-mobile-container{
+        display: block;
+        }
+        .lime-mobile-container {
+            padding: 0 20px;
+        }
+        .lime-heading {
+            font-size: 18px;
+            text-align: center;
+        }
+        .image-box-flex {
+            display: flex;
+            flex-direction: column;
+            row-gap: 25px;
+        }
+        .lime-image {
+    width: 100%;
+}
+     .lime-title {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+        .lime-des {
+            width: 100%;
+            font-size: 14px;
+            line-height: 23px;
+        }
+        .lime-text {
+            font-size: 18px;
+        }
+    
+}
+</style>
+<section class="lime sec">
+        <div class="lime-container">
+            <h3 class="lime-heading">
+              {{ section.settings.sub-lime-heading }}
+              </h3>
+            <div class="image-box-flex">
+              {% for block in section.blocks %}
+                <div class="lime-image">
+                  {% if block.settings.sub-lime-img !=blank%}
+                    <img src="{{  block.settings.sub-lime-img |img_url:'master' }}" alt="" class="lime-img">
+                  {% endif %}
+                </div>
+            {% endfor %}
+            </div>
+            <div class="lime-main-dots">
+              {% for block in section.blocks %}
+              <div class="lime-dot">
+                </div>
+              {% endfor %}
+                
+            </div>
+            <div class="lime-title-main">
+              {% for block in section.blocks %}
+                <div class="lime-title">
+                    <span class="lime-text">
+                      {{ block.settings.sub-lime-text }}
+                    </span>
+                    <p class="lime-des">
+                      {{ block.settings.sub-lime-des }}
+                    </p>
+                </div>
+              {% endfor %}
+             
+            </div>
+            </div>
+              <div class="lime-mobile-container">
+                <h3 class="lime-heading">How Does Go Lime Work?</h3>
+            <div class="image-box-flex">
+              {% for block in section.blocks %}
+                <div class="lime-image">
+                    <img src="{{  block.settings.sub-lime-img |img_url:'master' }}" alt="" class="lime-img">
+                    <div class="lime-title">
+                        <span class="lime-text"> 
+                          {{ block.settings.sub-lime-text }}
+                        </span>
+                        <p class="lime-des">
+                          {{ block.settings.sub-lime-des }}
+                        </p>
+                    </div>
+                </div>
+               {% endfor %}
+                </div>
+            </div>
+       
+    </section>
+{% schema %}
+  {
+    "name": "Go Lime Image",
+    "settings": [
+      {
+        "type": "text",
+        "id": "sub-lime-heading",
+        "label": "Text"
+      },
+    ],
+    "blocks": [
+      {
+        "type": "Go-Lime-Image",
+        "name": "Go Lime Image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "sub-lime-img",
+            "label": "Image"
+          },
+           {
+            "type": "text",
+            "id": "sub-lime-text",
+            "label": "Text"
+          },
+           {
+            "type": "text",
+            "id": "sub-lime-des",
+            "label": "Text"
+          },
+        ],
+      }
+    ],
+    "presets": [
+      {
+        "name": "Go Lime Image"
+      }
+    ]
+  }
+{% endschema %}

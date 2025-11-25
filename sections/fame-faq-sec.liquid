@@ -1,0 +1,510 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+<style>
+          .fame-sec {
+          padding: 50px 0;
+      }
+          .fame-container {
+          max-width: 1400px;
+          margin: 0 auto;
+          padding: 0 50px;
+          width: 100%;
+      }
+      .fame-content {
+    text-align: center;
+    margin-bottom: 80px;
+}
+.fame-title {
+    font-size: 30px;
+    font-weight: 600;
+    color: #454545;
+    padding: 0 0 15px;
+    width: 43%;
+    margin: 0 auto;
+}
+.fame-content-desp p {
+    font-size: 16px;
+    font-weight: 500;
+    color: #454545;
+    width: 40%;
+     margin: 0 auto;
+}
+      .fame-flx {
+          display: flex;
+          justify-content: space-between;
+          flex-direction: row-reverse;
+      }
+
+      .fame-img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+      }
+      .fame-first-col {
+          width: 48%;
+      }
+      .fame-faq {
+          background: #f7f9f2;
+          padding: 15px;
+          margin-bottom: 10px;
+          border-radius: 12px;
+      }
+      .fame-question {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+      }
+      .fame-text {
+          font-size: 22px;
+          font-weight: 600;
+          color: #454545;
+      }
+
+      .fame-desp p {
+          font-size: 16px;
+          font-weight: 500;
+          color: #454545;
+          padding: 10px 0;
+      }
+      .fame-icon {
+          background: #f0eade;
+          width: 30px;
+          height: 30px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 50px;
+      }
+      i.fa.fa-chevron-down {
+          color: #454545;
+      }
+  .fame-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .6s ease-in-out;
+  }
+
+  .fame-faq.active .fame-answer {
+    max-height: 400px;
+  }
+
+  .fame-desp p {
+    font-size: 16px;
+    font-weight: 500;
+    color: #454545;
+    padding: 10px 0;
+    margin: 0;
+  }
+
+
+  .fame-col {
+    position: relative;
+    width: 48%;
+    overflow: hidden;
+     height:500px;
+     border-radius:20px;
+     object-fit:cover;
+  }
+
+
+  .fame-data {
+     position: absolute;
+     top:0;
+     left:0;
+    width: 100%;
+    height:100%;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: transform .7s ease-in-out, opacity .5s ease-in-out;
+  }
+
+  .fame-data.active-img {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+
+  .fame-data.slide-left {
+    transform: translateX(-100%);
+  }
+
+
+  .fame-img {
+    width: 100%;
+     height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    transition: transform .8s ease-in-out, opacity .8s ease-in-out;
+  }
+  @media screen and (max-width:767px){
+    .fame-sec {
+          padding: 30px 0;
+      }
+      .fame-title {
+    font-size: 20px;
+    text-align:center;
+    padding: 0 0 10px;
+    width: 100%;
+}
+.fame-content-desp p {
+    font-size: 14px;
+    width: 100%;
+}
+           .fame-content {
+    text-align: center;
+    margin-bottom: 40px;
+}
+          .fame-container {
+          padding: 0 20px;
+      }
+        .fame-first-col {
+          width: 100%;
+      }
+        .fame-col {
+display:none;
+  }
+  }
+</style>
+<section class="fame-sec">
+  <div class="fame-container">
+    <div class="fame-content">
+      <h2 class="fame-title">
+        {{ section.settings.fame-title }}
+      </h2>
+      <div class="fame-content-desp">
+   {{ section.settings.fame-content-desp }}
+      </div>
+    </div>
+    <div class="fame-flx">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'FaqImage' %}
+            <div class="fame-col">
+              <div class="fame-data">
+                <div class="fame-image">
+                  {% if block.settings['fame-img'] != blank %}
+                    <img src="{{ block.settings.fame-img |img_url:'master' }}" alt="" class="fame-img">
+                  {% endif %}
+                </div>
+              </div>
+              <div class="fame-data">
+                <div class="fame-image">
+                  {% if block.settings['fame-img-1'] != blank %}
+                    <img src="{{ block.settings.fame-img-1 |img_url:'master' }}" alt="" class="fame-img">
+                  {% endif %}
+                </div>
+              </div>
+              <div class="fame-data">
+                <div class="fame-image">
+                  {% if block.settings['fame-img-2'] != blank %}
+                    <img src="{{ block.settings.fame-img-2 |img_url:'master' }}" alt="" class="fame-img">
+                  {% endif %}
+                </div>
+              </div>
+              <div class="fame-data">
+                <div class="fame-image">
+                  {% if block.settings['fame-img-3'] != blank %}
+                    <img src="{{ block.settings.fame-img-3 |img_url:'master' }}" alt="" class="fame-img">
+                  {% endif %}
+                </div>
+              </div>
+              <div class="fame-data">
+                <div class="fame-image">
+                  {% if block.settings['fame-img-4'] != blank %}
+                    <img src="{{ block.settings.fame-img-4 |img_url:'master' }}" alt="" class="fame-img">
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+        {% endcase %}
+      {% endfor %}
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'FaqContent' %}
+            <div class="fame-first-col">
+              <div class="fame-accordion">
+                <div class="fame-faq">
+                  <div class="fame-question">
+                    <h3 class="fame-text">
+                      {{ block.settings['fame-text'] }}
+                    </h3>
+                    <div class="fame-icon">
+                      <i class="fa fa-chevron-down"></i>
+                    </div>
+                  </div>
+                  <div class="fame-answer">
+                    <div class="fame-desp">
+                      {{ block.settings['fame-desp'] }}
+                    </div>
+                  </div>
+                </div>
+                <div class="fame-faq">
+                  <div class="fame-question">
+                    <h3 class="fame-text">
+                      {{ block.settings['fame-text-1'] }}
+                    </h3>
+                    <div class="fame-icon">
+                      <i class="fa fa-chevron-down"></i>
+                    </div>
+                  </div>
+                  <div class="fame-answer">
+                    <div class="fame-desp">
+                      {{ block.settings['fame-desp-1'] }}
+                    </div>
+                  </div>
+                </div>
+                <div class="fame-faq">
+                  <div class="fame-question">
+                    <h3 class="fame-text">
+                      {{ block.settings['fame-text-2'] }}
+                    </h3>
+                    <div class="fame-icon">
+                      <i class="fa fa-chevron-down"></i>
+                    </div>
+                  </div>
+                  <div class="fame-answer">
+                    <div class="fame-desp">
+                      {{ block.settings['fame-desp-3'] }}
+                    </div>
+                  </div>
+                </div>
+                <div class="fame-faq">
+                  <div class="fame-question">
+                    <h3 class="fame-text">
+                      {{ block.settings['fame-text-3'] }}
+                    </h3>
+                    <div class="fame-icon">
+                      <i class="fa fa-chevron-down"></i>
+                    </div>
+                  </div>
+                  <div class="fame-answer">
+                    <div class="fame-desp">
+                      {{ block.settings['fame-desp-3'] }}
+                    </div>
+                  </div>
+                </div>
+                <div class="fame-faq">
+                  <div class="fame-question">
+                    <h3 class="fame-text">
+                      {{ block.settings['fame-text-4'] }}
+                    </h3>
+                    <div class="fame-icon">
+                      <i class="fa fa-chevron-down"></i>
+                    </div>
+                  </div>
+                  <div class="fame-answer">
+                    <div class="fame-desp">
+                      {{ block.settings['fame-desp-4'] }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        {% endcase %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const faqs = document.querySelectorAll('.fame-faq');
+    const answers = document.querySelectorAll('.fame-answer');
+    const images = document.querySelectorAll('.fame-col .fame-data');
+    let activeIndex = 0;
+
+    // Open first by default
+    faqs[0].classList.add('active');
+    const firstAnswer = faqs[0].querySelector('.fame-answer');
+    firstAnswer.style.maxHeight = firstAnswer.scrollHeight + 'px';
+    images[0].classList.add('active-img');
+    images[0].style.transform = 'translateX(0)';
+    images[0].style.opacity = '1';
+
+    faqs.forEach((faq, index) => {
+      faq.addEventListener('click', () => {
+        // If same accordion clicked, don't close or change
+        if (faq.classList.contains('active')) return;
+
+        // Close all others
+        faqs.forEach((f, i) => {
+          f.classList.remove('active');
+          slideUp(f.querySelector('.fame-answer'));
+        });
+
+        // Open clicked FAQ
+        faq.classList.add('active');
+        slideDown(faq.querySelector('.fame-answer'));
+
+        // Hide all images first
+        images.forEach((img) => {
+          img.classList.remove('active-img');
+          img.style.opacity = '0';
+        });
+
+        // Slide direction logic
+        const currentImg = images[index];
+        const prevImg = images[activeIndex];
+
+        // Reset transforms
+        currentImg.style.transition = 'none';
+        prevImg.style.transition = 'none';
+
+        // If clicked below previous (downward)
+        if (index > activeIndex) {
+          currentImg.style.transform = 'translateX(100%)'; // start from right
+          prevImg.style.transform = 'translateX(0)';
+        } else {
+          currentImg.style.transform = 'translateX(-100%)'; // start from left
+          prevImg.style.transform = 'translateX(0)';
+        }
+
+        // Trigger reflow to apply transition smoothly
+        void currentImg.offsetWidth;
+
+        // Animate both
+        currentImg.classList.add('active-img');
+        currentImg.style.transition = 'transform 0.5s ease, opacity 0.5s ease';
+        prevImg.style.transition = 'transform 0.5s ease, opacity 0.5s ease';
+
+        // Now animate directions
+        if (index > activeIndex) {
+          // right → left
+          currentImg.style.transform = 'translateX(0)';
+          prevImg.style.transform = 'translateX(-100%)';
+        } else {
+          // left → right
+          currentImg.style.transform = 'translateX(0)';
+          prevImg.style.transform = 'translateX(100%)';
+        }
+
+        currentImg.style.opacity = '1';
+
+        activeIndex = index;
+      });
+    });
+
+    // Slide up/down functions for accordion
+    function slideUp(el) {
+      el.style.transition = 'max-height 0.4s ease';
+      el.style.maxHeight = '0';
+    }
+
+    function slideDown(el) {
+      el.style.display = 'block';
+      el.style.transition = 'max-height 0.4s ease';
+      el.style.maxHeight = el.scrollHeight + 'px';
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Fame Faq",
+  "settings": [
+    {
+      "type": "text",
+      "id": "fame-title",
+      "label": "Text"
+    },
+    {
+      "type": "richtext",
+      "id": "fame-content-desp",
+      "label": "Para"
+    },
+  ],
+  "blocks": [
+    {
+      "type": "FaqImage",
+      "name": "Faq Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "fame-img",
+          "label": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "fame-img-1",
+          "label": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "fame-img-2",
+          "label": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "fame-img-3",
+          "label": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "fame-img-4",
+          "label": "Image"
+        }
+      ]
+    },
+    {
+      "type": "FaqContent",
+      "name": "Faq Content",
+      "settings": [
+        {
+          "type": "text",
+          "id": "fame-text",
+          "label": "Text"
+        },
+        {
+          "type": "richtext",
+          "id": "fame-desp",
+          "label": "Para"
+        },
+        {
+          "type": "text",
+          "id": "fame-text-1",
+          "label": "Text"
+        },
+        {
+          "type": "richtext",
+          "id": "fame-desp-1",
+          "label": "Para"
+        },
+        {
+          "type": "text",
+          "id": "fame-text-2",
+          "label": "Text"
+        },
+        {
+          "type": "richtext",
+          "id": "fame-desp-2",
+          "label": "Para"
+        },
+        {
+          "type": "text",
+          "id": "fame-text-3",
+          "label": "Text"
+        },
+        {
+          "type": "richtext",
+          "id": "fame-desp-3",
+          "label": "Para"
+        },
+        {
+          "type": "text",
+          "id": "fame-text-4",
+          "label": "Text"
+        },
+        {
+          "type": "richtext",
+          "id": "fame-desp-4",
+          "label": "Para"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Fame Faq"
+    }
+  ]
+}
+{% endschema %}

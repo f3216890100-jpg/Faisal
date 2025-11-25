@@ -1,0 +1,237 @@
+<style>
+      *{
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+  }
+  .industry-cst-sec {
+      padding: 70px 0;
+  }
+  .industry-cst-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+  }
+  .industry-cst-flex {
+      display: flex;
+      transition: all 0.3s ease-in-out;
+      margin: 15px 0;
+  }
+  .industry-cst-col {
+      position: relative;
+      width: 100%;
+      display: flex;
+      z-index: 1;
+  }
+
+  .industry-cst-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      object-fit: cover;
+  }
+  .industry-cst-img-text {
+      position: absolute;
+      bottom: 20px;
+      left: 23px;
+  }
+  .industry-cst-img-des {
+      font-size: 30px;
+      color: #fff;
+      line-height: 36px;
+      font-family: "Avenir-next", sans-serif;
+      font-weight: 500;
+      width: 75%;
+  }
+  .industry-cst-hover-text {
+      {% comment %} background: #F5EDE7; {% endcomment %}
+      padding: 20px 40px;
+      width: 53%;
+      transition: all 0.3s ease-in-out;
+  }
+  .des {
+      font-size: 20px;
+      line-height: 25px;
+      color: #000000;
+      font-family: "Avenir-next", sans-serif;
+      font-weight: 500;
+  }
+
+  @media screen and (max-width:767px){
+      .industry-cst-sec {
+          padding: 0 0;
+      }
+      .industry-cst-container {
+          padding: 0 10px;
+      }
+      .industry-cst-flex {
+          flex-wrap: wrap;
+      }
+      .industry-cst-flex-1 {
+          flex-wrap: wrap;
+      }
+      .industry-cst-flex-2 {
+          flex-wrap: wrap;
+      }
+      .industry-cst-img-des {
+          font-size: 16px;
+          width: 100%;
+          line-height: 22px;
+      }
+      .des {
+          font-size: 14px;
+          line-height: 20px;
+      }
+     
+        .industry-cst-hover-text{
+      width: 100%;
+          padding: 20px 30px;
+  }
+  }
+</style>
+<section class="industry-cst-sec">
+  <div class="industry-cst-container">
+    {% for block in section.blocks %}
+      <div class="industry-cst-main">
+        <div class="industry-cst-flex industry-cst-flex_{{ block.id }}">
+          <div class="industry-cst-col">
+            <div class="industry-cst-image">
+              {% if block.settings['sub-industry-cst-img'] != blank %}
+                <img
+                  src="{{ block.settings.sub-industry-cst-img | img_url:'master' }}"
+                  alt="{{ block.settings.sub-industry-cst-img.alt | escape }}"
+                  width="100%"
+                  height="100%"
+                  loading="lazy"
+                  class="industry-cst-img"
+                >
+              {% endif %}
+            </div>
+            <div class="industry-cst-img-text">
+              <p class="industry-cst-img-des">
+                {{ block.settings['sub-industry-cst-img-des'] }}
+              </p>
+            </div>
+          </div>
+          <div class="industry-cst-hover-text">
+            <div class="industry-cst-hover-des">
+              <div class="industry-cst-des">
+                <p class="des">
+                  {{ block.settings['sub-des'] }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% style %}
+      .industry-cst-flex_{{ block.id }}{
+        flex-direction: {{ block.settings.blk_direction }};
+      }
+
+      .industry-cst-flex_{{ block.id }} .industry-cst-hover-text{
+        background: {{ block.settings.text_blk_bg }}
+      }
+
+
+      {% if block.settings.blk_direction == 'row' %}
+        .industry-cst-flex_{{ block.id }} .industry-cst-hover-text {
+      transform: translateX(-100%);
+      border-top-right-radius: 14px;
+      border-bottom-right-radius: 14px;
+  }
+
+  .industry-cst-flex_{{ block.id }}:hover .industry-cst-hover-text{
+      transform: translateX(-1%);
+  }
+
+    @media screen and (max-width:767px){
+  .industry-cst-flex_{{ block.id }} .industry-cst-hover-text{
+          transform: none;
+  }
+
+    .industry-cst-flex_{{ block.id }}:hover .industry-cst-hover-text{
+      transform: none;
+  }
+}
+
+  {% elsif block.settings.blk_direction == 'row-reverse' %}
+           .industry-cst-flex_{{ block.id }} .industry-cst-hover-text {
+      transform: translateX(100%);
+      border-bottom-left-radius: 14px;
+      border-top-left-radius: 14px;
+  }
+
+  .industry-cst-flex_{{ block.id }}:hover .industry-cst-hover-text{
+      transform: translateX(1%);
+  }
+  @media screen and (max-width:767px){
+  .industry-cst-flex_{{ block.id }} .industry-cst-hover-text{
+          transform: none;
+  }
+
+      .industry-cst-flex_{{ block.id }}:hover .industry-cst-hover-text{
+      transform: none;
+  }
+}
+  {% else %}
+    {% endif %}
+      {% endstyle %}
+    {% endfor %}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Go Lime Industery",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "Go-Lime-Industery",
+      "name": "Go Lime Industery",
+      "settings": [
+        {
+          "type": "select",
+          "id": "blk_direction",
+          "label": "Select Direction",
+          "options": [
+            {
+              "value": "row",
+              "label": "Row"
+            },
+            {
+              "value": "row-reverse",
+              "label": "Row Reverse"
+            },
+          ]
+        },
+        {
+          "type": "image_picker",
+          "id": "sub-industry-cst-img",
+          "label": "Image"
+        },
+        {
+          "type": "color",
+          "id": "text_blk_bg",
+          "label": "Select Background Color",
+          "default": "transparent"
+        },
+        {
+          "type": "text",
+          "id": "sub-industry-cst-img-des",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "sub-des",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Go Lime Industery"
+    }
+  ]
+}
+{% endschema %}

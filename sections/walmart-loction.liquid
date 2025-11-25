@@ -1,0 +1,161 @@
+<style>
+    *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.srvice.sec {
+    padding: 50px 0;
+}
+.srvice-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 50px;
+}
+.srvice-btn-flx {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 50px;
+}
+.srvice-span {
+    border: 1px solid #D9D9D9;
+    font-size: 16px;
+    padding: 10px 20px;
+    font-weight: 500;
+    color: #454545;
+    border-radius: 50px;
+}
+.srvice-span.active {
+background: #d9d9d9;
+    border-color: #454545;
+}
+.srvice-text {
+    font-size: 35px;
+    color: #454545;
+    font-weight: 600;
+    text-align: center;
+        padding-bottom: 30px;
+
+}
+  .srvice-content {
+      display: none;
+    }
+    .srvice-content.active {
+      display: block;
+    }
+
+.iframe-map-pointer_mn {
+  width: 100%;
+  height: 450px;
+  border-radius: 10px;
+}
+@media screen and (max-width:767px){
+  .srvice.sec {
+    padding: 30px 0;
+}
+    .srvice-container {
+    padding: 0 20px;
+}
+.srvice-text {
+    font-size: 20px;
+}
+}
+</style>
+<section class="srvice sec">
+  <div class="srvice-container">
+    <h2 class="srvice-text">
+        {{ section.settings.sub-srvice-text }}
+    </h2>
+    <div class="srvice-btn-flx">
+      <div class="srvice-btn">
+        <span class="srvice-span">
+            {{ section.settings.sub-srvice-span }}
+        </span>
+      </div>
+      <div class="srvice-btn">
+        <span class="srvice-span">
+            {{ section.settings.sub-srvice-span-1 }}
+        </span>
+      </div>
+    </div>
+    <div class="srvice-content-main">
+      <div class="srvice-content">
+        <div class="srvice-col">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2892.0716854424436!2d-79.87174880984696!3d43.54254758509345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b6ef0ec9b0d3d%3A0xb0aac1d692792c90!2s1280%20Steeles%20Ave%20E%2C%20Milton%2C%20ON%20L9T%206R1!5e0!3m2!1sen!2sca!4v1752176732436!5m2!1sen!2sca"
+            class="iframe-map-pointer_mn"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+      <div class="srvice-content">
+        <div class="srvice-col">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2888.9686491294556!2d-79.6963862240003!3d43.60719437110426!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b40f5e7e83609%3A0xa416baae418af04e!2s800%20Matheson%20Blvd%20W%2C%20Mississauga%2C%20ON%20L5V%203E4!5e0!3m2!1sen!2sca!4v1752176801544!5m2!1sen!2sca"
+            class="iframe-map-pointer_mn"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  
+   <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const buttons = document.querySelectorAll(".srvice-btn");
+  const spans = document.querySelectorAll(".srvice-span");
+  const contents = document.querySelectorAll(".srvice-content");
+
+
+  spans[0].classList.add("active");
+  contents[0].classList.add("active");
+
+
+  buttons.forEach((btn, index) => {
+    btn.addEventListener("click", () => {
+      spans.forEach((s) => s.classList.remove("active"));
+      contents.forEach((c) => c.classList.remove("active"));
+
+      spans[index].classList.add("active");
+      contents[index].classList.add("active");
+    });
+  });
+});
+</script>
+
+{% schema %}
+{
+    "name": "Walmart Loaction",
+    "settings": [
+        {
+           "type": "text",
+           "id": "sub-srvice-text",
+           "label": "Text"
+        },
+         {
+           "type": "text",
+           "id": "sub-srvice-span",
+           "label": "Text"
+        },
+         {
+           "type": "text",
+           "id": "sub-srvice-span-1",
+           "label": "Text"
+        },
+    ],
+    "presets": [
+        {
+            "name": "Walmart Loaction",
+        },
+    ],
+}
+{% endschema %}

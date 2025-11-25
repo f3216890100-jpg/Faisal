@@ -1,0 +1,281 @@
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+ <style>
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.hp-bnr-div {
+    position: relative;
+}
+
+.hp-bnr-destop-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.hp-bnr-mobile-img {
+    display: none;
+}
+.hp-bnr-content {
+    position: absolute;
+    padding: 90px 60px 0;
+    width: 100%;
+    top: 0;
+        margin-top: 40px;
+}
+.hp-bnr-menu {
+    display: flex;
+    gap: 10px;
+    margin: 10px 0 10px;
+}
+.hp-bnr-list {
+    list-style: none;
+}
+.hp-bnr-list-flx {
+    font-size: 16px;
+    color: #d9d9d9;
+}
+.hp-bnr-list-flx-1 {
+    font-size: 16px;
+    color: #989898;
+}
+.hp-bnr-text {
+    font-size: 56px;
+    font-weight: 600;
+    color: #454545;
+        width: 60%;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+.hp-bnr-desp {
+    font-size: 20px;
+    color: #454545;
+    width: 55%;
+    line-height: 25px;
+}
+.hp-bnr-btn-div {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    padding: 25px 0;
+}
+.hp-bnr-btn {
+    background: #085A54;
+    color: #fff;
+    display: inline-block;
+           padding: 7px 25px;
+    text-decoration: none;
+    border-radius: 50px;
+}
+.hp-bnr-btn-span {
+    font-size: 20px;
+    font-weight: 500;
+}
+.hp-bnr-btn-1 {
+    text-decoration: none;
+    color: #454545;
+}
+.hp-bnr-btn-span-1 {
+    font-size: 20px;
+    font-weight: 500;
+}
+.hp-bnr-logo-div {
+    position: absolute;
+        bottom: -20px;
+    left: 50px;
+}
+.hp-bnr-logo-img {
+    width: 100%;
+   max-width: 300px;
+    height: 300px;
+    object-fit: cover;
+}
+@media screen and (max-width:768px){
+.hp-bnr-destop-img {
+    display: none;
+}
+.hp-bnr-mobile-img {
+    display: block;
+}
+.hp-bnr-mobile-img {
+    width: 100%;
+}
+.hp-bnr-text {
+    font-size: 32px;
+    text-align: center;
+    line-height: 36px;
+    padding-top: 0;
+      width: 100%;
+}
+.hp-bnr-content {
+    padding: 120px 15px;
+}
+.hp-bnr-desp {
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+}
+.hp-bnr-icon-div {
+    display: flex;
+    justify-content: center;
+}
+.hp-bnr-btn-div {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+}
+.hp-bnr-btn-span {
+    font-size: 16px;
+}
+.hp-bnr-logo-img {
+    max-width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+.hp-bnr-btn-span-1 {
+    font-size: 16px;
+}
+    .hp-bnr-logo-div {
+        bottom: -20px;
+        left: 25%;
+    }
+}
+ </style>
+ <section class="hp-bnr-sec">
+        <div class="hp bnr-container">
+            <div class="hp-bnr-div">
+            <div class="hp-bnr-image">
+                {% if section.settings.sub-hp-bnr-destop-img !=blank %}
+                <img src="{{ section.settings.sub-hp-bnr-destop-img |img_url:'master' }}" 
+            alt="{{ section.settings.sub-hp-bnr-destop-img.alt |escape }}" class="hp-bnr-destop-img">
+                {% endif %}
+                {% if section.settings.sub-hp-bnr-mobile-img !=blank %}
+                <img src="{{ section.settings.sub-hp-bnr-mobile-img |img_url:'master' }}" 
+                    alt="{{ section.settings.sub-hp-bnr-mobile-img.alt |escape }}" class="hp-bnr-mobile-img">
+                    {% endif %}
+            </div>
+            <div class="hp-bnr-content">
+                <div class="hp-bnr-icon-div">
+                    <ul class="hp-bnr-menu">
+                        <li class="hp-bnr-list">
+                            <div class="hp-bnr-list-flx">
+                                {{ section.settings.sub-hp-bnr-list-flx }}
+                                <i class="fa fa-chevron-right"></i>
+                            </div>
+                        </li>
+                        <li class="hp-bnr-list">
+                            <div class="hp-bnr-list-flx">
+                                {{ section.settings.sub-hp-bnr-list-flx-1 }}
+                                <i class="fa fa-chevron-right"></i>
+                            </div>
+                        </li>
+                        <li class="hp-bnr-list">
+                            <div class="hp-bnr-list-flx-1">
+                                 {{ section.settings.sub-hp-bnr-list-flx-2 }}
+                                 </div>
+                        </li>
+                    </ul>
+                </div>
+                <h1 class="hp-bnr-text">
+                    {{ section.settings.sub-hp-bnr-text }}
+                </h1>
+                <div class="hp-bnr-desp">
+                    {{ section.settings.sub-hp-bnr-desp }}
+                </div>
+                <div class="hp-bnr-btn-div">
+                    <a href="#" class="hp-bnr-btn">
+                        <span class="hp-bnr-btn-span">
+                            {{ section.settings.sub-hp-bnr-btn-span }}
+                        </span>
+                        <i class="fa fa-chevron-right"></i>
+                    </a>
+                    <a href="#" class="hp-bnr-btn-1">
+                        <span class="hp-bnr-btn-span-1">
+                           {{ section.settings.sub-hp-bnr-btn-span-1 }}
+                        </span>
+                        <i class="fa fa-chevron-right"></i>
+                    </a>
+                </div>
+
+            </div>
+             <div class="hp-bnr-logo-div">
+            <div class="hp-bnr-logo">
+                {% if section.settings.sub-hp-bnr-logo-img  !=blank %}
+                <img src="{{ section.settings.sub-hp-bnr-logo-img |img_url:'master' }}" 
+             alt="{{ section.settings.sub-hp-bnr-logo-img.alt | escape }}" class="hp-bnr-logo-img">
+                {% endif %}
+            </div>
+            </div>
+              </div>
+        </div>
+    </section>
+
+    {% schema %}
+    {
+        "name": "Go Lime New Banner",
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "sub-hp-bnr-destop-img",
+                "label": "Image"
+            },
+              {
+                "type": "image_picker",
+                "id": "sub-hp-bnr-mobile-img",
+                "label": "Image"
+            },
+            {
+                "type": "text",
+                "id": "sub-hp-bnr-list-flx",
+                "label": "Text"
+            },
+             {
+                "type": "text",
+                "id": "sub-hp-bnr-list-flx-1",
+                "label": "Text"
+            },
+             {
+                "type": "text",
+                "id": "sub-hp-bnr-list-flx-2",
+                "label": "Text"
+            },
+            {
+                "type": "text",
+                "id": "sub-hp-bnr-text",
+                "label": "Text",
+
+            },
+              {
+                "type": "richtext",
+                "id": "sub-hp-bnr-desp",
+                "label": "Para",
+
+            },
+            {
+                "type": "text",
+                "id": "sub-hp-bnr-btn-span",
+                "label": "Text",
+
+            },
+            {
+                "type": "text",
+                "id": "sub-hp-bnr-btn-span-1",
+                "label": "Text",
+
+            },
+            {
+                "type": "image_picker",
+                "id": "sub-hp-bnr-logo-img",
+                "label": "Image"
+            },
+        ],
+        "presets": [
+            {
+                "name": "Go Lime New Banner",
+            },
+        ],
+    }
+    {% endschema %}

@@ -1,0 +1,134 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
+<style>
+    .vid-newr-sec {
+    padding: 120px 0 0;
+}
+    .vid-newr-container{
+        max-width:1400px;
+        margin:0 auto;
+        padding:0 50px;
+        width:100%;
+    }
+    .vid-newr-content {
+    text-align: center;
+    padding:0 0 30px;
+}
+    .vid-newr-text {
+    margin: 0;
+    font-size: 56px;
+    color: #454545;
+    font-weight: 600;
+}
+    .vid-newr-main {
+    position: relative;
+    overflow: hidden;
+}
+.vid-newr-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+        border-radius: 25px;
+}
+.vid-newr-icon {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 40px;
+}
+
+.vid-newr-pause-icon {
+    background: #fff;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+}
+@media screen and (max-width:767px){
+        .vid-newr-container{
+        padding:0 20px;
+    }
+       .vid-newr-content {
+    padding:0 0 20px;
+}
+    .vid-newr-text {
+    font-size: 32px;
+        text-align: center;
+}
+.vid-newr-icon {
+    padding: 20px;
+}
+}
+</style>
+<section class="vid-newr-sec">
+  <div class="vid-newr-container">
+    <div class="vid-newr-content">
+        <h1 class="vid-newr-text">
+            {{ section.settings.vid-newr-text }}
+        </h1>
+    </div>
+    <div class="vid-newr-main">
+      <div class="vid-newr-video-main">
+        {% if section.settings.vid-newr-video !=blank %}
+        <video autoplay loop muted class="vid-newr-video">
+          <source src="{{ section.settings.vid-newr-video.sources[1].url }}" type="video/mp4">
+        </video>
+    {% endif %}
+      </div>
+      <div class="vid-newr-icon">
+        <div class="vid-newr-pause-icon">
+            <i class="fa-solid fa-pause"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const video = document.querySelector(".vid-newr-video");
+  const iconBox = document.querySelector(".vid-newr-pause-icon");
+  const icon = iconBox.querySelector("i");
+
+  iconBox.addEventListener("click", function () {
+
+    if (video.paused) {
+      video.play();                
+      icon.classList.remove("fa-play");
+      icon.classList.add("fa-pause");
+    } else {
+      video.pause();              
+      icon.classList.remove("fa-pause");
+      icon.classList.add("fa-play");
+    }
+  });
+
+});
+</script>
+
+
+{% schema %}
+{
+    "name": "Video Newsroom",
+    "settings": [
+        {
+            "type": "text",
+            "id": "vid-newr-text",
+            "label": "Text"
+        },
+        {
+            "type": "video",
+            "id": "vid-newr-video",
+            "label": "Select Video"
+        },
+    ],
+    "presets": [
+        {
+            "name": "Video Newsroom",
+        },
+    ],
+}
+{% endschema %}

@@ -1,0 +1,250 @@
+<style>
+      .comfort-sec {
+      padding: 50px 0;
+  }
+      .comfort-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 50px;
+      width: 100%;
+  }
+      .comfort-flx {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+  }
+      .comfort-box {
+     width: 23.5%;
+      background: #eeeeee;
+      padding: 30px;
+          min-height: 256px;
+      border-radius: 15px;
+          display: flex;
+      align-items: center;
+  }
+  .comfort-title
+   {
+      margin-bottom: 50px;
+  }
+  .comfort-heading {
+      font-size: 25px;
+      color: #454545;
+      font-weight: 600;
+      text-align: center;
+  }
+  .comfort-box-1 {
+        width: 23.5%;
+      background: #f0eade;
+      padding: 30px;
+          overflow: hidden;
+      position: relative;
+          min-height: 256px;
+      border-radius: 15px;
+  }
+  .comfort-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      position: absolute;
+      bottom: -9px;
+      right: 0;
+      left: 0;
+  }
+
+  .comfort-box-2 {
+      width: 23.5%;
+      background: #b8d9b0;
+      padding: 30px;
+          min-height: 256px;
+      border-radius: 15px;
+          display: flex;
+      align-items: center;
+  }
+  .comfort-box-3 {
+     width: 23.5%;
+      background: #c2d6d5;
+      padding: 30px;
+          min-height: 256px;
+      border-radius: 15px;
+          display: flex;
+      align-items: center;
+  }
+      .comfort-text {
+      font-size: 28px;
+      color: #454545;
+      font-weight: 600;
+  }
+   .comfort-text-1 {
+      font-size: 28px;
+      color: #003733;
+      font-weight: 600;
+  }
+   .comfort-text-2 {
+      font-size: 28px;
+      color: #085A54;
+      font-weight: 600;
+  }
+
+  @media screen and (max-width:767px){
+       .comfort-sec {
+      padding: 30px 0;
+  }
+      .comfort-container {
+      padding: 0 20px;
+  }
+      .comfort-box {
+      width: 49%;
+          padding: 25px;
+  }
+  .comfort-flx {
+      display: flex;
+      row-gap: 15px;
+  }
+  .comfort-box-1 {
+      width: 49%;
+          padding: 25px;
+  }
+  .comfort-box-2 {
+      width: 49%;
+          padding: 25px;
+  }
+  .comfort-box-3 {
+      width: 49%;
+          padding: 25px;
+  }
+  .comfort-text {
+      font-size: 20px;
+  }
+  .comfort-text-1 {
+      font-size: 20px;
+  }
+  .comfort-text-2 {
+      font-size: 20px;
+  }
+  .comfort-img {
+      bottom: -53px;
+  }
+  }
+</style>
+<section class="comfort-sec">
+  <div class="comfort-container">
+    <div class="comfort-title">
+      <h2 class="comfort-heading">
+        {{ section.settings['sub-comfort-heading'] }}
+      </h2>
+    </div>
+    <div class="comfort-flx">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'FirstText' %}
+            <div class="comfort-box">
+              <div class="comfort-content">
+                <h3 class="comfort-text">
+             {{ block.settings.sub-comfort-text }}
+                </h3>
+              </div>
+            </div>
+        {% endcase %}
+      {% endfor %}
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'BoxImage' %}
+            <div class="comfort-box-1">
+              <div class="comfort-image">
+                {% if block.settings.sub-comfort-img !=blank %}
+                  <img src="{{ block.settings.sub-comfort-img |img_url:'master' }}" alt="" class="comfort-img">
+                {% endif %}
+              </div>
+            </div>
+        {% endcase %}
+      {% endfor %}
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'SecondText' %}
+            <div class="comfort-box-2">
+              <div class="comfort-content">
+                <h3 class="comfort-text-1">
+                {{ block.settings.sub-comfort-text-1 }}
+                </h3>
+              </div>
+            </div>
+        {% endcase %}
+      {% endfor %}
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'ThirdText' %}
+            <div class="comfort-box-3">
+              <div class="comfort-content">
+                <h3 class="comfort-text-2">
+                  {{ block.settings.sub-comfort-text-2 }}
+                </h3>
+              </div>
+            </div>
+        {% endcase %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Home Comfort",
+  "settings": [
+    {
+        "type": "text",
+        "id": "sub-comfort-heading",
+        "label": "Text"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "FirstText",
+      "name": "First Text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "sub-comfort-text",
+          "label": "Text"
+        },
+      ],
+    },
+    {
+      "type": "BoxImage",
+      "name": "Box Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "sub-comfort-img",
+          "label": "Image"
+        },
+      ],
+    },
+    {
+      "type": "SecondText",
+      "name": "Second Text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "sub-comfort-text-1",
+          "label": "Text"
+        },
+      ],
+    },
+    {
+      "type": "ThirdText",
+      "name": "Third Text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "sub-comfort-text-2",
+          "label": "Text"
+        }
+      ]
+    },
+  ],
+  "presets": [
+    {
+      "name": "Home Comfort",
+    },
+  ],
+}
+{% endschema %}

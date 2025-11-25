@@ -1,0 +1,210 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+>
+
+<style>
+   
+
+.cisl-sec {
+    padding: 50px 0;
+}
+.cisl-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+        border-radius: 22px;
+}
+.cisl-tex {
+    text-align: center;
+        padding-bottom: 20px;
+}
+.cisl-title{
+  font-size:40px;
+  font-weight:60px;
+   color: #454545;
+}
+.cisl-heading {
+    font-weight: 600;
+    color: #454545;
+    padding-top: 10px;
+}
+
+
+.cisl-col{
+    opacity: 0.4;
+    text-align: center;
+    transition: all .3s ease-in-out;
+}
+  .owl-item.active.center .cisl-col{
+      opacity: 1;
+  }
+.cisl-image {
+width: 100%;
+    height: 240px;
+    object-fit: cover;
+}
+
+.owl-prev {
+    position: absolute;
+bottom: -29% !important;
+    left: 35% !important;
+    border: 1px solid #D9D9D9  !important;
+        width: 50px;
+    height: 50px;
+    border-radius: 50% !important;
+    background: none !important;
+}
+.owl-next {
+    position: absolute;
+bottom: -29% !important;
+    right: 35% !important;
+    border: 1px solid #D9D9D9 !important;
+        width: 50px;
+    height: 50px;
+        border-radius: 50% !important;
+        background: none !important;
+}
+.owl-dots {
+    position: absolute;
+    bottom: -25% !important;
+    left: 0;
+    right: 0;
+}
+.owl-prev span {
+    font-size: 20px !important;
+    color: #000 !important;
+}
+.owl-next span {
+    font-size: 20px !important;
+    color: #000 !important;
+}
+.owl-dot.active span {
+    background: #70bc0e !important;
+}
+
+@media screen and (max-width:768px){
+    .owl-prev {
+    left: 30% !important;
+}
+    .owl-next {
+    right: 30% !important;
+}
+}
+
+@media screen and (max-width:1024px){
+    .owl-prev {
+    left: 30% !important;
+}
+    .owl-next {
+    right: 30% !important;
+}
+h3.cisl-title {
+    font-size: 20px;
+}
+
+
+}
+</style>
+<section class="cisl-sec">
+  <div class="cisl-container">
+    <div class="cisl-tex">
+                        <h3 class="cisl-title">
+                          {{ section.settings.sub-cisl-title }}
+                        </h3>
+                    </div>
+    <div class="owl-carousel owl-theme">
+      {% for block in section.blocks %}
+        <div class="item">
+          <div class="cisl-col">
+            <div class="cisl-image">
+              {% if block.settings.hub-cisl-img !=blank %}
+                <img
+                  src="{{ block.settings.hub-cisl-img |img_url:'master' }}"
+                  alt="{{  block.settings.hub-cisl-img | escape }}"
+                  width="100%"
+                  height="100%"
+                  loading="lazy"
+                  class="cisl-img"
+                >
+              {% endif %}
+            </div>
+            <div class="cisl-text">
+              <h3 class="cisl-heading">
+                {{ block.settings.hub-cisl-heading }}
+              </h3>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+<script>
+  $('.owl-carousel').owlCarousel({
+    stagePadding: 50,
+    loop: true,
+    margin: 30,
+    nav: true,
+    dots: true,
+    center: true,
+    items: 5,
+    responsive: {
+      0: {
+        items: 1,
+      },
+      600: {
+        items: 3,
+      },
+      1000: {
+        items: 3,
+      },
+      1200: {
+        items: 5,
+      },
+    },
+  });
+</script>
+{% schema %}
+{
+  "name": "Go Lime New Slider",
+  "settings": [
+    {
+      "type": "text",
+      "id": "sub-cisl-title",
+      "label": "Text"
+    },
+  ],
+  "blocks": [
+    {
+        "type": "Go-Lime-New-Slider",
+        "name": "Go Lime New Slider",
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "hub-cisl-img",
+                "label": "Image"
+            },
+            {
+                "type": "text",
+                "id": "hub-cisl-heading",
+                "label": "Text"
+            },
+        ],
+},
+  ],
+  "presets": [
+    {
+        "name": "Go Lime New Slider",
+    },
+  ],
+}
+{% endschema %}

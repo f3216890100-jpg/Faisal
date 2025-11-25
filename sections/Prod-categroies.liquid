@@ -1,0 +1,234 @@
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css" />
+<style>
+ 
+.prod-slider-sec {
+    padding: 60px 0;
+}
+  .prod-slider-container {
+      padding: 0 50px;
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+  }
+  .prod-slider-image {
+      background: #f9f7f2;
+      min-height: 200px;
+      position: relative;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+  }
+  .prod-slider-img {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      object-fit: cover;
+  }
+  .prod-slide-item {
+      text-align: center;
+  }
+  .prod-slider-span {
+      font-size: 14px;
+      font-weight: 500;
+      color: #454545;
+      line-height: 50px;
+  }
+  .slick-initialized .slick-slide {
+      display: block;
+      margin: 0 10px;
+  }
+  .slick-prev:before, .slick-next:before {
+      font-family: 'slick';
+      font-size: 20px;
+      color: #333 !important;
+      border:1px solid #f9f7f2;
+      background: none !important;
+  }
+  .prod-slider-content {
+      text-align: center;
+  }
+  .prod-slider-text {
+      font-size: 40px;
+      font-weight: 600;
+      color: #454545;
+  }
+  .prod-slider-desp p {
+      font-size: 20px;
+      width: 63%;
+      margin: 0 auto;
+      text-align: center;
+      line-height: 26px;
+      padding: 20px 0 30px;
+  }
+  @media screen and (max-width:768px){
+   .prod-slider-sec {
+    padding: 30px 0;
+}
+     .prod-slider-container {
+      padding: 0 20px;
+  }
+.prod-slider-text {
+    font-size: 20px;
+}
+      .prod-slider-desp p {
+      font-size: 18px;
+      width: 100%;
+      line-height: 23px;
+  }
+
+
+  .prod-slider-image {
+      min-height: 120px;
+  }
+  .slick-initialized .slick-slide {
+      display: block;
+      margin: 0 5px;
+  }
+  .slick-prev {
+    left: -25px;
+}
+
+  }
+  @media screen and (max-width:1024px){
+    .prod-slider-sec {
+    padding: 30px 0;
+}
+.prod-slider-text {
+    font-size: 20px;
+}
+     .prod-slider-container {
+      padding: 0 20px;
+  }
+      .prod-slider-desp p {
+      font-size: 18px;
+      width: 100%;
+      line-height: 23px;
+  }
+
+
+  .prod-slider-image {
+      min-height: 120px;
+  }
+  .slick-initialized .slick-slide {
+      display: block;
+      margin: 0 5px;
+  }
+  }
+</style>
+<section class="prod-slider-sec">
+  <div class="prod-slider-container">
+    <div class="prod-slider-content">
+      <h1 class="prod-slider-text">
+        {{ section.settings.sub-prod-slider-text }}
+      </h1>
+      <div class="prod-slider-desp">
+        {{ section.settings.sub-prod-slider-desp }}
+      </div>
+    </div>
+    <div class="Categories-slider">
+        {% for block in section.blocks %}
+      <div class="prod-slide-item">
+        <div class="prod-slider-image">
+            {% if block.settings.sub-prod-slider-img !=blank %}
+          <img src="{{ block.settings.sub-prod-slider-img |img_url:'master' }}" alt="" class="prod-slider-img">
+            {% endif %}
+        </div>
+        <span class="prod-slider-span">
+            {{ block.settings.sub-prod-slider-span }}
+        </span>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.Categories-slider').slick({
+                dots: true,
+                infinite: true,
+                speed: 300,
+                slidesToShow: 5,
+                slidesToScroll: 1,
+                responsive: [
+                    {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 5,
+                            slidesToScroll: 1,
+                            arrows: false,
+                               dots: true,
+                        }
+                    },
+                    {
+                        breakpoint: 600,
+                        settings: {
+                            slidesToShow:5,
+                            slidesToScroll: 1,
+                            arrows: false,
+                               dots: true,
+                        }
+                    },
+                    {
+                        breakpoint: 480,
+                        settings: {
+                            slidesToShow: 2.5,
+                            slidesToScroll: 1,
+                            arrows: false,
+                               dots: true,
+                        }
+                    }
+                ]
+            });
+        });
+    </script>
+
+
+{% schema %}
+{
+    "name": "Prod Categroies",
+    "settings": [
+        {
+            "type": "text",
+            "id": "sub-prod-slider-text",
+            "label": "Text"
+        },
+         {
+            "type": "richtext",
+            "id": "sub-prod-slider-desp",
+            "label": "Para"
+        },
+    ],
+    "blocks": [
+        {
+            "type": "Prod-Categroies",
+            "name": "Prod Categroies",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "sub-prod-slider-img",
+                    "label": "Image"
+                },
+                {
+                    "type": "text",
+                    "id": "sub-prod-slider-span",
+                    "label": "Text"
+                },
+            ],
+        },
+    ],
+    "presets": [
+        {
+            "name": "Prod Categroies",
+        },
+    ],
+}
+{% endschema %}

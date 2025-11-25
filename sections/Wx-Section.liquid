@@ -1,0 +1,269 @@
+<style>
+  *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.wx-section {
+       padding-bottom: 60px;
+    padding-top: 60px;
+}
+.wx-container {
+    padding: 50px 80px;
+    border-radius: 5px;
+    background: #efede6;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.wx-heading {
+    text-align: center;
+    padding-bottom: 30px;
+}
+.our-wx-mn-tp {
+    font-size: 40px;
+    line-height: 40px;
+    letter-spacing: 1px;
+    color: #0a264a;
+    font-family: sans-serif;
+    text-transform: uppercase;
+}
+.our-wx-tp-text {
+    font-size: 18px;
+    font-family: sans-serif;
+    color: #0a264a;
+    line-height: 1.7;
+
+    margin-top: 3px;
+    margin-bottom: 10px;
+    opacity: .8;
+}
+.wx-flex-box {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.wx-width-main {
+    width: 33.33%;
+    text-align: center;
+}
+img.wx-img {
+    width: 100%;
+    max-width: 70px !important;
+    height: 265px;
+    margin: 0 auto;
+}
+.wx-svg-icon {
+    margin-bottom: -15px;
+}
+span.color-change {
+    color: #9ec7f2;
+}
+span.color-change-1{
+    color: #49d198;
+}
+span.color-change-2{
+    color: #e1a738;
+}
+h5.wx-text {
+    font-size: 26px;
+    font-family: sans-serif;
+    color: #0a264a;
+    font-weight: bold;
+}
+span.our-coffe-title {
+    font-size: 18px;
+    font-family: sans-serif;
+    font-weight: 700;
+    color: #0a264a;
+    background-color: rgba(0, 0, 0, 0);
+    letter-spacing: 3.8px;
+}
+a.button-wrapper-a {
+    padding: 10px 20px;
+    font-size: 17px;
+    line-height: 30px;
+    text-decoration: none;
+    transition: padding .2s, background-color .2s;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    background-color: #75b9b7;
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 4px;
+}
+.button-wrapper {
+    text-align: center;
+    padding-top: 30px;
+}
+.button-text-wx {
+    font-size: 18px;
+    font-family: monospace;
+    letter-spacing: 0;
+}
+.button-wrapper-a:hover{
+    background-color: #0a264a;
+    padding-right: 50px;
+}
+img.button {
+    width: 45px;
+    height: 45px;
+    margin-top: 0;
+    position: absolute;
+    top: 0%;
+    bottom: 0%;
+    left: auto;
+        right: -10%;
+    opacity: 0;
+    transform: translate3d(-10px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    transform-style: preserve-3d;
+  background:none;
+}
+
+.button-wrapper-a:hover img.button{
+    opacity: 1;
+    transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    transform-style: preserve-3d;
+}
+@media screen and (max-width:768px){
+    .wx-section {
+        padding-right: 30px;
+        padding-left: 30px;
+        padding-bottom: 60px;
+        padding-top: 50px;
+    }
+    .wx-container {
+        padding: 50px 30px 20px;
+    }
+    .wx-width-main {
+        width: 100%;
+    }
+    span.color-change {
+        font-size: 26px;
+        padding-left: 3px;
+    }
+    span.color-change-2 {
+        font-size: 26px;
+        padding-left: 3px;
+    }
+    span.color-change-1 {
+        font-size: 26px;
+        padding-left: 3px;
+    }
+    h5.wx-text{
+        font-size: 15px;
+    }
+    a.button-wrapper-a {
+        padding: 10px 10px;
+    }
+    .button-text-wx {
+        font-size: 18px;
+    }
+    .our-wx-mn-tp{
+        font-size: 35px;
+    }
+}
+</style>
+ <section class="wx-section">
+    <div class="wx-container">
+        <div class="wx-heading">
+            <h2 class="our-wx-mn-tp">
+              {{ section.settings.sub-our-wx-mn-tp }}
+            </h2>
+            <p class="our-wx-tp-text">
+              {{ section.settings.sub-our-wx-tp-text }}
+            </p>
+        </div>
+        <div class="wx-flex-box">
+          {% for block in section.blocks %}
+            <div class="wx-width-main">
+                <div class="wx-svg-icon">
+                  {% if block.settings.sub-wx-img !=blank%}
+                    <img src="{{ block.settings.sub-wx-img |img_url }}" alt="" class="wx-img">
+                  {% endif %}
+                </div>
+                <div class="wx-title">
+                    <h5 class="wx-text">
+                    {{ block.settings.sub-wx-text }}
+                        <span class="color-change">
+                          {{ block.settings.sub-color-change }}
+                        </span>
+                    
+                    </h5>
+                    <span class="our-coffe-title">
+                      {{ block.settings.sub-our-coffe-title }}
+                    </span>
+                </div>
+                
+            </div>
+          {% endfor %}
+        </div>
+        <div class="button-wrapper">
+        <a href="/pages/our/wax" class="button-wrapper-a">
+        <div class="button-text-wx">
+          {{ section.settings.sub-button-text-wx }}
+        </div>
+          {% if section.settings.sub-button !=blank%}
+        <img src="{{ section.settings.sub-button |img_url:'master' }}" alt="" class="button">
+            {% endif %}
+    </a>
+</div>
+    </div>
+</section> 
+{% schema %}
+  {
+    "name": "Wx Section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "sub-our-wx-mn-tp",
+        "label": "Text"
+      },
+      {
+        "type": "text",
+        "id": "sub-our-wx-tp-text",
+        "label": "Text"
+      },
+      {
+        "type": "text",
+        "id": "sub-button-text-wx",
+        "label": "Text"
+      },
+      {
+        "type": "image_picker",
+        "id": "sub-button",
+        "label": "Image"
+      },
+    ],
+    "blocks": [
+      {
+        "type": "Wx-Section",
+        "name": "Wx Section",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "sub-wx-img",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "sub-color-change",
+            "label": "Text"
+          },
+           {
+            "type": "text",
+            "id": "sub-our-coffe-title",
+            "label": "Text"
+          },
+        ],
+      }
+    ],
+    "presets": [
+      {
+        "name": "Wx Section",
+      },
+    ],
+  }
+{% endschema %}

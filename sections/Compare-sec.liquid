@@ -1,0 +1,112 @@
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
+<style>
+      *{
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+  }
+  .compare-sec {
+      padding: 50px 0;
+  }
+  .compare-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 50px;
+      width: 100%;
+  }
+  .compare-box {
+      background: #e4f0e1;
+      padding: 25px;
+      border-radius: 20px;
+      text-align: center;
+  }
+  .compare-img {
+      width: 100%;
+       max-width: 105px;
+       height: 100%;
+      object-fit: cover;
+  }
+  .compare-text {
+      font-size: 28px;
+      font-family: Assistant, sans-serif;
+      color: #454545;
+      font-weight: 600;
+      padding: 10px 0;
+  }
+  .compare-btn {
+      text-decoration: none;
+      color: #454545;
+      font-size: 16px;
+      font-family: Assistant, sans-serif;
+      font-weight: 500;
+      transition: all .3s ease-in-out;
+  }
+  .compare-btn:hover{
+      text-decoration: underline;
+  }
+
+  @media screen and (max-width:767px){
+    .compare-sec {
+      padding: 30px 0;
+  }
+      .compare-container {
+      padding: 0 20px;
+  }
+  .compare-text {
+      font-size: 20px;
+  }
+  }
+</style>
+<Section class="compare-sec">
+  <div class="compare-container">
+    <div class="compare-box">
+      <div class="compare-image">
+        {% if section.settings.sub-compare-img !=blank %}
+        <img src="{{ section.settings.sub-compare-img |img_url: 'master' }}" alt="" class="compare-img">
+        {% endif %}
+      </div>
+      <div class="compare-content">
+        <h3 class="compare-text">
+            {{ section.settings.sub-compare-text }}
+        </h3>
+      </div>
+      <div class="compare-button">
+        <a href="#" class="compare-btn">
+          <span class="compare-btn-span">
+            {{ section.settings.sub-compare-btn-span }}
+          </span>
+          <span class="compare-icon-span">
+            <i class="fas fa-chevron-right compare-nav-btn"></i>
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+</Section>
+{% schema %}
+{
+    "name": "Compare Sec",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "sub-compare-img",
+            "label": "Image"
+        },
+        {
+            "type": "text",
+            "id": "sub-compare-text",
+            "label": "Text"
+        },
+         {
+            "type": "text",
+            "id": "sub-compare-btn-span",
+            "label": "Text"
+        },
+    ],
+    "presets": [
+        {
+            "name": "Compare Sec",
+        },
+    ],
+}
+{% endschema %}

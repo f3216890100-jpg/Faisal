@@ -1,0 +1,218 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+<style>
+        .pd-sec {
+        padding: 60px 0;
+    }
+
+        .pd-container {
+        max-width:1040px;
+        margin: 0 auto;
+        padding: 0 50px;
+        width: 100%;
+    }
+    .pd-flx {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .pd-col {
+        width: 38%;
+    }
+        .pd-text {
+        font-size: 40px;
+        font-weight: 600;
+        color: #454545;
+          padding-bottom: 20px;
+              margin: 0;
+    }
+    .pd-anker {
+        font-size: 20px;
+        font-weight: 500;
+        color: #70bc0e;
+        padding-top: 10px;
+        text-decoration: none;
+            margin: 0;
+    }
+    .pd-first-col {
+        max-width: 460px;
+    }
+    .pd-faq {
+        padding: 15px 20px;
+        border-radius: 22px;
+        background:#f9f7f2;
+        transition: all .5s ease-in-out;
+            margin-bottom: 10px;
+    }
+    .pd-question {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .pd-heading {
+        font-size: 18px;
+        color: #454545;
+        font-weight: 500;
+            margin: 0;
+    }
+   
+    .pd-desp p {
+        font-size: 16px;
+        font-weight: 500;
+        color: #454545;
+            padding: 10px 0;
+            margin:0;
+    }
+    .custom-faq-lenox__icon {
+    transition: transform .5s ease-in-out;
+  }
+    .pd-faq.active .pd-heading{
+            color: #70bc0e;
+    }
+  .pd-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .5s ease-in-out, opacity .5s ease-in-out;
+    opacity: 0;
+  }
+
+  .pd-faq.active .pd-answer {
+    max-height: 300px; 
+    opacity: 1;
+  }
+
+  @media screen and (max-width:767px){
+    .pd-container {
+    padding: 0 20px;
+}
+.pd-text {
+    font-size: 26px;
+    text-align: center;
+}
+.pd-anker {
+    display: none;
+}
+.pd-faq {
+    padding: 15px 15px;
+    margin-bottom: 8px;
+}
+.pd-heading {
+    font-size: 14px;
+    color: #454545;
+    font-weight: 500;
+}
+    .pd-col {
+    width: 100%;
+}
+.pd-first-col {
+    width: 100%;
+}
+  }
+</style>
+<section class="pd-sec">
+  <div class="pd-container">
+    <div class="pd-flx">
+      <div class="pd-col">
+        <h2 class="pd-text">
+          {{ section.settings['pd-text'] }}
+        </h2>
+        <a href="" class="pd-anker">
+          {{ section.settings['pd-anker'] }}
+          <i class="fa-solid fa-chevron-right zing-rightleft"></i>
+        </a>
+      </div>
+      <div class="pd-first-col">
+        <div class="pd-faq-accordion">
+        {% for block in section.blocks %}
+          <div class="pd-faq">
+            <div class="pd-question">
+              <h4 class="pd-heading">
+                {{ block.settings['pd-heading'] }}
+              </h4>
+              <i class="fa custom-faq-lenox__icon fa-plus" aria-hidden="true"></i>
+            </div>
+            <div class="pd-answer">
+              <div class="pd-desp">
+                {{ block.settings['pd-desp'] }}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const faqs = document.querySelectorAll('.pd-faq');
+
+    faqs.forEach((faq) => {
+      const question = faq.querySelector('.pd-question');
+      const icon = faq.querySelector('.custom-faq-lenox__icon');
+
+      question.addEventListener('click', () => {
+        const isActive = faq.classList.toggle('active');
+
+        faqs.forEach((otherFaq) => {
+          if (otherFaq !== faq) {
+            otherFaq.classList.remove('active');
+            const otherIcon = otherFaq.querySelector('.custom-faq-lenox__icon');
+            otherIcon.classList.remove('fa-minus');
+            otherIcon.classList.add('fa-plus');
+          }
+        });
+
+        if (isActive) {
+          icon.classList.remove('fa-plus');
+          icon.classList.add('fa-minus');
+        } else {
+          icon.classList.remove('fa-minus');
+          icon.classList.add('fa-plus');
+        }
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Lime Faq",
+  "settings": [
+    {
+      "type": "text",
+      "id": "pd-text",
+      "label": "Text"
+    },
+    {
+      "type": "text",
+      "id": "pd-anker",
+      "label": "Text"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "Lime-Faq",
+      "name": "Lime Faq",
+      "settings": [
+        {
+          "type": "text",
+          "id": "pd-heading",
+          "label": "Text"
+        },
+        {
+          "type": "richtext",
+          "id": "pd-desp",
+          "label": "Para"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lime Faq"
+    }
+  ]
+}
+{% endschema %}

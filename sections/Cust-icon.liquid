@@ -1,0 +1,187 @@
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css" />
+<style>
+.icon-sec {
+    padding: 130px 0 30px;
+}
+  .icon-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 50px;
+      width: 100%;
+  }
+  .icon-flx {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+  }
+  .icon-col {
+      width: 24.5%;
+      background: #f9f7f2;
+         padding: 0px 10px;
+      display: flex;
+      align-items: center;
+      border-radius: 50px;
+  }
+  .icon-img {
+      width: 100%;
+      height: 100%;
+      max-width: 25px;
+      object-fit: cover;
+  }
+  .icon-desp p {
+      font-size: 12px;
+      margin-left: 10px;
+      font-weight: 500;
+      color: #454545;
+  }
+  .icon-mobile-container{
+      display: none;
+  }
+  @media screen and (max-width:767px){
+     .icon-mobile-container{
+      display:block;
+  }
+  .icon-container{
+      display: none;
+  }
+  .icon-col {
+      width: 100%;
+  }
+  .icon-row{
+  display: flex;
+  align-items: center;
+  }
+  .slick-slide{
+      margin: 0 6px;
+  }
+  }
+</style>
+<section class="icon-sec">
+  <div class="icon-container">
+    <div class="icon-flx">
+        {% for block in section.blocks %}
+      <div class="icon-col">
+        <div class="icon-image">
+            {% if block.settings.sub-icon-img !=blank %}
+          <img src="{{ block.settings.sub-icon-img |img_url:'master' }}" alt="" class="icon-img">
+          {% endif %}
+        </div>
+        <div class="icon-desp">
+          {{ block.settings.sub-icon-desp }}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="icon-mobile-container">
+    <div class="icon-slider">
+      <div class="icon-col">
+        <div class="icon-row">
+          <div class="icon-image">
+            <img src="/image/1.webp" alt="" class="icon-img">
+          </div>
+          <div class="icon-desp">
+            <p>30-Day Money Back Guarantee</p>
+          </div>
+        </div>
+      </div>
+      <div class="icon-col">
+        <div class="icon-row">
+          <div class="icon-image">
+            <img src="/image/2.webp" alt="" class="icon-img">
+          </div>
+          <div class="icon-desp">
+            <p>24/7 365 Days Customer Support</p>
+          </div>
+        </div>
+      </div>
+      <div class="icon-col">
+        <div class="icon-row">
+          <div class="icon-image">
+            <img src="/image/3.png" alt="" class="icon-img">
+          </div>
+          <div class="icon-desp">
+            <p>Removal and Return of Old Equipment</p>
+          </div>
+        </div>
+      </div>
+      <div class="icon-col">
+        <div class="icon-row">
+          <div class="icon-image">
+            <img src="/image/4.png" alt="" class="icon-img">
+          </div>
+          <div class="icon-desp">
+            <p>5,200+ Google Reviews</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            $('.icon-slider').slick({
+                      dots: false,
+        infinite: true,
+        speed: 800,             
+        autoplay: true,      
+        autoplaySpeed: 6000,     
+        arrows: false,           
+        pauseOnHover: false,     
+                responsive: [
+                    {
+                        breakpoint: 600,
+                        settings: {
+                            slidesToShow:1.5,
+                            slidesToScroll: 1,
+                        }
+                    },
+                    {
+                        breakpoint: 480,
+                        settings: {
+                            slidesToShow: 1.5,
+                            slidesToScroll: 1,
+                        }
+                    }
+                ]
+            });
+        });
+    </script>
+
+    {% schema %}
+    {
+        "name": "Cust Icon",
+        "settings": [],
+        "blocks": [
+            {
+                "type": "Cust-Icon",
+                "name": "Cust Icon",
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "sub-icon-img",
+                        "label": "Image"
+                    },
+                    {
+                        "type": "richtext",
+                        "id": "sub-icon-desp",
+                        "label": "Para"
+                    },
+                ],
+            },
+        ],
+        "presets": [
+            {
+                "name": "Cust Icon",
+            },
+        ],
+    }
+    {% endschema %}

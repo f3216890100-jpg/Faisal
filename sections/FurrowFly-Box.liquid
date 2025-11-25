@@ -1,0 +1,229 @@
+<style>
+  *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.furrow-bx-sec {
+    padding-top: 35px;
+    padding-bottom: 35px;
+    background-color: rgba(255,250,245);
+}
+.furrow-bx-container {
+    max-width: 1300px;
+    margin: 0 auto;
+}
+.furrow-bx-text {
+    text-align: center;
+    margin-bottom: 36px;
+    text-transform: uppercase;
+}
+h2.furrow-bx-text {
+    font-family: 'Riverside', "Zurich Extended", sans-serif;
+    font-size: 36px;
+}
+.furrow-bx-flexdiv {
+    display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+.furrow-bx-coldiv {
+    width: 23%;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    
+}
+img.furrow-bx-img {
+    max-width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border: 2px solid #333;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+}
+.furrow-bx-pddiv {
+    background: #ffffff;
+    border: 2px solid;
+    padding: 20px;
+    border-radius: 6px;
+   
+}
+.furrow-bx-coldiv ::after{
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-color: rgba(167,100,1);
+    top: 11px;
+    left: 11px;
+    z-index: -1;
+    border: 2px solid #333;
+    border-radius: 8px;
+}
+.furrow-bx-title {
+    margin-top: 15px;
+}
+h3.furrow-bx-text {
+    font-size: 16px;
+    font-family: "Avenir-Light", "Avenir-Next", sans-serif;
+    font-weight: 500;
+    margin-bottom: 13px;
+}
+.furrow-bx-des {
+    font-size: 18px;
+    font-family: "Avenir-Light", "Avenir-Next", sans-serif;
+    font-weight: 500;
+}
+.furrow-bx-coldiv:hover .furrow-bx-img{
+    transform: translateY(-10px);
+}
+.furrow-fly-btn {
+    text-align: center;
+    margin-top: 60px;
+}
+.push-btn,.btn{
+    display: inline-block;
+}
+.push-btn{
+    position: relative;
+    color: inherit;
+    text-decoration: none;
+}
+.btn, .btn,.shopify-payment-button__button{
+position: relative;
+display: inline-block;
+cursor: pointer;
+border-radius: 5px;
+padding: 1rem 1.2rem;
+text-align: center;
+ font-family: "Avenir-Light", "Avenir-Next", sans-serif;
+ text-transform: capitalize;
+font-size:17px;
+line-height: 1.2;
+text-transform: uppercase;
+background: #a76406;
+color: white;
+transition: transform .1s cubic-bezier(.215,.61,.355,1);
+
+}
+.push-btn::after {
+content: "";
+position: absolute;
+top: 5px;
+left: 5px;
+height: 100%;
+width: 100%;
+border-radius: 5px;
+display: block;
+background-color: white;
+border: 2px solid black;
+z-index: 0;
+}
+.push-btn {
+position: relative;
+z-index: 1;
+}
+.push-btn .btn {
+position: relative;
+z-index: 2;
+}
+.push-btn:hover .btn {
+        transform: translate(4px, 4px);
+    border-radius: 5px;
+}
+@media screen and (max-width:767px){
+    .furrow-bx-coldiv {
+        width: 100%;
+    }
+    .furrow-bx-container {
+        padding: 0 30px;
+    }
+}
+</style>
+  <section class="furrow-bx-sec">
+        <div class="furrow-bx-container">
+            <div class="furrow-bx-text">
+                <h2 class="furrow-bx-textt">
+                  {{ section.settings.sub-furrow-bx-text }}
+                </h2>
+            </div>
+            <div class="furrow-bx-flexdiv">
+              {% for block in section.blocks %}
+                    <div class="furrow-bx-coldiv">
+                        <div class="furrow-bx-pddiv">
+                        <div class="furrow-bx-imagediv">
+                          {% if block.settings.sub-furrow-bx-img !=blank%}
+                            <img src="{{ block.settings.sub-furrow-bx-img |img_url:'master' }}" alt="" class="furrow-bx-img">
+                          {% endif %}
+                        </div>
+                        <div class="furrow-bx-title">
+                        <h3 class="furrow-bx-text">
+                          {{ block.settings.sub-furrow-bx-text }}
+                        </h3>
+                        <div class="furrow-bx-des">
+                            <span class="bx-des">
+                              {{ block.settings.sub-bx-de }}
+                            </span>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+              {% endfor %}
+                    
+            </div>
+            <div class="furrow-fly-btn">
+                <a href="#" class="push-btn">
+                    <span class="btn">
+                      {{ section.settings.sub-btn }}
+                    </span>
+                </a>
+            </div>
+        </div>
+    </section>
+{% schema %}
+  {
+    "name": "Furrow Fly Box",
+    "settings": [
+      {
+       "type": "text",
+        "id": "sub-furrow-bx-text",
+        "label": "Text"
+      },
+      {
+       "type": "text",
+        "id": "sub-btn",
+        "label": "Text"
+      },
+    ],
+    "blocks": [
+      {
+        "type": "Furrow-Fly-Box",
+        "name": "Furrow Fly Box",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "sub-furrow-bx-img",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "sub-furrow-bx-text",
+            "label": "Text"
+          },
+           {
+            "type": "text",
+            "id": "sub-bx-de",
+            "label": "Text"
+          },
+        ],
+      }
+    ],
+    "presets": [
+      {
+        "name": "Furrow Fly Box",
+      },
+    ],
+  }
+{% endschema %}

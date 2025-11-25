@@ -1,0 +1,250 @@
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"/>
+<style>
+  *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.testi-slider-sec {
+    padding: 40px 0;
+    position: relative;
+}
+.testi-slider-container {
+    width: 1300px;
+    margin: 0 auto;
+    padding: 0 40px;
+    width: 100%;
+    position: relative;
+}
+
+.testi-slider-img-1 {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: auto;
+   bottom: -15%;
+    left: auto;
+    z-index: -1;
+    right: 3%;
+    max-width: 145px;
+        object-fit: contain;
+}
+
+
+.testi-slider-row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.testi-slider-image {
+    width: 45%;
+}
+.testi-slider-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+}
+.texti-slider-cotent {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.testi-slider-des {
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 32px;
+    font-family: "Open Sans", sans-serif;
+    color: #0a264a;
+    padding: 20px 0;
+}
+.testi-slider-text {
+    font-size: 18px;
+    font-family: "Open Sans", sans-serif;
+    color: #0a264a;
+    font-weight: 600;
+    padding-bottom: 10px;
+}
+.testi-slider-span {
+    font-size: 16px;
+    font-family: "Open Sans", sans-serif;
+    color: #0a264a;
+    font-weight: 400;
+}
+.owl-nav {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+}
+.owl-prev {
+     width: 50px;
+    display: inline-block;
+    height: 50px;
+    background: #fff !important;
+    border-radius: 50px ! IMPORTANT;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+.owl-next {
+           width: 50px;
+    display: inline-block;
+    height: 50px;
+    background: #fff !important;
+    border-radius: 50px ! IMPORTANT;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+.owl-prev span {
+    color:#000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    scale: 1.8;
+    margin-bottom: 4px;
+    font-size: 20px;
+}
+.owl-next span {
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    scale: 1.8;
+    margin-bottom: 4px;
+    font-size: 20px;
+}
+@media screen and (max-width:767px){
+    .testi-slider-image {
+    width: 100%;
+}
+.texti-slider-cotent {
+    width: 100%;
+}
+.testi-slider-des {
+    font-size: 27px;
+}
+    .texti-slider-cotent {
+        width: 100%;
+        margin-top: 30px;
+    }
+    .testi-slider-img {
+    max-width: 190px;
+    width: 100%;
+}
+.testi-slider-img-1 {
+    bottom: -22%;
+    right: 3px;
+}
+}
+</style>
+  <section class="testi-slider-sec">
+        <div class="testi-slider-container">
+            <div class="owl-carousel owl-theme">
+              {% for block in section.blocks %}
+            <div class="item">
+                <div class="testi-slider-col">
+                    <div class="testi-slider-row">
+                        <div class="testi-slider-image">
+                          {% if  block.settings.sub-testi-slider-img !=blank%}
+                            <img src="{{ block.settings.sub-testi-slider-img |img_url:'master' }}" alt="" class="testi-slider-img">
+                            {% endif %}
+                        </div>
+                        <div class="texti-slider-cotent">
+              <p class="testi-slider-des">
+                {{ block.settings.sub-testi-slider-des }}
+              </p>
+              <div class="testi-slider-name">
+                <h4 class="testi-slider-text">
+                  {{ block.settings.sub-testi-slider-text }}
+                </h4>
+                <span class="testi-slider-span">
+                  {{ block.settings.sub-testi-slider-span }}
+                </span>
+              </div>
+            </div>
+                    </div>
+                  {% if block.settings.sub-testi-slider-img-1 !=blank%}
+                      <img src="{{ block.settings.sub-testi-slider-img-1 |img_url:'master' }}" alt="" class="testi-slider-img-1">
+                  {% endif %}
+                </div>
+            </div>
+       {% endfor %}
+            </div>
+        </div>
+    </section>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+        <script>
+        $('.owl-carousel').owlCarousel({
+    loop:true,
+    margin:10,
+    dots:false,
+    nav:true,
+    autoplay:false,
+    autoplaySpeed:800,
+    direction: "vertical",
+    responsive:{
+        0:{
+            items:1,
+            autoplay:true,
+            nav:false,
+        },
+        600:{
+            items:1,
+            autoplay:true,
+            nav:true,
+    
+        },
+        1000:{
+            items:1,
+            
+         
+        }
+    }
+});
+    </script>
+{% schema %}
+  {
+    "name": "Testimonial Slide",
+    "settings": [],
+    "blocks": [
+      {
+        "type": "Testimonial-Slide",
+        "name": "Testimonial Slide",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "sub-testi-slider-img",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "sub-testi-slider-des",
+            "label": "Text"
+          },
+           {
+            "type": "text",
+            "id": "sub-testi-slider-text",
+            "label": "Text"
+          },
+           {
+            "type": "text",
+            "id": "sub-testi-slider-span",
+            "label": "Text"
+          },
+           {
+            "type": "image_picker",
+            "id": "sub-testi-slider-img-1",
+            "label": "Image"
+          },
+        ],
+      }
+    ],
+    "presets": [
+      {
+        "name": "Testimonial Slide",
+      },
+    ],
+  }
+{% endschema %}

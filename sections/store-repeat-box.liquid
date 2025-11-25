@@ -1,0 +1,156 @@
+<style>
+  .wl-repeat-sec {
+      padding: 50px 0;
+  }
+  .wl-repeat-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 50px;
+      width: 100%;
+  }
+
+  .wl-repeat-flx {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+  }
+  .wl-repeat-box {
+      width: 32%;
+  }
+  .wl-repeat-image {
+      height: 340px;
+      object-fit: cover;
+      width: 100%;
+  }
+  .wl-repeat-img
+   {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+  }
+  .wl-repeat-button {
+      text-align: center;
+      margin-top: 30px;
+  }
+  .wl-repeat-btn {
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 500;
+      color: #454545;
+      background: #f9f7f2;
+      padding: 12px 15px;
+      display: inline-block;
+      border-radius: 50px;
+  }
+  .wl-repeat-text {
+      font-size: 28px;
+      font-weight: 600;
+      color: #454545;
+      text-align: center;
+      padding-top: 15px;
+  }
+  .wl-repeat-desp p {
+      font-size: 18px;
+      text-align: center;
+      padding-top: 20px;
+      line-height: 26px;
+      font-weight: 500;
+      width: 95%;
+  }
+
+
+  @media screen and (max-width:767px){
+     .wl-repeat-sec {
+      padding: 30px 0;
+  }
+      .wl-repeat-container {
+      padding: 0 20px;
+  }
+  .wl-repeat-flx {
+      display: flex;
+      flex-direction: column;
+      row-gap: 20px;
+  }
+      .wl-repeat-box {
+      width: 100%;
+  }
+  .wl-repeat-desp p {
+      font-size: 14px;
+      width: 100%;
+      line-height: 20px;
+          padding-top: 10px;
+  }
+  .wl-repeat-text {
+      font-size: 20px;
+  }
+  }
+</style>
+<section class="wl-repeat-sec">
+  <div class="wl-repeat-container">
+    <div class="wl-repeat-flx">
+      {% for block in section.blocks %}
+        <div class="wl-repeat-box">
+          <div class="wl-repeat-image">
+            {% if block.settings['sub-wl-repeat-img'] != blank %}
+              <img src="{{ block.settings.sub-wl-repeat-img |img_url:'master' }}" alt="" class="wl-repeat-img">
+            {% endif %}
+          </div>
+          <div class="wl-repeat-button">
+            <a href="#" class="wl-repeat-btn">
+              {{ block.settings['sub-wl-repeat-btn'] }}
+            </a>
+          </div>
+          <div class="wl repeat-content">
+            <h2 class="wl-repeat-text">
+              {{ block.settings['sub-wl-repeat-text'] }}
+            </h2>
+            <div class="wl-repeat-desp">
+              {{ block.settings['sub-wl-repeat-desp'] }}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Store Repeat Box",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "Store-Repeat-Box",
+      "name": "Store Repeat Box",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "sub-wl-repeat-img",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "sub-wl-repeat-btn",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "sub-wl-repeat-text",
+          "label": "Text"
+        },
+        {
+          "type": "richtext",
+          "id": "sub-wl-repeat-desp",
+          "label": "Para"
+        },
+      ]
+    }
+  ],
+   "presets": [
+    {
+      "name": "Store Repeat Box",
+    },
+  ],
+}
+{% endschema %}

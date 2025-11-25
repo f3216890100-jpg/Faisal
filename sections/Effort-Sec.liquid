@@ -1,0 +1,206 @@
+<style>
+    .effort-sec{
+        padding:50px 0;
+    }
+      .effort-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 50px;
+      width: 100%;
+  }
+
+      .effort-flx {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+  }
+      .effort-col{
+   padding: 20px;
+      background: #F1FBCC;
+      width: 24%;
+       display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+          border-radius: 20px;
+      }
+      .effort-image {
+      text-align: center;
+  }
+  .effort-img {
+      width: 100%;
+      height: 100%;
+      max-width: 45px;
+  }
+  .effort-text {
+      font-size: 13px;
+      font-weight: 600;
+      color: #454545;
+      padding: 16px 0;
+  }
+  .effort-desp p {
+      font-size: 16px;
+      font-weight: 500;
+      color: #454545;
+      text-align: center;
+      width: 80%;
+      margin: 0 auto;
+  }
+  .effort-desp a {
+      text-decoration: none;
+      color: #454545;
+      font-weight: 600;
+  }
+   .effort-first-col {
+      padding: 20px;
+      background: #F1FBCC;
+      width: 24%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+                border-radius: 20px;
+  }
+  .effort-btn {
+        transition: all .3sease-in-out;
+        border:1px solid #085a54;
+      color:  #085a54;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 10px 25px;
+      border-radius: 50px;
+
+  }
+  .effort-btn:hover{
+      background: #085a54;
+      color: #fff;
+  }
+  @media screen and (max-width:767px){
+.effort-sec{
+        padding:30px 0;
+    }
+    .effort-container {
+    padding: 0 20px;
+}
+   .effort-first-col {
+      width: 49%;
+          padding: 10px;
+  }
+  .effort-col {
+      width: 49%;
+          padding: 10px;
+  }
+  .effort-desp p
+ {
+    font-size: 12px;
+    width: 100%;
+}
+  .effort-text {
+    font-size: 12px;
+    text-align: center;
+}
+.effort-btn {
+  font-size: 12px;
+padding: 3px 20px;
+    display:inline-block;
+    width:100%;
+}
+.effort-flx {
+    display: flex;
+    row-gap: 15px;
+}
+
+}
+</style>
+<div class="effort-sec">
+  <div class="effort-container">
+    <div class="effort-flx">
+      <div class="effort-col">
+        <div class="effort-image-content">
+          <div class="effort-image">
+            {% if section.settings['effort-img'] != blank %}
+              <img src="{{ section.settings.effort-img |img_url:'master' }}" alt="" class="effort-img">
+            {% endif %}
+          </div>
+          <h5 class="effort-text">
+            {{ section.settings['effort-text'] }}
+          </h5>
+        </div>
+        <div class="effort-desp">
+          {{ section.settings['effort-desp'] }}
+        </div>
+      </div>
+      {% for block in section.blocks %}
+        <div class="effort-first-col">
+          <div class="effort-image-content">
+            <div class="effort-image">
+              {% if block.settings['effort-img-1'] != blank %}
+                <img src="{{ block.settings.effort-img-1 |img_url:'master' }}" alt="" class="effort-img">
+              {% endif %}
+            </div>
+            <h5 class="effort-text">
+              {{ block.settings['effort-text-1'] }}
+            </h5>
+          </div>
+          <div class="effort-button">
+            <a href="" class="effort-btn">
+              {{ block.settings['effort-btn'] }}
+            </a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Effort Sec",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "effort-img",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "effort-text",
+      "label": "Text"
+    },
+    {
+      "type": "richtext",
+      "id": "effort-desp",
+      "label": "Para"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "Effort-Sec",
+      "name": "Effort Sec",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "effort-img-1",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "effort-text-1",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "effort-btn",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Effort Sec"
+    }
+  ]
+}
+{% endschema %}

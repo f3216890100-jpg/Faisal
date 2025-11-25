@@ -1,0 +1,180 @@
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"/>
+<style>
+  .nwr-slider-sec {
+    padding: 50px 0;
+}
+    .nwr-slider-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 50px;
+    width: 100%;
+}
+
+.nwr-slider-col {
+    background: #f9f7f1;
+    padding: 40px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+    .nwr-slider-text {
+    font-size: 28px;
+    font-weight:600;
+    color:#454545;
+    text-align: center;
+    width: 75%;
+    margin: 0 auto;
+}
+.nwr-slider-desp p {
+    font-size: 14px;
+    margin: 0;
+        padding-top: 10px;
+    font-weight: 500;
+    color: #454545;
+    text-align: center;
+}
+.nwr-slider-img {
+    width: 100%;
+    height: 100px;
+    max-width: 100px;
+    object-fit: contain;
+}
+.owl-prev {
+    position: absolute;
+    top: 36%;
+    left: -16%;
+    border: 1px solid #D9D9D9 !important;
+    width: 55px;
+    height: 55px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.owl-next {
+    position: absolute;
+    top: 36%;
+    right: -16%;
+    border: 1px solid #D9D9D9 !important;
+    width: 55px;
+    height: 55px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@media screen and (max-width:767px){
+   .nwr-slider-sec {
+    padding: 30px 0;
+}
+  .nwr-slider-container {
+    padding: 0 20px;
+}
+
+element.style {
+}
+.nwr-slider-text {
+    font-size: 20px;
+    width: 100%;
+}
+
+element.style {
+}
+.nwr-slider-col {
+    padding: 30px;
+}
+} 
+</style>
+<section class="nwr-slider-sec">
+  <div class="nwr-slider-container">
+           <div class="owl-carousel nwr-slider">
+    {% for block in section.blocks %}
+      <div class="item">
+        <div class="nwr-slider-col">
+          <h2 class="nwr-slider-text">
+            {{ block.settings['nwr-slider-text'] }}
+          </h2>
+          <div class="nwr-slider-desp">
+            {{ block.settings['nwr-slider-desp'] }}
+          </div>
+          <div class="nwr-slider-image">
+            {% if block.settings['nwr-slider-img'] != blank %}
+              <img src="{{ block.settings.nwr-slider-img |img_url:'master' }}" alt="" class="nwr-slider-img">
+            {% endif %}
+          </div>
+        </div>
+        
+      </div>
+    {% endfor %}
+  </div>
+  </div>
+</section>
+
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+       <script>
+$('.nwr-slider').owlCarousel({
+  loop: true,
+  margin: 24,
+  dots: true,
+  nav: true,
+  autoplay: true,
+  autoplayTimeout: 5000,
+  responsive: {
+    0: {
+      items: 1,       
+      stagePadding: 0,
+      nav:false,
+    },
+    767: {
+      items: 1.5,     
+      stagePadding: 80,
+        nav:false, 
+    },
+    1024: {
+      items: 1,       
+      stagePadding: 0
+    }
+  }
+});
+</script>
+
+
+{% schema %}
+{
+    "name": "Slider Newsroom",
+    "settings": [],
+    "blocks": [
+        {
+            "type": "Slider-Newsroom",
+             "name": "Slider Newsroom",
+             "settings": [
+                {
+                    "type": "text",
+                    "id": "nwr-slider-text",
+                    "label": "Text"
+                },
+                {
+                    "type": "richtext",
+                    "id": "nwr-slider-desp",
+                    "label": "Slider Para"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "nwr-slider-img",
+                    "label": "Image"
+                },
+             ],
+        },
+    ],
+    "presets": [
+        {
+            "name": "Slider Newsroom",
+        },
+    ],
+}
+{% endschema %}

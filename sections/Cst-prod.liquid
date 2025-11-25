@@ -1,0 +1,196 @@
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"/>
+<style>
+  *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+.cst-prod-sec {
+    padding: 40px 0;
+}
+
+.cst-prod-container{
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 30px;
+}
+.cst-prod-flex {
+    background: #f9f7f2;
+    padding: 20px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 410px;
+    border: 1px solid transparent;
+    border-radius: 14px;
+    transition: all 0.5s ease-in-out;
+    cursor: pointer;
+}
+.cst-prod-flex:hover{
+    border: 1px solid #bf9d6d;
+}
+.cst-product-image {
+    display: flex;
+    justify-content: center;
+}
+.cst-product-img {
+    width: 100%;
+    max-width: 120px;
+}
+.cust-product-title {
+    font-size: 15px;
+    font-family: "Avenir-next", sans-serif;
+    color: #000000;
+    line-height: 27px;
+}
+.cust-prod-span {
+    font-size: 11px;
+    font-family: "Avenir-next", sans-serif;
+    color: #000000;
+    line-height: 25px;
+}
+.cust-product-price {
+    font-size: 14px;
+    font-family: "Avenir-next", sans-serif;
+    color: #000000;
+}
+.cst-prod-btn {
+    background: #E0D5BC;
+    font-size: 13px;
+    text-decoration: none;
+    font-family: "Avenir-next", sans-serif;
+    display: inline-block;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    border-radius: 20px;
+    color: #000;
+    cursor: pointer;
+}
+@media screen and (max-width:767px){
+    .cst-prod-container{
+        padding: 0 20px;
+    }
+    
+}
+</style>
+ <section class="cst-prod-sec">
+        <div class="cst-prod-container">
+
+            <div class="owl-carousel owl-theme">
+              {% for block in section.blocks %}
+           <div class="item">
+            <div class="collection-slider-item">
+                <div class="cst-prod-flex">
+                    <div class="cst-prod-text-main">
+                        <div class="cust-product-title">
+                            {{ block.settings.sub-cust-product-title }}
+                          </div>
+                          <span class="cust-prod-span">
+                            {{ block.settings.sub-cust-prod-span }}
+                          </span>
+                        <div class="cust-product-price">
+                            {{ block.settings.sub-cust-product-price }}
+                    </div>
+                    </div>
+                    <div class="cst-product-image">
+                      {% if block.settings.sub-cst-product-img !=blank%}
+                        <img src="{{ block.settings.sub-cst-product-img |img_url:'master' }}" alt="" class="cst-product-img">
+                      {% endif %}
+                    </div>
+                    <div class="cst-product-button">
+                        <a href="#" class="cst-prod-btn">
+                          {{ block.settings.sub-cst-prod-btn }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+           </div>
+              {% endfor %}
+           
+           </div>
+
+        </div>
+    </section>
+
+    
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+
+    <script>
+        $('.owl-carousel').owlCarousel({
+    loop:true,
+    margin:10,
+    dots:false,
+    nav:false,
+    autoplay:false,
+    autoplayTimeout:3000,
+    responsive:{
+        0:{
+            items:1.5,
+            margin:15,
+        },
+        600:{
+            items:2.5,
+    
+        },
+        768:{
+            items:2.5,
+    
+        },
+        1000:{
+            items:4,
+         
+        }
+    }
+});
+    </script>
+{% schema %}
+  {
+    "name": "Cst Prod",
+    "settings": [],
+    "blocks": [
+      {
+        "type": "Cst-Prod",
+        "name": "Cst Prod",
+      "settings": [
+        {
+          "type": "text",
+          "id": "sub-cust-product-title",
+          "label": "Text"
+        },
+         {
+          "type": "text",
+          "id": "sub-cust-prod-span",
+          "label": "Text"
+        },
+         {
+          "type": "text",
+          "id": "sub-cust-product-price",
+          "label": "Text"
+        },
+          {
+          "type": "image_picker",
+          "id": "sub-cst-product-img",
+          "label": "Image"
+        },
+          {
+          "type": "text",
+          "id": "sub-cst-prod-btn",
+          "label": "Text"
+        },
+      ],
+      }
+    ],
+    "presets": [
+      {
+        "name": "Cst Prod"
+      }
+    ]
+  }
+{% endschema %}

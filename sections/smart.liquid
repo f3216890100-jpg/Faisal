@@ -1,0 +1,317 @@
+<style>
+     .smart-sec{
+        padding:50px 0;
+    } 
+    .smart-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 50px;
+    width: 100%;
+}
+.smart-content {
+    text-align: center;
+    margin-bottom: 60px;
+}
+.smart-heading {
+    font-size: 40px;
+    font-weight: 600;
+    color: #454545;
+    margin: 0;
+    padding: 0 0 20px;
+}
+.smart-des p {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 500;
+    width: 52%;
+    margin: 0 auto;
+}
+    .smart-flx-smart_cHMnD3 {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.smart-flx-smart_g93KkF {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.smart-flx-smart_wzPdCF {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.smart-flx.smart-flx-smart_hjYypz {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    margin-top: 20px;
+}
+    .smart-col {
+    width: 38%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+        align-items: flex-start;
+    padding: 0px 70px;
+    border-radius: 24px;
+}
+.smart-col-smart_cHMnD3 {
+    background: #dbe7e7;
+}
+.smart-col-smart_g93KkF {
+    background: #f9f7f2;
+}
+.smart-col-smart_wzPdCF {
+    background: #e4f0e1;
+}
+.smart-col-smart_hjYypz {
+    background: #eeeeee;
+}
+.smart-anker{
+        font-size: 12px;
+    font-weight: 500;
+    padding: 5px 10px;
+    border-radius: 50px;
+        text-decoration: none;
+}
+.smart-text {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 600;
+    color: #454545;
+        padding: 10px 0;
+        width:85%;
+}
+.smart-desp p {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: #454545;
+}
+.smart-button {
+    margin-top: 20px;
+}
+.smart-btn {
+    background: #085a54;
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 6px 30px;
+    display: inline-block;
+    border-radius: 50px;
+}
+.smart-anker-smart_cHMnD3 {
+    background: #84adaa;
+    color: #003733;
+}
+.smart-anker-smart_g93KkF {
+    background-color: #e0d4bc;
+    color: #454545;
+}
+.smart-anker-smart_wzPdCF {
+    background-color: #70bc0e;
+    color: #ffffff;
+}
+.smart-anker-smart_hjYypz {
+    background-color: #d9d9d9;
+    color: #454545;
+}
+.smart-image-col {
+    width: 60%;
+}
+.smart-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 22px;
+}
+@media screen and (max-width:767px){
+    .smart-sec{
+        padding:30px 0;
+    }  
+    .smart-container {
+    padding: 0 20px;
+}
+   .smart-content {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.smart-heading {
+    font-size: 24px;
+    padding: 0 0 10px;
+}
+.smart-des p {
+    font-size: 18px;
+    width: 100%;
+}
+.smart-flx-smart_cHMnD3 {
+        width: 100%;
+        background: #dbe7e7;
+        border-radius: 22px;
+        display: flex;
+        flex-direction: row-reverse;
+        padding: 10px;
+    }
+    .smart-flx.smart-flx-smart_g93KkF {
+    background: #f9f7f2;
+     border-radius: 22px;
+        display: flex;
+        flex-direction: row-reverse;
+        padding: 10px;
+         width: 100%;
+}
+.smart-flx-smart_wzPdCF {
+    background: #e4f0e1;
+     border-radius: 22px;
+        display: flex;
+        flex-direction: row-reverse;
+        padding: 10px;
+         width: 100%;
+}
+.smart-flx-smart_hjYypz {
+    background: #eeeeee;
+      border-radius: 22px;
+        display: flex;
+        flex-direction: row-reverse;
+        padding: 10px;
+         width: 100%;
+}
+.smart-col.smart-col-smart_g93KkF {
+    background: none;
+}
+.smart-col{
+    width: 56%;
+ padding: 0px 15px;
+}
+.smart-col.smart-col-smart_cHMnD3 {
+    background: none; 
+}
+.smart-image-col {
+    width: 42%;
+}
+.smart-text {
+    font-size: 19px;
+    width: 100%;
+}
+.smart-desp p {
+    font-size: 12px;
+}
+.smart-button{
+    margin-top:10px;
+}
+.smart-btn {
+    background: none;
+    color: #085a54;
+    padding:0;
+    font-size:14px;
+}
+.smart-anker {
+    display: none;
+}
+.smart-image {
+    height: 260px;
+    object-fit: cover;
+    width: 100%;
+}
+}
+</style>
+<section class="smart-sec">
+    <div class="smart-container">
+        <div class="smart-content">
+            <h2 class="smart-heading">
+                 {{ section.settings.smart-heading }}
+            </h2>
+            <div class="smart-des">
+{{ section.settings.smart-des }}
+            </div>
+        </div>
+        <div class="smart-main">
+            {% for block in section.blocks %}
+        <div class="smart-flx smart-flx-{{ block.id }}">
+            <div class="smart-col smart-col-{{ block.id }}">
+                <a href="" class="smart-anker smart-anker-{{ block.id }}">
+                    {{ block.settings.smart-anker }}
+                </a>
+                <h2 class="smart-text">
+                    {{ block.settings.smart-text }}
+                </h2>
+                <div class="smart-desp">
+                      {{ block.settings.smart-desp }}
+                </div>
+                <div class="smart-button">
+                    <a href="" class="smart-btn">
+                          {{ block.settings.smart-btn }}
+                    </a>
+                </div>
+            </div>
+            <div class="smart-image-col">
+                <div class="smart-image">
+                    {% if block.settings.smart-img !=blank %}
+                    <img src="{{ block.settings.smart-img |img_url:'master' }}" alt="" class="smart-img">
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        </div>
+    </div>
+</section>
+{% schema %}
+{
+    "name": "Smart",
+    "settings": [
+        {
+            "type": "text",
+            "id": "smart-heading",
+            "label": "Text"
+        },
+         {
+            "type": "richtext",
+            "id": "smart-des",
+            "label": "Para"
+        },
+    ],
+    "blocks": [
+        {
+            "type": "Smart",
+            "name": "Smart",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "smart-anker",
+                    "label": "Text"
+                },
+                 {
+                    "type": "text",
+                    "id": "smart-text",
+                    "label": "Text"
+                },
+                 {
+                    "type": "richtext",
+                    "id": "smart-desp",
+                    "label": "Smart Para"
+                },
+                 {
+                    "type": "text",
+                    "id": "smart-btn",
+                    "label": "Text"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "smart-img",
+                    "label": "Smart Image"
+                },
+            ],
+        },
+    ],
+    "presets": [
+        {
+            "name": "Smart",
+        },
+    ],
+}
+{% endschema %}

@@ -1,0 +1,117 @@
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
+<style>
+.hpb-slider-sec {
+    padding: 50px 0;
+}
+.hpb-slider-contianer {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 50px;
+    width: 100%;
+}
+.hpb-slider-content {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.hpb-slider-text {
+    font-size: 28px;
+    font-weight: 600;
+    color: #454545;
+}
+.hpb-slider-img {
+    width: 100%;
+    height: 100px;
+    max-width: 100px;
+    object-fit: contain;
+}
+
+ @media screen and (max-width:767px){
+    .hpb-slider-sec {
+    padding: 30px 0;
+}
+.hpb-slider-contianer {
+    padding: 0 20px;
+}
+.hpb-slider-text {
+    font-size: 21px;
+}
+} 
+</style>
+ <div class="hpb-slider-sec">
+        <div class="hpb-slider-contianer">
+            <div class="hpb-slider-content">
+                <h2 class="hpb-slider-text">
+               {{ section.settings.sub-hpb-slider-text }}
+                </h2>
+            </div>
+            <div class="review-slider">
+                {% for block in section.blocks %}
+            <div class="item">
+                <div class="hpb-slider-col">
+                    <div class="hpb-slider-image">
+                        {% if block.settings.sub-hpb-slider-img !=blank %}
+                        <img src="{{ block.settings.sub-hpb-slider-img |img_url:'master' }}" alt="" class="hpb-slider-img">
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+          {% endfor %}
+            </div>
+        </div>
+    </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
+
+<script>
+$(function(){
+$('.review-slider').slick({
+dots: false,
+arrows: false,
+autoplay: true,
+autoplaySpeed: 4000,
+speed: 600,
+slidesToShow: 5,
+slidesToScroll: 1,
+rewind: true,
+responsive:[
+{ breakpoint: 1200, settings: { slidesToShow: 5 } },
+{ breakpoint: 900, settings: { slidesToShow: 3 } },
+{ breakpoint: 600, settings: { slidesToShow: 3 } }
+]
+});
+});
+</script>
+
+{% schema %}
+{
+    "name": "Home Page Slider",
+    "settings": [
+        {
+            "type": "text",
+            "id": "sub-hpb-slider-text",
+            "label": "Text"
+        },
+    ],
+    "blocks": [
+        {
+            "type": "Home-Page-Slider",
+            "name": "Home Page Slider",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "sub-hpb-slider-img",
+                    "label": "Image"
+                },
+            ],
+        },
+    ],
+    "presets": [
+       {
+         "name": "Home Page Slider",
+    }, 
+    ],
+
+}
+{% endschema %}

@@ -1,0 +1,225 @@
+<style>
+  *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.sim-bx-sec {
+    padding: 50px 0;
+}
+.sim-bx-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    width: 100%;
+}
+.sim-box-heading {
+    font-size: 35px;
+    font-family: system-ui;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 15px;
+    color: #1a1a1a;
+}
+.sim-box-desp {
+    font-size: 14px;
+    text-align: center;
+    font-family: system-ui;
+    font-weight: 400;
+     color: #4a5565;
+}
+.sim-box-col {
+    border: 2px solid #e2e8f0;
+    width: 24%;
+    padding: 20px;
+        border-radius: 12px;
+        background: #fff;
+        transition: all 0.2s ease-in-out;
+}
+.sim-box-col:hover{
+    box-shadow: 0 4px 10px -3px rgba(0,0,0,0.2);
+}
+.sim-box-flx {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 15px;
+        margin-top: 50px;
+}
+.sim-box-text {
+    font-size: 35px;
+    font-family: system-ui;
+    color: #009966;
+    font-weight: 500;
+          padding-bottom: 20px;
+    text-align: center;
+}
+.sim-box-des {
+    font-size: 14px;
+    font-family: system-ui;
+    font-weight: 500;
+    color: #1a1a1a;
+           padding-bottom: 20px;
+    text-align: center;
+}
+.sim-box-hea {
+    font-size: 12.25px;
+    font-family: system-ui;
+    font-weight: 400;
+    color: #4a5565;
+    text-align: center;
+      padding-bottom: 30px; 
+}
+.sim-box-hea-1 {
+    font-size: 12.25px;
+    font-family: system-ui;
+    font-weight: 400;
+    color: #4a5565;
+    text-align: center;     
+}
+.sim-box-span {
+    font-size: 10.5px;
+    font-family: system-ui;
+    color: #973c00;
+    background: #fef3c6;
+    padding: 3px 7px;
+    font-weight: 500;
+    border-radius: 5px;
+}
+.sim-box-span-1 {
+    font-size: 10.5px;
+    font-family: system-ui;
+    color: #973c00;
+    background: #ffe2e2;
+    padding: 3px 7px;
+    border-radius: 5px;
+    font-weight: 500;
+}
+.sim-box-span-2 {
+    font-size: 10.5px;
+    font-family: system-ui;
+    color:#006045;
+    background: #d0fae5;
+    padding: 3px 7px;
+    border-radius: 5px;
+    font-weight: 500;
+}
+.sim-box-span-3 {
+    font-size: 10.5px;
+    font-family: system-ui;
+    color: #193cb8;
+    background: #dbeafe;
+    padding: 3px 7px;
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+
+@media screen and (max-width:480px){
+  .sim-bx-container {
+    padding: 0 15px;
+}
+.sim-box-heading {
+    font-size: 25px;
+}
+.sim-box-flx {
+    margin-top: 42px;
+}
+    .sim-box-col {
+       width: 48%;
+}
+.sim-box-text {
+    font-size: 28px;
+    padding-bottom: 25px;
+}
+.sim-box-des {
+    font-weight: 700;
+}
+
+}
+
+</style>
+<section class="sim-bx-sec">
+        <div class="sim-bx-container">
+            <div class="sim-box-title">
+                <h2 class="sim-box-heading">
+                  {{ section.settings.sub-sim-box-heading }}
+                </h2>
+                <p class="sim-box-desp">
+                  {{ section.settings.sub-sim-box-desp }}
+                </p>
+            </div>
+            <div class="sim-box-flx">
+              {% for block in section.blocks %}
+                
+                <div class="sim-box-col">
+                    <div class="sim-box-text">
+                      {{ block.settings.sub-sim-box-text }}
+                    </div>
+                    <div class="sim-box-des">
+                      {{ block.settings.sub-sim-box-des }}
+                    </div>
+                    <div class="sim-box-hea">
+                      {{ block.settings.sub-sim-box-hea }}
+                    </div>
+                    <span class="sim-box-span">
+                      {{ block.settings.sub-sim-box-span }}
+                    </span>
+                </div>
+             
+               {% endfor %}
+            </div>
+           
+        </div>
+    </section>
+{% schema %}
+  {
+    "name": "Simple Box",
+    "settings": [
+      {
+        "type": "text",
+        "id": "sub-sim-box-heading",
+        "label": "Text"
+      },
+        {
+        "type": "text",
+        "id": "sub-sim-box-desp",
+        "label": "Text"
+      },
+    ],
+    "blocks": [
+      {
+        "type": "Simple-Box",
+        "name": "Simple Box",
+        "settings": [
+          {
+            "type": "text",
+            "id": "sub-sim-box-text",
+            "label": "Text"
+          },
+          {
+            "type": "text",
+            "id": "sub-sim-box-des",
+            "label": "Text"
+          },
+          {
+            "type": "text",
+            "id": "sub-sim-box-hea",
+            "label": "Text"
+          },
+          {
+            "type": "text",
+            "id": "sub-sim-box-span",
+            "label": "Text"
+          },
+        ],
+        },
+      
+    ],
+    "presets": [
+      {
+        "name": "Simple Box",
+      },
+    ],
+  }
+{% endschema %}

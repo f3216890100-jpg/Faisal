@@ -1,0 +1,156 @@
+<style>
+  *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.store-sec {
+    padding: 30px 0;
+}
+.store-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+}
+.store-title {
+    font-size: 24px;
+    color: #2d3d4d;
+    font-family: "Avenir-next", sans-serif;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.store-flex {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 10px;
+}
+.store-col {
+    width: 32%;
+    background: #00569B;
+    padding: 15px;
+    border-radius: 15px;
+}
+.store-image-div {
+    position: relative;
+    width: 100%;
+}
+.store-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.store-heading {
+    position: absolute;
+    top: 0;
+    left: 25%;
+    padding-top: 20px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #00569B;
+    font-family: "Avenir-next",sans-serif;
+}
+.store-text-content {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+span.store-text {
+    color: #ffc220;
+}
+.store-des {
+    font-size: 18px;
+    font-family: "Avenir-next", sans-serif;
+    font-weight: 500;
+    color: #fff;
+    line-height: 26px;
+    letter-spacing: 1px;
+    width: 97%;
+    margin: 0 auto;
+    text-align: center;
+}
+@media screen and (max-width:767px){
+    .store-container {
+        padding: 0 15px;
+    }
+    .store-col {
+        width: 100%;
+    }
+}
+</style>
+<section class="store-sec">
+        <div class="store-container">
+            <h2 class="store-title">
+              {{ section.settings.sub-store-title }}
+            </h2>
+            <div class="store-flex">
+              {% for block in section.blocks %}
+                <div class="store-col">
+                    <div class="store-image-div">
+                      {% if block.settings.sub-store-img !=blank%}
+                        <img src="{{ block.settings.sub-store-img |img_url:'master' }}" alt="" class="store-img">
+                      {% endif %}
+                        <h3 class="store-heading">
+                          {{ block.settings.sub-store-heading }}
+                        </h3>
+                    </div>
+                    <div class="store-text-content">
+                        <p class="store-des">
+                            <span class="store-text">
+                              {{ block.settings.sub-store-text }}
+                            </span>
+                           {{ block.settings.sub-store-des }}
+                        </p>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </section>
+{% schema %}
+  {
+    "name": "Go Lime Box",
+    "settings": [
+      {
+        "type": "text",
+        "id": "sub-store-title",
+        "label": "Text"
+      },
+    ],
+    "blocks": [
+      {
+        "type": "Go-Lime-Box",
+        "name": "Go Lime Box",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "sub-store-img",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "sub-store-heading",
+            "label": "Text"
+          },
+          {
+            "type": "text",
+            "id": "sub-store-text",
+            "label": "Text"
+          },
+           {
+            "type": "text",
+            "id": "sub-store-des",
+            "label": "Text"
+          },
+        ],
+      }
+    ],
+    "presets": [
+      {
+        "name": "Go Lime Box"
+      }
+    ]
+  }
+{% endschema %}

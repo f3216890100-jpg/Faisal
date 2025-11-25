@@ -1,0 +1,177 @@
+<style>
+ 
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.cst-mp-sec {
+       padding: 120px 0 10px; 
+}
+.cst-mp-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 50px;
+    width: 100%;
+}
+.cst-map-flx {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.cst-mp-col {
+    width: 46%;
+}
+.cst-mp-text {
+    color: #454545;
+    font-size: 44px;
+    font-family: Assistant, sans-serif;
+    font-weight: 600;
+        padding-bottom: 20px;
+}
+.cst-mp-desp p {
+    font-size: 16px;
+    font-family: Assistant, sans-serif;
+    color: #454545;
+    line-height: 25px;
+    width: 83%;
+    font-weight: 500;
+}
+.cst-mp-seacrh-flx {
+    display: flex;
+    align-items: center;
+    position: relative;
+        margin-top: 30px;
+}
+.cst-mp-seacrh-icon {
+    position: absolute;
+    left: 14px;
+}
+i.fa-solid.fa-magnifying-glass {
+    font-size: 14px;
+    color: #454545;
+}
+.cst-mp-btn {
+    position: absolute;
+    right: 16px;
+}
+.cst-mp-btn button{
+    background: #70bc0e;
+    color: #fff;
+    font-size: 16px;
+      font-family: Assistant, sans-serif;
+      padding: 8px 16px;
+      outline: none;
+      border: none;
+      border-radius: 50px;
+}
+.cst-mp-input {
+    width: 100%;
+    padding: 14px 100px 14px 50px;
+    border-radius: 25px;
+    border: 1px solid #d9d9d9;
+    outline: none;
+}
+
+iframe {
+    width: 100%;
+    border-radius: 25px;
+    height: 350px;
+    object-fit: cover;
+}
+@media screen and (max-width:767px){
+.cst-mp-sec {
+    padding: 30px 0 10px;
+}
+    .cst-mp-container {
+    padding: 0 20px;
+}
+.cst-map-flx {
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+}
+.cst-mp-col {
+    width: 100%;
+}
+.cst-mp-desp p {
+    font-size: 15px;
+    line-height: 23px;
+    width: 100%;
+    text-align: center;
+}
+.cst-mp-text {
+    color: #000000;
+    font-size: 32px;
+    font-weight: 600;
+    text-align: center;
+}
+}
+
+
+</style>
+<section class="cst-mp-sec">
+  <div class="cst-mp-container">
+    <div class="cst-map-flx">
+      <div class="cst-mp-col">
+        <h1 class="cst-mp-text">
+            {{ section.settings.sub-cst-mp-text }}
+        </h1>
+        <div class="cst-mp-desp">
+          {{ section.settings.sub-cst-mp-desp }}
+        </div>
+        <div class="cst-mp-seacrh-flx">
+          <div class="cst-mp-seacrh-icon">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </div>
+          <input type="search" name="search" placeholder="Enter approved postal code only" class="cst-mp-input">
+          <div class="cst-mp-btn">
+            {{ section.settings.sub-cst-mp-btn }}
+          </div>
+        </div>
+      </div>
+      <div class="cst-mp-col">
+        <div class="cst-map">
+          <iframe
+            width="100%"
+            height="600"
+            frameborder="0"
+            scrolling="no"
+            marginheight="0"
+            marginwidth="0"
+            src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Budhla.Sant%20Multan+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+            ><a href="https://www.gps.ie/">gps trackers</a></iframe
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+    "name": "Go Lime Map Section",
+    "settings": [
+        {
+            "type": "text",
+            "id": "sub-cst-mp-text",
+            "label": "Text"
+        },
+         {
+            "type": "richtext",
+            "id": "sub-cst-mp-desp",
+            "label": "Desp Para"
+        },
+         {
+            "type": "text",
+            "id": "sub-cst-mp-btn",
+            "label": "Button"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Go Lime Map Section",
+        },
+    ],
+}
+{% endschema %}

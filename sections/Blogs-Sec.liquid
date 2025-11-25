@@ -1,0 +1,87 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+<style>
+    .blogs-col {
+    width: 32%;
+    border: 1px solid #d9d9d9;
+    padding: 20px;
+}
+</style>
+<section class="blogs-sec">
+  <div class="blogs-container">
+    <div class="blogs-flx">
+      {% for block in section.blocks %}
+        <div class="blogs-col">
+          <div class="blogs-span-row">
+            <span class="blogs-span">
+                {{ block.settings.blogs-span }}
+            </span>
+            <span class="blogs-span-1">
+                {{ block.settings.blogs-span-1 }}
+            </span>
+          </div>
+          <div class="blogs-desp">
+            {{ block.settings.blogs-desp }}
+          </div>
+          <div class="blogs-anker-flx">
+            <a class="blogs-anker">
+              <span class="blogs-span-anker">
+                {{ block.settings.blogs-span-anker }}
+              </span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </a>
+            <div class="blogs-image">
+                {% if block.settings.blogs-img !=blank %}
+              <img src="{{ block.settings.blogs-img |img_url:'master' }}" alt="{{ block.settings.blogs-img.alt |escape }}" class="blogs-img">
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+    "name": "Blogs Sec",
+    "settings": [],
+    "blocks": [
+        {
+            "type": "Blogs-Sec",
+            "name": "Blogs Sec",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "blogs-span",
+                    "label": "Text"
+                },
+                {
+                    "type": "text",
+                    "id": "blogs-span-1",
+                    "label": "Text"
+                },
+                {
+                    "type": "richtext",
+                    "id": "blogs-desp",
+                    "label": "Para"
+                },
+                {
+                    "type": "text",
+                    "id": "blogs-span-anker",
+                    "label": "Text"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "blogs-img",
+                    "label": "Image"
+                },
+            ],
+        },
+    ],
+    "presets": [
+        {
+            "name": "Blogs Sec",
+        },
+    ],
+}
+{% endschema %}

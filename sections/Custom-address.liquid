@@ -1,0 +1,175 @@
+<style>
+    .icl-sec {
+    padding: 130px 0 60px;
+}
+  .icl-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 50px;
+      width: 100%;
+  }
+  .icl-flx {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+  }
+  .icl-col {
+      width: 49%;
+       text-align: center;
+  }
+  .icl-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+  }
+  .icl-text {
+      font-size: 28px;
+      color: #454545;
+      text-align: center;
+      font-weight: 600;
+      padding: 30px 0 15px;
+          margin: 0;
+  }
+  .icl-button{
+       text-align: center;
+           margin-bottom: 15px;
+  }
+  .adres_lc_btn {
+      text-decoration: none;
+      font-size: 20px;
+      color: #70bc0e;
+      font-weight: 500;
+      
+
+  }
+  .icl-desp p{
+       font-size: 17px;
+      color: #454545;
+      text-align: center;
+      font-weight: 600;
+      line-height: 30px;
+          margin: 0;
+  }
+  .icl-span{
+       font-size: 12px;
+      color: #454545;
+      text-align: center;
+      font-weight: 500;
+  }
+.icl-title{
+     font-size: 40px;
+         margin-top: 0;
+     font-family: Assistant, sans-serif;
+    color: #454545;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 30px;
+}
+  @media screen and (max-width:767px){
+   section.icl-sec {
+    padding: 130px 0 30px;
+}
+    .icl-container {
+      padding: 0 20px;
+  }
+      .icl-flx {
+      display: flex;
+      flex-direction: column;
+      row-gap: 20px;
+  }
+      .icl-col {
+      width: 100%;
+  }
+
+  .icl-text {
+      font-size: 20px;
+      padding: 25px 0 10px;
+  }
+
+  .adres_lc_btn {
+      font-size: 18px;
+      line-height: 26px;
+  }
+
+  .icl-desp p {
+      font-size: 18px;
+  }
+.icl-title {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+  }
+</style>
+ <section class="icl-sec">
+        <div class="icl-container">
+            <h2 class="icl-title">Find Us at Your Local Walmart!</h2>
+            <div class="icl-flx">
+                {% for block in section.blocks %}
+                <div class="icl-col">
+                    <div class="icl-image">
+                        {% if block.settings.sub-icl-img !=blank %}
+                        <img src="{{ block.settings.sub-icl-img |img_url:'master' }}" alt="" class="icl-img">
+                        {% endif %}
+                    </div>
+                    <div class="icl-content">
+                        <h3 class="icl-text">
+                            {{ block.settings.sub-icl-text }}
+                        </h3>
+                        <div class="icl-button">
+                            <a class="adres_lc_btn" href="">{{ block.settings.sub-adres-lc-btn }}</a>
+                        </div>
+                        <div class="icl-desp">
+                           {{ block.settings.sub-icl-desp }}
+                        </div>
+                        <span class="icl-span">{{ block.settings.sub-icl-span }}</span>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+{% schema %}
+{
+  "name": "Custom Address",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "Custom-Address",
+      "name": "Custom Address",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "sub-icl-img",
+          "label": "Text"
+        },
+         {
+          "type": "text",
+          "id": "sub-icl-text",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "sub-adres-lc-btn",
+          "label": "Text"
+        },
+        {
+          "type": "richtext",
+          "id": "sub-icl-desp",
+          "label": "para"
+        },
+        {
+          "type": "text",
+          "id": "sub-icl-span",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Address"
+    }
+  ]
+}
+{% endschema %}

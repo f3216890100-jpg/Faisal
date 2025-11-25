@@ -1,0 +1,309 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+<style>
+  .intro-sec {
+    padding: 50px 0;
+}
+  .intro-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 50px;
+    width: 100%;
+}
+.intro-flx {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.intro-first-col {
+    width: 63%;
+    position: relative;
+    z-index: 1;
+}
+.intro-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 50px 60px;
+}
+
+.intro-logo-img {
+    width: 100%;
+    height: 100%;
+    max-width: 30px;
+  object-fit: cover;
+}
+.intro-text {
+    font-size: 20px;
+    font-weight: 600;
+    color: #454545;
+    width: 35%;
+    padding:30px 0;
+}
+.intro-desp p {
+    font-size: 18px;
+    font-weight: 500;
+    color: #454545;
+    width: 44%;
+    line-height: 23px;
+    padding: 0 0 10px;
+}
+.intro-btn {
+    text-decoration: none;
+    color: #454545;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.intro-col {
+    width: 36%;
+    background: #e4f0e1;
+    padding: 25px 50px;
+        border-radius: 23px;
+}
+.intro-logo-img-1 {
+    width: 100%;
+    height: 100%;
+    max-width: 65px;
+    object-fit: cover;
+}
+.intro-text-1 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #003733;
+    padding: 30px 0;
+    width: 55%;
+}
+.intro-desp-1 p {
+    font-size: 18px;
+    font-weight: 500;
+    color: #454545;
+    line-height: 23px;
+    padding: 0 0 10px;
+        width: 80%;
+}
+.intro-btn-1 {
+    text-decoration: none;
+    color: #454545;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.intro-desktop-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+  .intro-mobile-img {
+    display: none;
+}
+@media screen and (max-width:767px){
+    .intro-sec {
+    padding: 30px 0;
+}
+  .intro-container {
+    padding: 0 20px;
+}
+.intro-flx {
+    display: flex;
+    flex-direction: column-reverse;
+    row-gap:20px;
+}
+.intro-first-col {
+    width: 100%;
+}
+.intro-content {
+    padding: 20px 20px;
+}
+.intro-logo-image {
+    text-align: center;
+}
+.intro-desp p {
+    font-size: 14px;
+    width: 100%;
+    text-align: center;
+}
+.intro-text {
+    padding: 15px 0;
+    width: 100%;
+    text-align: center;
+}
+.intro-btn {
+    display: flex;
+    justify-content: center;
+    font-size: 14px;
+}
+.intro-col {
+    width: 100%;
+        padding: 20px 25px;
+}
+.intro-logo-image {
+    text-align: center;
+}
+.intro-desp-1 p {
+    font-size: 14px;
+    width: 100%;
+    text-align: center;
+}
+.intro-text-1 {
+    padding: 15px 0;
+    width: 100%;
+    text-align: center;
+}
+.intro-btn-1 {
+    display: flex;
+    justify-content: center;
+    font-size: 14px;
+}
+  .intro-mobile-img {
+    display: block;
+     width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.intro-desktop-img {
+     display: none;
+}
+}
+</style>
+<section class="intro-sec">
+  <div class="intro-container">
+    <div class="intro-flx">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'IntroImage' %}
+            <div class="intro-first-col">
+              <div class="intro-image">
+                {% if block.settings['intro-desktop-img'] != blank %}
+                  <img src="{{ block.settings.intro-desktop-img |img_url:'master' }}" alt="" class="intro-desktop-img">
+                {% endif %}
+                {% if block.settings['intro-mobile-img'] != blank %}
+                  <img src="{{ block.settings.intro-mobile-img |img_url:'master' }}" alt="" class="intro-mobile-img">
+                {% endif %}
+              </div>
+              <div class="intro-content">
+                <div class="intro-logo-image">
+                  {% if block.settings['intro-logo-img'] != blank %}
+                    <img src="{{ block.settings.intro-logo-img |img_url:'master' }}" alt="" class="intro-logo-img">
+                  {% endif %}
+                </div>
+                <h3 class="intro-text">
+                  {{ block.settings['intro-text'] }}
+                </h3>
+                <div class="intro-desp">
+                  {{ block.settings['intro-desp'] }}
+                </div>
+                <div class="intro-button">
+                  <a href="" class="intro-btn">
+                    {{ block.settings['intro-btn'] }}
+                    <i class="fas fa-chevron-right"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+        {% endcase %}
+      {% endfor %}
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'IntroContent' %}
+            <div class="intro-col">
+              <div class="intro-logo-image">
+                {% if block.settings['intro-logo-img-1'] != blank %}
+                  <img src="{{ block.settings.intro-logo-img-1 |img_url:'master' }}" alt="" class="intro-logo-img-1">
+                {% endif %}
+              </div>
+              <h3 class="intro-text-1">
+                {{ block.settings['intro-text-1'] }}
+              </h3>
+              <div class="intro-desp-1">
+                {{ block.settings['intro-desp-1'] }}
+              </div>
+              <div class="intro-button">
+                <a href="" class="intro-btn-1">
+                  {{ block.settings['intro-btn-1'] }}
+                  <i class="fas fa-chevron-right"></i>
+                </a>
+              </div>
+            </div>
+        {% endcase %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Intro Sec",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "IntroImage",
+      "name": "Intro Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "intro-desktop-img",
+          "label": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "intro-mobile-img",
+          "label": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "intro-logo-img",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "intro-text",
+          "label": "Text"
+        },
+        {
+          "type": "richtext",
+          "id": "intro-desp",
+          "label": "Para"
+        },
+        {
+          "type": "text",
+          "id": "intro-btn",
+          "label": "Text"
+        },
+      ],
+    },
+{
+  "type": "IntroContent",
+  "name": "Intro Content",
+  "settings": [
+            {
+          "type": "image_picker",
+          "id": "intro-logo-img-1",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "intro-text-1",
+          "label": "Text"
+        },
+        {
+          "type": "richtext",
+          "id": "intro-desp-1",
+          "label": "Para"
+        },
+        {
+          "type": "text",
+          "id": "intro-btn-1",
+          "label": "Text"
+        },
+  ],
+},
+  ],
+  "presets": [
+    {
+      "name": "Intro Sec",
+    },
+  ],
+}
+{% endschema %}

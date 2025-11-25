@@ -1,0 +1,408 @@
+<style>
+  *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+.section {
+    padding-bottom: 70px;
+    padding-top: 30px;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.left-width-mn {
+    width: 49.3%;
+}
+.left-text-mn {
+    position: relative;
+}
+.left-image-mn {
+    position: relative;
+    padding-bottom: 102%;
+    overflow: hidden;
+}
+img.left-img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.left-img-content-mn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: space-between;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+h2.left-img-heading {
+    font-size: 41px;
+    padding-right: 118px;
+    font-weight: 400;
+    line-height: 1.1;
+    color: #000;
+    letter-spacing: normal;
+}
+span.left-img-text {
+    font-size: 19px;
+    max-width: 228px;
+    display: block;
+    line-height: 1.3;
+    color: #000;
+    letter-spacing: normal;
+    padding-top: 10px;
+}
+a.left-img-link {
+    text-decoration: none;
+    font-size: 18px;
+    color: #000;
+    border: 1px solid #000;
+    padding: 12px 20px;
+    border-radius: 50px;
+}
+a.left-img-link:hover {
+    background: #075a54;
+    border: 1px solid #075a54;
+    color: #fff;
+}
+.flex-box {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.right-width-mn {
+    width: 49.3%;
+}
+.right-text-mn {
+    position: relative;
+    margin-bottom: 12px;
+}
+.right-image-mn {
+    position: relative;
+    padding-bottom: 50%;
+    overflow: hidden;
+}
+img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+}
+.right-img-cotent-mn {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    flex-direction: column;
+    padding: 30px;
+    justify-content: space-between;
+}
+h2.right-img-heading {
+    color: #fff;
+    font-size: 30px;
+    letter-spacing: normal;
+}
+span.right-img-text {
+    display: block;
+    max-width: 200px;
+    padding-top: 5px;
+    line-height: 1.5;
+    color: #fff;
+}
+a.right-img-link {
+    text-decoration: none;
+    color: #fff;
+    border-radius: 50px;
+    border: 1px solid #fff;
+    font-size: 15px;
+    padding: 12px 20px;
+}
+a.right-img-link-1:hover {
+    background: #075a54;
+    border: 1px solid #075a54;
+    color: #fff;;
+}
+a.right-img-link:hover {
+    background: #075a54;
+    border: 1px solid #075a54;
+    color: #fff;
+}
+.right-text-mn-1 {
+    position: relative;
+}
+.right-image-mn-1 {
+    position: relative;
+    padding-bottom: 50%;
+    overflow: hidden;
+}
+img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+}
+.right-img-cotent-mn-1 {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    flex-direction: column;
+    padding: 30px;
+    justify-content: space-between;
+}
+h2.right-img-heading-1{
+    color: #fff;
+    font-size: 30px;
+    letter-spacing: normal;
+}
+span.right-img-text-1 {
+    display: block;
+    max-width: 200px;
+    padding-top: 5px;
+    line-height: 1.5;
+    color: #fff;
+}
+a.right-img-link-1 {
+    text-decoration: none;
+    color: #fff;
+    border-radius: 50px;
+    border: 1px solid #fff;
+    font-size: 15px;
+    padding: 12px 20px;
+}
+.mobile-collection{
+    display: none;
+}
+@media screen and (max-width:767px){
+    .desktop-collection{
+        display: none;
+    }
+    .mobile-collection{
+        display: block;
+    }
+    .flex-box {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .left-width-mn {
+        padding-bottom: 12px;
+        order: 2;
+        width: 100%;
+        padding-top: 12px;
+    }
+    .left-image-mn {
+        padding-bottom: 125%;
+    }
+    .left-img-content-mn {
+        padding: 20px;
+    }
+    h2.left-img-heading {
+        padding-right: 0;
+        font-size: 30px;
+    }
+    span.left-img-text {
+        font-size: 16px;
+        max-width: 200px;
+    }
+    a.left-img-link {
+        font-size: 13px;
+        padding: 8px 15px;
+    }
+
+
+    .right-width-mn {
+        width: 100%;
+        order: 3;
+    }
+    .right-image-mn {
+        padding-bottom: 54%;
+    }
+    .right-img-cotent-mn {
+        padding: 20px;
+    }
+    h2.right-img-heading {
+        font-size: 25px;
+    }
+    span.right-img-text {
+        font-size: 14px;
+    }
+    a.right-img-link {
+        font-size: 13px;
+        padding: 8px 15px;
+    }
+    .right-width-mn-1 {
+        width: 100%;
+        order: 1;
+    }
+    .right-image-mn-1 {
+        padding-bottom: 54%;
+    }
+    .right-img-cotent-mn-1 {
+        padding: 20px;
+    }
+    h2.right-img-heading-1 {
+        font-size: 25px;
+    }
+    span.right-img-text-1 {
+        font-size: 14px;
+    }
+    a.right-img-link-1 {
+        font-size: 13px;
+        padding: 8px 15px;
+    }
+}
+
+</style>
+   <section class="section">
+        <div class="container">
+            <div class="desktop-collection">
+            <div class="flex-box">
+              {% for block in section.blocks %}
+                <div class="left-width-mn">
+                    <div class="left-text-mn">
+                        <div class="left-image-mn">
+                          {% if block.settings.sub-left-img !=blank%}
+                            <img src="{{ block.settings.sub-left-img |img_url:'master' }}" alt="" class="left-img" >
+                          {% endif %}
+                        </div>
+                        <div class="left-img-content-mn">
+                            <div class="left-img-title">
+                                <h2 class="left-img-heading">
+                                    {{ block.settings.sub-left-img-heading }}
+                                </h2>
+                                <span class="left-img-text">
+                                    {{ block.settings.sub-left-img-text }}
+                                </span>
+                            </div>
+                            <div class="left-img-button">
+                                <a href="#" class="left-img-link">
+                                  {{ block.settings.sub-left-img-link }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              {% endfor %}
+            </div>
+            </div>
+            <div class="mobile-collection">
+            <div class="flex-box">
+                <div class="left-width-mn">
+                    <div class="left-text-mn">
+                        <div class="left-image-mn">
+                            <img src="./AdobeStock_630214573_copy.webp" alt="" class="left-img" >
+                        </div>
+                        <div class="left-img-content-mn">
+                            <div class="left-img-title">
+                                <h2 class="left-img-heading">
+                                    It's a new day for Solar Power
+                                </h2>
+                                <span class="left-img-text">
+                                    Upgrade your home to unlock more savings & a brighter future. Go solar with Go Lime.
+                                </span>
+                            </div>
+                            <div class="left-img-button">
+                                <a href="#" class="left-img-link">Find Your Solar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="right-width-mn">
+                    <div class="right-text-mn">
+                        <div class="right-image-mn">
+                            <img src="./4122_copy_2.webp" alt="">
+                        </div>
+                        <div class="right-img-cotent-mn">
+                            <div class="right-img-title">
+                                <h2 class="right-img-heading">Unlimited Hot Water</h2>
+                                <span class="right-img-text">
+                                    Upgrade your home to unlock more savings with an energy-efficient tankless water heater.
+                                </span>
+                            </div>
+                             <div class="right-img-button">
+                                    <a href="#" class="right-img-link">Buy a Tankless</a>
+                                </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="right-width-mn-1">
+                    <div class="right-text-mn-1">
+                        <div class="right-image-mn-1">
+                            <img src="./Firefly_grass_shaped_letters__isolated__white_background__hyper_copy.webp" alt="">
+                        </div>
+                        <div class="right-img-cotent-mn-1">
+                            <div class="right-img-title-1">
+                                <h2 class="right-img-heading-1">Net-Zero Package</h2>
+                                    <span class="right-img-text-1">
+                                        Upgrade your home to unlock more savings and a smaller footprint.
+                                    </span>
+                            </div>
+                            <div class="right-img-button-1">
+                                <a href="#" class="right-img-link-1">Explore Net-Zero-Solution</a>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+{% schema %}
+  {
+    "name": "Go Lime Section",
+    "settings": [],
+    "blocks": [
+      {
+        "type": "Go-Lime-Section",
+        "name": "Go Lime Section",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "sub-left-img",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "sub-left-img-heading",
+            "label": "Text"
+          },
+           {
+            "type": "text",
+            "id": "sub-left-img-text",
+            "label": "Text"
+          },
+           {
+            "type": "text",
+            "id": "sub-left-img-link",
+            "label": "Text"
+          },
+        ],
+      }
+    ],
+    "presets": [
+      {
+        "name": "Go Lime Section",
+      },
+    ],
+  }
+{% endschema %}

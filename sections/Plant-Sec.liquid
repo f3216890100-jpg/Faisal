@@ -1,0 +1,154 @@
+<style>
+    .Plant-sec {
+    padding: 50px 0;
+}
+    .Plant-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 50px;
+    width: 100%;
+}
+.plant-image-main {
+    position: relative;
+    overflow: hidden;
+}
+.plant-content {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+   padding: 0 80px;
+}
+.plant-desktop-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 22px;
+}
+
+    .plant-mobile-img {
+    display: none;
+}
+.plant-log-img {
+    width: 100%;
+    height: 100%;
+    max-width: 30px;
+    object-fit: contain;
+}
+.plant-text
+ {
+    font-size: 28px;
+    font-weight: 600;
+    color: #454545;
+    padding: 20px 0;
+}
+.plant-desp p {
+    font-size: 14px;
+    font-weight: 500;
+    color: #454545;
+        width: 88%;
+}
+
+@media screen and (max-width:767px){
+      .Plant-sec {
+    padding: 30px 0;
+}
+    .Plant-container {
+    padding: 0 20px;
+}
+.plant-desktop-img {
+   display:none;
+}
+
+    .plant-mobile-img {
+    display: block;
+            width: 100%;
+        height: 450px;
+        object-fit: cover;
+        border-radius: 22px;
+
+    } 
+       .plant-desp p {
+        font-size: 12px;
+        width: 70%;
+        text-align: center;
+        margin: 0 auto;
+        font-weight: 600;
+    }
+.plant-content {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    padding: 20px 0;
+    align-items: center;
+}
+}
+</style>
+<section class="Plant-sec">
+    <div class="Plant-container">
+        <div class="plant-image-main">
+          <div class="plant-image">
+            {% if section.settings.plant-desktop-img !=blank %}
+            <img src="{{ section.settings.plant-desktop-img |img_url:'master' }}" alt="" class="plant-desktop-img">
+            {% endif %}
+             {% if section.settings.plant-mobile-img !=blank %}
+            <img src="{{ section.settings.plant-mobile-img |img_url:'master' }}" alt="" class="plant-mobile-img">
+            {% endif %}
+        </div>
+        <div class="plant-content">
+            <div class="plant-logo-image">
+                {% if section.settings.plant-log-img !=blank %}
+                <img src="{{ section.settings.plant-log-img |img_url:'master' }}" alt="" class="plant-log-img">
+                {% endif %}
+            </div>
+            <h3 class="plant-text">
+                {{ section.settings.plant-text }}
+            </h3>
+            <div class="plant-desp">
+                 {{ section.settings.plant-desp }}
+            </div>
+        </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "Plant-Sec",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "plant-desktop-img",
+            "label": "Image"
+        },
+        {
+            "type": "image_picker",
+            "id": "plant-mobile-img",
+            "label": "Image"
+        },
+        {
+            "type": "image_picker",
+            "id": "plant-log-img",
+            "label": "Image"
+        },
+        {
+            "type": "text",
+            "id": "plant-text",
+            "label": "Text"
+        },
+          {
+            "type": "richtext",
+            "id": "plant-desp",
+            "label": "Para"
+        },
+    ],
+    "presets": [
+        {
+            "name": "Plant-Sec",
+        },
+    ],
+}
+{% endschema %}

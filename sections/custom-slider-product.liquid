@@ -1,0 +1,539 @@
+<section class="cst-slider-sec">
+  <div class="cst-slider-container">
+    <div class="cst-slider-flx">
+        {% for block in section.blocks %}
+            {% case block.type %}
+            {% when 'Slider' %}
+      <div class="cst-slider-col">
+        <div class="cst-prd-image-flx">
+          <div class="slider-for">
+            <div class="cst-slider-image">
+                {% if block.settings.sub-cst-slider-img-1 !=blank %}
+              <img src="{{ block.settings.sub-cst-slider-img-1 |img_url:'master' }}" alt="" class="cst-slider-img-1">
+              {% endif %}
+            </div>
+            <div class="cst-slider-image">
+               {% if block.settings.sub-cst-slider-img-2 !=blank %}
+              <img src="{{ block.settings.sub-cst-slider-img-2 |img_url:'master' }}" alt="" class="cst-slider-img-1">
+              {% endif %}
+            </div>
+            <div class="cst-slider-image">
+              {% if block.settings.sub-cst-slider-img-3 !=blank %}
+              <img src="{{ block.settings.sub-cst-slider-img-3 |img_url:'master' }}" alt="" class="cst-slider-img-1">
+              {% endif %}
+            </div>
+            <div class="cst-slider-image">
+              {% if block.settings.sub-cst-slider-img-4 !=blank %}
+              <img src="{{ block.settings.sub-cst-slider-img-4 |img_url:'master' }}" alt="" class="cst-slider-img-1">
+              {% endif %}
+            </div>
+          </div>
+          <div class="slider-nav">
+            <div class="cst-slider-image">
+           {% if block.settings.sub-cst-slider-img-5 !=blank %}
+              <img src="{{ block.settings.sub-cst-slider-img-5 |img_url:'master' }}" alt="" class="cst-slider-img">
+              {% endif %}
+            </div>
+            <div class="cst-slider-image">
+             {% if block.settings.sub-cst-slider-img-6 !=blank %}
+              <img src="{{ block.settings.sub-cst-slider-img-6 |img_url:'master' }}" alt="" class="cst-slider-img">
+              {% endif %}
+            </div>
+            <div class="cst-slider-image">
+              {% if block.settings.sub-cst-slider-img-7 !=blank %}
+              <img src="{{ block.settings.sub-cst-slider-img-7 |img_url:'master' }}" alt="" class="cst-slider-img">
+              {% endif %}
+            </div>
+            <div class="cst-slider-image">
+             {% if block.settings.sub-cst-slider-img-8 !=blank %}
+              <img src="{{ block.settings.sub-cst-slider-img-8 |img_url:'master' }}" alt="" class="cst-slider-img">
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endcase %}
+    {% endfor %}
+    {% for block in section.blocks %}
+            {% case block.type %}
+            {% when 'Content' %}
+      <div class="cst-slider-col-1">
+        <div class="cst-product-title">
+       {{ block.settings.sub-cst-product-title-1 }}
+        </div>
+        <div class="cst-product-star-row">
+          <div class="cst-prod-reviews">
+            <span class="cst-prod-reviews-icon"><i class="fa-solid fa-star"></i></span>
+            <span class="cst-prod-reviews-icon"><i class="fa-solid fa-star"></i></span>
+            <span class="cst-prod-reviews-icon"><i class="fa-solid fa-star"></i></span>
+            <span class="cst-prod-reviews-icon"><i class="fa-solid fa-star"></i></span>
+            <span class="cst-prod-reviews-icon"><i class="fa-solid fa-star"></i></span>
+          </div>
+          <span class="reviews-text">
+            {{ block.settings.sub-reviews-text }}
+          </span>
+        </div>
+        <h5 class="cst-product-heading">
+            {{ block.settings.sub-cst-product-heading }}
+        </h5>
+        <div class="cst-product-go-flx">
+          <div class="cst-product-dot-flx">
+            <div class="cst-product-dot"></div>
+            <div class="cst-product-anker-flx">
+              <span class="cst-product-anker-span">
+                     {{ block.settings.sub-cst-product-anker-span }}
+                <a class="cst-product-anker" href="#">
+                    {{ block.settings.sub-cst-product-anker }}
+                  <i class="fa-solid fa-chevron-right"></i>
+                </a>
+              </span>
+            </div>
+          </div>
+          <div class="cst-product-value">
+            {{ block.settings.sub-cst-product-value }}
+          </div>
+        </div>
+        <div class="cst-product-go-out-flx">
+          <div class="go-out-dot-flx">
+            <div class="cst-product-go-out-dots"></div>
+            <h5 class="cst-product-go-out-text">
+                {{ block.settings.sub-cst-product-go-out-text }}
+            </h5>
+          </div>
+          <div class="go-out-price">
+            {{ block.settings.sub-go-out-price }}
+          </div>
+        </div>
+        <h5 class="cst-product-heading">
+                {{ block.settings.sub-cst-product-heading-1 }}
+        </h5>
+        <div class="cst-product-faq-div">
+          <div class="cst-prod-faq">
+            <div class="cst-prod-quesstion">
+              <span class="cst-prod-faq-span">
+                    {{ block.settings.sub-cst-prod-faq-span }}
+              </span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="cst-prod-faq-answer">
+              <div class="cst-faq">
+                <div class="cst-quesrion">
+                  <span class="cst-prod-faq-span-1">
+                    {{ block.settings.sub-cst-prod-faq-span-1 }}
+                  </span>
+                  <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="cst-answer">
+                  <div class="cst-desp">
+                   {{ block.settings.sub-cst-desp }}
+                  </div>
+                  <div class="cst-desp">
+                     {{ block.settings.sub-cst-desp-2 }}
+                  </div>
+                  <div class="cst-desp">
+                     {{ block.settings.sub-cst-desp-3 }}
+                  </div>
+                  <div class="cst-desp">
+                     {{ block.settings.sub-cst-desp-4 }}
+                  </div>
+                </div>
+              </div>
+              <div class="cst-faq">
+                <div class="cst-quesrion">
+                  <span class="cst-prod-faq-span-1">
+                    {{ block.settings.sub-cst-prod-faq-span-2 }}
+                  </span>
+                  <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="cst-answer">
+                  <div class="cst-desp">
+                    {{ block.settings.sub-cst-desp-5 }}
+                  </div>
+                  <div class="cst-desp">
+                   {{ block.settings.sub-cst-desp-6 }}
+                  </div>
+                  <div class="cst-desp">
+                    {{ block.settings.sub-cst-desp-7 }}
+                  </div>
+                </div>
+              </div>
+              <div class="cst-faq">
+                <div class="cst-quesrion">
+                  <span class="cst-prod-faq-span-1">
+                    {{ block.settings.sub-cst-prod-faq-span-3 }}
+                  </span>
+                  <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="cst-answer">
+                  <div class="cst-desp">
+               {{ block.settings.sub-cst-desp-8 }}
+                  </div>
+                  <div class="cst-desp">
+                    {{ block.settings.sub-cst-desp-9 }}
+                  </div>
+                  <div class="cst-desp">
+                  {{ block.settings.sub-cst-desp-10 }}
+                  </div>
+                </div>
+              </div>
+              <div class="cst-faq">
+                <div class="cst-quesrion">
+                  <span class="cst-prod-faq-span-1">
+                    {{ block.settings.sub-cst-prod-faq-span-4 }}
+                  </span>
+                  <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="cst-answer">
+                  <div class="cst-desp">
+               {{ block.settings.sub-cst-desp-11 }}
+                  </div>
+                  <div class="cst-desp">
+                {{ block.settings.sub-cst-desp-12 }}
+                  </div>
+                  <div class="cst-desp">
+                 {{ block.settings.sub-cst-desp-13 }}
+                  </div>
+                </div>
+              </div>
+              <div class="cst-faq">
+                <div class="cst-quesrion">
+                  <span class="cst-prod-faq-span-1">
+                    {{ block.settings.sub-cst-prod-faq-span-5 }}
+                  </span>
+                  <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="cst-answer">
+                  <div class="cst-desp">
+                    {{ block.settings.sub-cst-desp-14 }}
+                  </div>
+                  <div class="cst-desp">
+              {{ block.settings.sub-cst-desp-15 }}
+                  </div>
+                  <div class="cst-desp">
+                   {{ block.settings.sub-cst-desp-16 }}
+                  </div>
+                </div>
+              </div>
+              <div class="cst-faq">
+                <div class="cst-quesrion">
+                  <span class="cst-prod-faq-span-1">
+                    {{ block.settings.sub-cst-prod-faq-span-6 }}
+                  </span>
+                  <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="cst-answer">
+                  <div class="cst-desp">
+                  {{ block.settings.sub-cst-desp-17 }}
+                  </div>
+                </div>
+              </div>
+              <div class="cst-faq">
+                <div class="cst-quesrion">
+                  <span class="cst-prod-faq-span-1">
+                    {{ block.settings.sub-cst-prod-faq-span-7 }}
+                  </span>
+                  <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="cst-answer">
+                  <div class="cst-desp">
+                 {{ block.settings.sub-cst-desp-18 }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cst-ankr-div">
+          <a href="#" class="cst-btn">
+            {{ block.settings.sub-cst-btn }}
+          </a>
+        </div>
+        <div class="cst-bt-div">
+          <a href="#" class="cst-bt">
+              {{ block.settings.sub-cst-bt }}
+          </a>
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+        <div class="cst-content">
+          <h4 class="cst-heading">
+             {{ block.settings.sub-cst-heading }}
+          </h4>
+          <div class="cst-div">
+             {{ block.settings.sub-cst-div }}
+          </div>
+        </div>
+      </div>
+      {% endcase %}
+    {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+{% schema %}
+{
+    "name": "Custom Slider Product",
+    "settings": [],
+    "blocks": [
+        {
+            "type": "Slider",
+            "name": "Slider",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "sub-cst-slider-img-1",
+                    "label": "Image"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "sub-cst-slider-img-2",
+                    "label": "Image"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "sub-cst-slider-img-3",
+                    "label": "Image"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "sub-cst-slider-img-4",
+                    "label": "Image"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "sub-cst-slider-img-5",
+                    "label": "Image"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "sub-cst-slider-img-6",
+                    "label": "Image"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "sub-cst-slider-img-7",
+                    "label": "Image"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "sub-cst-slider-img-8",
+                    "label": "Image"
+                },
+            ],
+        },
+           {
+            "type": "Content",
+            "name": "Content",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "sub-cst-product-title-1",
+                    "label": "Text"
+                },
+                    {
+                    "type": "text",
+                    "id": "sub-reviews-text",
+                    "label": "Text"
+                },
+                    {
+                    "type": "text",
+                    "id": "sub-cst-product-heading",
+                    "label": "Text"
+                },
+                    {
+                    "type": "text",
+                    "id": "sub-cst-product-anker-span",
+                    "label": "Text"
+                },
+                 {
+                    "type": "text",
+                    "id": "sub-cst-product-anker",
+                    "label": "Text"
+                },
+                 {
+                    "type": "text",
+                    "id": "sub-cst-product-value",
+                    "label": "Text"
+                },
+             
+                   {
+                    "type": "text",
+                    "id": "sub-cst-product-go-out-text",
+                    "label": "Text"
+                },
+                
+                   {
+                    "type": "text",
+                    "id": "sub-go-out-price",
+                    "label": "Text"
+                },
+                
+                   {
+                    "type": "text",
+                    "id": "sub-cst-product-heading-1",
+                    "label": "Text"
+                },
+                
+                   {
+                    "type": "text",
+                    "id": "sub-cst-prod-faq-span",
+                    "label": "Text"
+                },
+                   {
+                    "type": "text",
+                    "id": "sub-cst-prod-faq-span-1",
+                    "label": "Text"
+                },
+                   {
+                    "type": "richtext",
+                    "id": "sub-cst-desp",
+                    "label": "Para"
+                },
+                   {
+                    "type": "richtext",
+                    "id": "sub-cst-desp-2",
+                    "label": "Para"
+                },
+                   {
+                    "type": "richtext",
+                    "id": "sub-cst-desp-3",
+                    "label": "Para"
+                },
+                   {
+                    "type": "richtext",
+                    "id": "sub-cst-desp-4",
+                    "label": "Para"
+                },
+                
+                    {
+                    "type": "text",
+                    "id": "sub-cst-prod-faq-span-2",
+                    "label": "Text"
+                },
+                 {
+                    "type": "richtext",
+                    "id": "sub-cst-desp-5",
+                    "label": "Para"
+                },
+                 {
+                    "type": "richtext",
+                    "id": "sub-cst-desp-6",
+                    "label": "Para"
+                },
+                 {
+                    "type": "richtext",
+                    "id": "sub-cst-desp-7",
+                    "label": "Para"
+                },
+                      {
+                    "type": "text",
+                    "id": "sub-cst-prod-faq-span-3",
+                    "label": "Text"
+                },
+                 {
+                    "type": "richtext",
+                    "id": "sub-cst-desp-8",
+                    "label": "Para"
+                },
+                 {
+                    "type": "richtext",
+                    "id": "sub-cst-desp-9",
+                    "label": "Para"
+                },
+                 {
+                    "type": "richtext",
+                    "id": "sub-cst-desp-10",
+                    "label": "Para"
+                },
+                {
+                    "type": "text",
+                    "id": "sub-cst-prod-faq-span-4",
+                    "label": "Text"
+                },
+                 {
+                    "type": "richtext",
+                    "id": "sub-cst-desp-11",
+                    "label": "Para"
+                },
+                 {
+                    "type": "richtext",
+                    "id": "sub-cst-desp-12",
+                    "label": "Para"
+                },
+                 {
+                    "type": "richtext",
+                    "id": "sub-cst-desp-13",
+                    "label": "Para"
+                },
+                 {
+                    "type": "text",
+                    "id": "sub-cst-prod-faq-span-5",
+                    "label": "Text"
+                },
+                 {
+                    "type": "richtext",
+                    "id": "sub-cst-desp-14",
+                    "label": "Para"
+                },
+                 {
+                    "type": "richtext",
+                    "id": "sub-cst-desp-15",
+                    "label": "Para"
+                },
+                 {
+                    "type": "richtext",
+                    "id": "sub-cst-desp-16",
+                    "label": "Para"
+                },
+                 {
+                    "type": "text",
+                    "id": "sub-cst-prod-faq-span-6",
+                    "label": "Text"
+                },
+                 {
+                    "type": "richtext",
+                    "id": "sub-cst-desp-17",
+                    "label": "Para"
+                },
+               
+                 {
+                    "type": "text",
+                    "id": "sub-cst-prod-faq-span-7",
+                    "label": "Text"
+                },
+                 {
+                    "type": "richtext",
+                    "id": "sub-cst-desp-18",
+                    "label": "Para"
+                },
+                  {
+                    "type": "text",
+                    "id": "sub-cst-btn",
+                    "label": "Text"
+                },
+                 {
+                    "type": "text",
+                    "id": "sub-cst-bt",
+                    "label": "Text"
+                },
+                 {
+                    "type": "text",
+                    "id": "sub-cst-heading",
+                    "label": "Text"
+                },
+                 {
+                    "type": "text",
+                    "id": "sub-cst-div",
+                    "label": "Text"
+                },
+              
+            ]
+           }
+    ],
+    "presets": [
+        {
+            "name": "Custom Slider Product",
+        },
+    ],
+}
+{% endschema %}

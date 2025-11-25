@@ -1,0 +1,218 @@
+<style>
+  .choice-sec{
+    padding:50px 0;
+  }
+  .choice-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 50px;
+    width: 100%;
+}
+.choice-flx {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+  .choice-first-class {
+    width: 38%;
+    background: #f9f7f2;
+    padding: 32px 32px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+        border-radius: 20px;
+}
+.choice-logo-image {
+    padding-bottom: 30px;
+}
+.choice-logo-img {
+    width: 100%;
+    height: 100%;
+    max-width: 50px;
+       object-fit: contain;
+}
+.choice-text {
+    font-size: 20px;
+    font-weight: 600;
+    color: #454545;
+    padding: 10px 0;
+}
+.choice-desp p {
+    font-size: 16px;
+    font-weight: 500;
+    color: #454545;
+    line-height: 25px;
+}
+.choice-image-div {
+    overflow: hidden;
+}
+.choice-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+.choice-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 15px;
+}
+.choice-col {
+    width: 61%;
+}
+.choice-box {
+    width: 49%;
+    padding:30px;
+    border-radius: 20px;
+       min-height: 320px;
+}
+.choice-box.choice-box-second_choice_c7kwxa {
+    background: #e4f0e1;
+}
+.choice-box.choice-box-second_choice_qhc6NJ {
+    background: #f1fbcc;
+}
+
+.choice-box.choice-box-second_choice_bLCMHN {
+    background: #dbe7e7;
+}
+.choice-box.choice-box-second_choice_rLy4ep {
+    background: #eeeeee;
+}
+
+@media screen and (max-width:767px){
+  .choice-sec{
+    padding:30px 0;
+  }
+  .choice-container {
+    padding: 0 20px;
+}
+.choice-flx {
+    display: flex;
+    row-gap: 15px;
+}
+.choice-col {
+    width: 100%;
+}
+.choice-box {
+    width: 100%;
+       min-height: 220px;
+}
+  .choice-first-class {
+    width: 100%;
+    background: #f9f7f2;
+    padding: 32px;
+}
+.choice-image-div{
+  display:none;
+}
+}
+</style>
+<section class="choice-sec">
+  <div class="choice-container">
+    <div class="choice-flx">
+      <div class="choice-first-class">
+        <div class="choice-content-div">
+          <div class="choice-logo-image">
+            {% if section.settings['choice-logo-img-2'] != blank %}
+              <img src="{{ section.settings.choice-logo-img-2 |img_url:'master' }}" alt="" class="choice-logo-img">
+            {% endif %}
+          </div>
+          <h4 class="choice-text">
+            {{ section.settings['choice-text-4'] }}
+          </h4>
+          <div class="choice-desp">
+            {{ section.settings['choice-desp-4'] }}
+          </div>
+        </div>
+        <div class="choice-image-div">
+          {% if section.settings['choice-img-3'] != blank %}
+            <img src="{{ section.settings.choice-img-3 |img_url:'master' }}" alt="" class="choice-img">
+          {% endif %}
+        </div>
+      </div>
+      <div class="choice-col">
+        <div class="choice-row">
+          {% for block in section.blocks %}
+            <div class="choice-box choice-box-{{ block.id }}">
+              <div class="choice-content-div">
+                <div class="choice-logo-image">
+                  {% if block.settings['choice-logo-img-4'] != blank %}
+                    <img
+                      src="{{ block.settings.choice-logo-img-4 |img_url:'master' }}"
+                      alt=""
+                      class="choice-logo-img"
+                    >
+                  {% endif %}
+                </div>
+                <h4 class="choice-text">
+                  {{ block.settings['choice-text-5'] }}
+                </h4>
+                <div class="choice-desp">
+                  {{ block.settings['choice-desp-5'] }}
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Second Choice",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "choice-logo-img-2",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "choice-text-4",
+      "label": "Text"
+    },
+    {
+      "type": "richtext",
+      "id": "choice-desp-4",
+      "label": "Para"
+    },
+    {
+      "type": "image_picker",
+      "id": "choice-img-3",
+      "label": "Image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "Second-Choice",
+      "name": "Second Choice",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "choice-logo-img-4",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "choice-text-5",
+          "label": "Text"
+        },
+        {
+          "type": "richtext",
+          "id": "choice-desp-5",
+          "label": "Para"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Second Choice",
+    }
+  ]
+}
+{% endschema %}

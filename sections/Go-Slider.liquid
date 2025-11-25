@@ -1,0 +1,232 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"/>
+<style>
+  *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.cst-slider-sec {
+    padding: 40px 0;
+}
+.cst-slider-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.cst-slider-box {
+    background: #f9f7f2;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+       min-height: 435px;
+    border-radius: 12px;
+}
+.cst-slider-image {
+    padding-bottom: 15px;
+}
+.cst-slider-img {
+    max-width: 130px;
+    width: 100%;
+    height: 100%;
+}
+.cst-slider-des {
+    font-size: 16px;
+    font-family: "Avenir-Next", sans-serif;
+    font-weight: 500;
+    color: #000000;
+    line-height: 26px;
+        width: 77%;
+}
+.cst-slider-logo-flx {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.cst-slider-logo-img {
+    width: 100%;
+    height: 100%;
+    max-width: 70px;
+}
+.cst-slider-des-div {
+    font-size: 20px;
+    font-family: "Avenir-Next", sans-serif;
+    color: #121212bf;
+    font-weight: 400;
+}
+.cst-slider-desp-div {
+    font-size: 20px;
+    font-family: "Avenir-Next", sans-serif;
+    color: #121212bf;
+    font-weight: 400;
+}
+
+
+.owl-prev {
+    position: absolute !important;
+    top: 50%;
+    left: -5%;
+    background: #f9f7f2 !important;
+    width: 40px;
+    height: 40px;
+    border-radius: 50px !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+.owl-next {
+    position: absolute !important;
+    top: 50%;
+    right: -5%;
+    background: #f9f7f2 !important;
+    width: 40px;
+    height: 40px;
+    border-radius: 50px !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+.owl-prev span {
+    font-size: 25px;
+    color: #000;
+}
+.owl-next span {
+    font-size: 25px;
+    color: #000;
+}
+@media screen and (max-width:767px){
+   .cst-slider-sec {
+    padding: 20px 0;
+}
+    .cst-slider-container {
+    padding: 0 15px;
+}
+    .cst-slider-des {
+    font-size: 17px;
+    width: 100%;
+    line-height: 22px;
+}
+.cst-slider-box {
+    min-height: 420px;
+}
+.cst-slider-des-div {
+    font-size: 16px;
+}
+.cst-slider-desp-div {
+        font-size: 16px;
+        line-height: 22px;
+    }
+}
+</style>
+    <section class="cst-slider-sec">
+        <div class="cst-slider-container">
+            <div class="owl-carousel owl-theme">
+              {% for block in section.blocks %}
+            <div class="cst-slider-box">
+                <div class="cst-slider-col">
+                <div class="cst-slider-image">
+                  {% if block.settings.sub-cst-slider-img !=blank%}
+                    <img src="{{ block.settings.sub-cst-slider-img |img_url:'master' }}" alt="" class="cst-slider-img">
+                  {% endif %}
+                </div>
+                <div class="cst-slider-desp">
+                    <p class="cst-slider-des">
+                      {{ block.settings.sub-cst-slider-des }}
+                    </p>
+                </div>
+                </div>
+                <div class="cst-slider-logo-div">
+                    <div class="cst-slider-logo-flx">
+                        <div class="cst-slider-logo-image">
+                          {% if block.settings.sub-cst-slider-logo-img !=blank%}
+                            <img src="{{ block.settings.sub-cst-slider-logo-img |img_url:'master' }}" alt="" class="cst-slider-logo-img">
+                          {% endif %}
+                        </div>
+                        <div class="cst-slider-text-div">
+                            <p class="cst-slider-des-div">
+                              {{ block.settings.sub-cst-slider-des-div }}
+                            </p>
+                            <p class="cst-slider-desp-div">
+                              {{ block.settings.sub-cst-slider-desp-div }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         {% endfor %}
+            </div>
+        </div>
+    </section>
+           <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script>
+        $('.owl-carousel').owlCarousel({
+    loop:true,
+    margin:10,
+    nav:true,
+    dots:false,
+    autoplay:true,
+autoplayTimeout:2000,
+    responsive:{
+        0:{
+            items:1,
+             nav:false,
+              dots:true,
+        },
+        600:{
+            items:2,
+            nav:false,
+             dots:true,
+        },
+        1000:{
+            items:2
+        }
+    }
+})
+    </script>
+{% schema %}
+  {
+    "name": "Go Slider",
+    "settings": [],
+    "blocks": [
+      {
+        "type": "Go-Slider",
+        "name": "Go Slider",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "sub-cst-slider-img",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "sub-cst-slider-des",
+            "label": "Text"
+          },
+          {
+            "type": "image_picker",
+            "id": "sub-cst-slider-logo-img",
+            "label": "Image"
+          },
+           {
+            "type": "text",
+            "id": "sub-cst-slider-des-div",
+            "label": "Text"
+          },
+           {
+            "type": "text",
+            "id": "sub-cst-slider-desp-div",
+            "label": "Text"
+          },
+        ],
+      },
+    ],
+    "presets": [
+      {
+        "name": "Go Slider",
+      },
+    ],
+  }
+{% endschema %}

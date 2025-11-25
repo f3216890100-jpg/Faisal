@@ -1,0 +1,227 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
+<style>
+  *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.cst-coll-sec {
+    background: #e0d5bc40;
+    padding-top: 60px;
+}
+.cst-coll-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0px 50px;
+    width: 100%;
+}
+.cst-coll-flx {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+        row-gap: 20px;
+}
+.cst-coll-col {
+    width: 23.5%;
+        background: #fff;
+    padding: 20px 16px;
+    border-radius: 20px;
+    transition: all .3s ease-in-out;
+}
+.cst-coll-col:hover{
+border: 1px solid #bf9d6d;
+}
+.cst-coll-image {
+    text-align: center;
+    overflow: hidden;
+    transition: all .3s ease-in-out;
+}
+.cst-coll-col:hover .cst-coll-img{
+transform: scale(1.1);
+}
+.cst-coll-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+        max-width: 120px;
+        transition: all .3s ease-in-out;
+}
+.cst-coll-text {
+    padding-bottom: 40px;
+}
+.cst-coll-heading {
+    font-size: 15px;
+    font-family: "Avenir-Next", sans-serif;
+    color: #003733;
+    font-weight: 600;
+}
+.cst-coll-span {
+    font-size: 11px;
+    font-family: "Avenir-Next", sans-serif;
+    color: #003733;
+    font-weight: 400;
+}
+.cst-coll-icon-flx {
+    display: flex;
+    justify-content: end;
+    padding-top: 50px;
+}
+.cst-coll-icon-div {
+    border: 1px solid #bf9d6d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+          padding: 10px;
+    width: 50%;
+    border-radius: 50px;
+    transition: all .3s ease-in-out;
+}
+.cst-coll-btn {
+    font-size: 13px;
+    font-family: "Avenir-Next", sans-serif;
+    color: #bf9d6d;
+    font-weight: 500;
+    margin-left: 7px;
+        transition: all .3s ease-in-out;
+}
+.cst-coll-col:hover .cst-coll-btn {
+    color: #fff;
+}
+i.fa-solid.fa-lock {
+    font-size: 15px;
+    color: #bf9d6d;
+        transition: all .3s ease-in-out;
+}
+.cst-coll-col:hover .cst-coll-icon-div {
+    background-color: #003733;
+    color: #fff;
+} 
+.cst-coll-col:hover i.fa-solid.fa-lock {
+    color: #fff;
+}
+
+
+@media screen and (max-width:767px){
+.cst-coll-col {
+    width: 49%;
+}
+.cst-coll-sec {
+    padding-top: 30px;
+}
+.cst-coll-flx {
+    display: flex;
+    flex-wrap: wrap;
+}
+.cst-coll-container {
+    padding: 0 60px;
+}
+.cst-coll-icon-div {
+    width: 60%;
+    padding: 10px;
+}
+}
+@media screen and (max-width:480px){
+.cst-coll-col {
+    width: 49%;
+}
+.cst-coll-sec {
+    padding-top: 30px;
+}
+.cst-coll-flx {
+    display: flex;
+    flex-wrap: wrap;
+}
+     .cst-coll-container {
+                padding: 0px 15px;
+    }
+.cst-coll-icon-div {
+    width: 40%;
+    padding: 10px;
+}
+.cst-coll-icon-flx {
+    padding-top: 10px;
+}
+.cst-coll-btn {
+    display: none;
+}
+.cst-coll-span {
+    font-size: 9px;
+}
+.cst-coll-heading {
+    font-size: 9.5px;
+}
+
+}
+
+</style>
+<section class="cst-coll-sec">
+        <div class="cst-coll-container">
+            <div class="cst-coll-flx">
+              {% for block in section.blocks %}
+                <div class="cst-coll-col">
+                    <div class="cst-coll-text">
+                        <h3 class="cst-coll-heading">
+                            {{ block.settings.sub-cst-coll-heading }}
+                        </h3>
+                        <span class="cst-coll-span">
+                          {{ block.settings.sub-cst-coll-span }}
+                        </span>
+                    </div>
+                    <div class="cst-coll-image">
+                      {% if block.settings.sub-cst-coll-img !=blank%}
+                        <img src="{{ block.settings.sub-cst-coll-img |img_url:'master' }}" alt="" class="cst-coll-img">
+                      {% endif %}
+                    </div>
+                    <div class="cst-coll-icon-flx">
+                    <div class="cst-coll-icon-div">
+                        <i class="fa-solid fa-lock"></i>
+                        <span class="cst-coll-btn">
+                          {{ block.settings.sub-cst-coll-btn }}
+                        </span>
+                        </div>
+                    </div>
+                </div>
+              {% endfor %}
+            </div>
+        </div>
+    </section>
+{% schema %}
+  {
+    "name": "Collection",
+    "settings": [],
+    "blocks": [
+      {
+        "type": "collection",
+        "name": "Collection",
+        "settings": [
+          {
+            "type": "text",
+            "id": "sub-cst-coll-heading",
+            "label": "Text"
+          },
+            {
+            "type": "text",
+            "id": "sub-cst-coll-span",
+            "label": "Text"
+          },
+          {
+            "type": "image_picker",
+            "id": "sub-cst-coll-img",
+            "label": "Image"
+          },
+           {
+            "type": "text",
+            "id": "sub-cst-coll-btn",
+            "label": "Text"
+          },
+        ],
+      },
+    ],
+    "presets": [
+      {
+        "name": "Collection",
+      },
+    ],
+  }
+{% endschema %}

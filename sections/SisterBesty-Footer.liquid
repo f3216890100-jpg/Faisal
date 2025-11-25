@@ -1,0 +1,404 @@
+<style>
+  .cst-coffe-footer {
+       padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.cst-coffe-fotr-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 60px;
+}
+.cst-coffe-flx {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.cst-coffe-logo {
+    width: 19%;
+}
+.cst-coffe-logo-img {
+    width: 100%;
+    max-width: 115px;
+}
+.cst-coffe-fotr-row {
+    width: 37%;
+    display: flex;
+}
+.cst-coffe-fotr-row .cst-coffe-colume{
+    width: 50%;
+}
+.cst-coffe-text {
+    font-size: 18px;
+    font-family: "Changa One", sans-serif;
+    color: #0a264a;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+      font-weight: 700;
+
+}
+.cst-coffe-list {
+    list-style: none;
+      margin-bottom: 8px;
+}
+.cst-coffe-fotr-link {
+    text-decoration: none;
+    color: #444444;
+    font-family: "Open Sans", sans-serif;
+    font-size: 17px;
+    transition: all 0.3s ease-in-out;
+}
+.cst-coffe-fotr-link:hover{
+    color: #d86145 ;
+}
+.cst-coffe-footer-social-link {
+    width: 19%;
+}
+.cst-social-img {
+    width: 100%;
+    max-width: 20px;
+}   
+.cst-social-list {
+    list-style: none;
+    background: #75b9b7;
+    width: 30px;
+    height: 30px;
+       margin-bottom: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   border-radius: 3px;
+     transition: all 0.3s ease-in-out;
+}
+.cst-social-list:hover{
+ background-color: #0a264a;
+}
+.cst-footer-nav-column:last-child {
+    width: 25%;
+}
+.cst-tick-image {
+    width: 100%;
+    max-width: 30px;
+}
+.cst-upper-trust-card {
+    padding: 20px;
+    border: 1px solid #75b9b7;
+    box-shadow: 0 0 0 4px #efede6, 0 0 0 6px #75b9b7;
+        /* max-width: 290px; */
+        border-radius: 5px;
+}
+.cst-upper-trust-image {
+    text-align: center;
+}
+.csttrust-card-grid {
+    text-align: center;
+    margin-bottom: 15px;
+}
+.account-img {
+    width: 100%;
+    max-width: 50px;
+    filter: saturate(0);
+        margin-left: 10px;
+        transition: all 0.3s ease-in-out;
+}
+ .account-img:hover {
+    filter: saturate(1);
+}
+
+.trust-card-title {
+    font-weight: 400;
+    font-size: 16px;
+    font-family: "Changa One", sans-serif;
+    color: #75b9b7;
+    text-align: center;
+    margin-top: 6px;
+    margin-bottom: 25px;
+}
+.text-block-7 {
+    font-size: 12px;
+    font-family: "Open Sans", sans-serif;
+    color: #0a264a;
+    text-align: center;
+        letter-spacing: 1px;
+        line-height: 20px;
+            width: 95%;
+      margin: 40px auto 0;
+}
+.text-link {
+    color: #d86145;
+    text-decoration: none;
+       
+}
+  @media (max-width: 767px) {
+    .cst-coffe-footer{
+    padding: 0 0 20px;
+}
+.cst-coffe-fotr-container {
+            padding: 0 25px;
+
+}
+.cst-coffe-flx {
+    flex-direction: column;
+    display: flex;
+}
+.cst-coffe-logo-img {
+    max-width: 100px;
+    padding: 5px;
+            margin-top: -20px;
+        border-radius: 50%;
+        background: #fff;
+        display: inline-block;
+}
+.cst-coffe-logo {
+    width: 100%;
+}
+.cst-coffe-fotr-row {
+    width: 100%;
+}
+.cst-coffe-fotr-row {
+    width: 100%;
+}
+.cst-coffe-text {
+    padding-top: 20px;
+}
+.cst-coffe-fotr-link {
+    font-size: 14px;
+}
+.cst-coffe-footer-social-link {
+    width: 100%;
+}
+.sct-social-menu {
+    display: flex;
+            gap: 10px;
+}
+.cst-footer-nav-column:last-child {
+    width: 100%;
+            margin-top: 40px;
+}
+.cst-upper-trust-card {
+    max-width: 100%;
+}
+.text-block-7 {
+    line-height: 14px;
+}
+}
+
+  }
+</style>
+ <footer class="cst-coffe-footer">
+        <div class="cst-coffe-fotr-container">
+            <div class="cst-coffe-flx">
+              {% for block in section.blocks %}
+                {% case block.type %}
+                  {% when 'image' %}
+                <div class="cst-coffe-logo">
+                  {% if block.settings.sub-cst-coffe-logo-img !=blank%}
+                    <img src="{{ block.settings.sub-cst-coffe-logo-img |img_url:'master' }}" alt="" class="cst-coffe-logo-img">
+                    {% endif %}
+                </div>
+                  {% endcase %}
+              {% endfor %}
+                <div class="cst-coffe-fotr-row">
+                  {% for block in section.blocks %}
+                    {% case block.type %}
+                      {% when 'link' %}
+                    <div class="cst-coffe-colume">
+                        <h2 class="cst-coffe-text">
+                          {{ block.settings.sub-cst-coffe-text }}
+                        </h2>
+                        <ul class="cst-coffe-menu">
+                          {% for link in linklists[block.settings.sub-cst-coffe-menu].links %}
+                            <li class="cst-coffe-list">
+                                <a href="{{ link.url }}" class="cst-coffe-fotr-link">
+                                  {{ link.title }}
+                                </a>
+                            </li>
+                           {% endfor %}
+                        </ul>
+                    </div>
+                  {% endcase %}
+                  {% endfor %}
+                    
+                </div>
+              {% for block in section.blocks %}
+                {% case block.type %}
+                  {% when 'social-link' %}
+                <div class="cst-coffe-footer-social-link">
+                     <h2 class="cst-coffe-text">
+                       {{ block.settings.sub-cst-coffe-text }}
+                     </h2>
+                    <ul class="sct-social-menu">
+                      {% if block.settings.sub-cst-social-img !=blank%}
+                        <li class="cst-social-list">
+                            <img src="{{ block.settings.sub-cst-social-img |img_url:'master' }}" alt="" class="cst-social-img">
+                        </li>
+                      {% endif %}
+                {% if block.settings.sub-cst-social-img-1 !=blank%}
+                        <li class="cst-social-list">
+                            <img src="{{ block.settings.sub-cst-social-img-1 |img_url:'master' }}" alt="" class="cst-social-img">
+                        </li>
+                      {% endif %}
+                {% if block.settings.sub-cst-social-img-2 !=blank%}
+                        <li class="cst-social-list">
+                            <img src="{{ block.settings.sub-cst-social-img-2 |img_url:'master' }}" alt="" class="cst-social-img">
+                        </li>
+                      {% endif %}
+                 {% if block.settings.sub-cst-social-img-3 !=blank%}
+                        <li class="cst-social-list">
+                            <img src="{{ block.settings.sub-cst-social-img-3 |img_url:'master' }}" alt="" class="cst-social-img">
+                        </li>
+                      {% endif %}
+                    </ul>
+                </div>
+              {% endcase %}
+              {% endfor %}
+                <div class="cst-footer-nav-column">
+                  {% for block in section.blocks %}
+                    {% case block.type %}
+                      {% when 'box-link' %}
+         <div class="cst-upper-trust-card">
+           <div class="cst-upper-trust-image">
+             {% if block.settings.sub-cst-tick-image !=blank%}
+             <img src="{{ block.settings.sub-cst-tick-image |img_url:'master' }}" class="cst-tick-image">
+             {% endif %}
+           </div>
+           <div class="trust-card-title">
+             {{ block.settings.sub-trust-card-title }}
+           </div>
+           <div class="csttrust-card-grid">
+             {% if block.settings.sub-account-img !=blank%}
+             <img src="{{ block.settings.sub-account-img |img_url:'master' }}" class="account-img">
+               {% endif %}
+                      {% if block.settings.sub-account-img-1 !=blank%}
+             <img src="{{ block.settings.sub-account-img-1 |img_url:'master' }}" class="account-img">
+                        {% endif %}
+                      {% if block.settings.sub-account-img-2 !=blank%}
+             <img src="{{ block.settings.sub-account-img-2 |img_url:'master' }}" class="account-img">
+             {% endif %}
+           </div>
+           <div class="text-block-7">
+             {{ block.settings.sub-text-block-7 }}
+             <a href="#" class="text-link">
+               {{ block.settings.sub-text-link }}
+             </a>
+            ‍</div>
+         </div>
+                  {% endcase %}
+                  {% endfor %}
+        </div>
+            </div>
+        </div>
+    </footer>
+{% schema %}
+  {
+    "name": "Sister Besty Footer",
+    "settings": [],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "sub-cst-coffe-logo-img",
+            "label": "Image"
+          },
+        ],
+      },
+      {
+        "type": "link",
+        "name": "Link",
+        "settings": [
+          {
+            "type": "text",
+            "id": "sub-cst-coffe-text",
+            "label": "Text"
+          },
+          {
+            "type": "link_list",
+            "id": "sub-cst-coffe-menu",
+            "label": "Link"
+          },
+        ],
+      },
+      {
+        "type": "social-link",
+        "name": "Social Link",
+        "settings": [
+          {
+            "type": "text",
+            "id": "sub-cst-coffe-text",
+            "label": "Text"
+          },
+          {
+            "type": "image_picker",
+            "id": "sub-cst-social-img",
+            "label": "Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "sub-cst-social-img-1",
+            "label": "Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "sub-cst-social-img-2",
+            "label": "Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "sub-cst-social-img-3",
+            "label": "Image"
+          },
+        ],
+      },
+      {
+        "type": "box-link",
+        "name": "Box Link",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "sub-cst-tick-image",
+            "label": "Imgae"
+          },
+          {
+            "type": "text",
+            "id": "sub-trust-card-title",
+            "label": "Text"
+          },
+          {
+             "type": "image_picker",
+            "id": "sub-account-img",
+            "label": "Imgae"
+          },
+                    {
+             "type": "image_picker",
+            "id": "sub-account-img-1",
+            "label": "Imgae"
+          },
+                    {
+             "type": "image_picker",
+            "id": "sub-account-img-2",
+            "label": "Imgae"
+          },
+           {
+            "type": "text",
+            "id": "sub-text-block-7",
+            "label": "Text"
+          },
+           {
+            "type": "text",
+            "id": "sub-text-link",
+            "label": "Text"
+          },
+        ],
+      },
+    ],
+    "presets": [
+      {
+        "name": "Sister Besty Footer",
+      },
+    ],
+  }
+{% endschema %}

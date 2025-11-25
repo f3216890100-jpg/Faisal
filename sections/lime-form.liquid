@@ -1,0 +1,225 @@
+<style>
+
+.cust-form-sec {
+    padding: 50px 0;
+}
+.cust-form-container {
+    margin: 0 auto;
+       max-width: 1034px;
+    padding: 0 50px;
+    width: 100%;
+}
+.cust-form-flx {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.cust-form-first-col {
+    width: 41%;
+}
+.cust-form-text {
+    font-size: 40px;
+    font-weight: 600;
+    color: #454545;
+}
+.cust-form-desp p {
+    font-size: 14px;
+    color: #454545;
+    font-weight: 500;
+    line-height: 20px;
+    padding-top: 10px;
+    width: 100%;
+}
+.cust-form-col {
+    width: 49%;
+}
+.cust-form-name-flx {
+    display: flex;
+    justify-content: space-between;
+}
+.cust-form-first-name {
+    width: 100%;
+}
+.cust-form-last-name {
+    width: 100%;
+}
+.cust-form-input {
+    width: 100%;
+    padding: 16px;
+    border-radius: 16px;
+    border: 1px solid #d9d9d9;
+    margin-bottom: 16px;
+        outline: none;
+            font-size: 16px;
+}
+.cust-form-select-input{
+     width: 100%;
+    padding: 16px;
+    border-radius: 16px;
+    border: 1px solid #d9d9d9;
+    margin-bottom: 16px;
+    font-size: 16px;
+        color: #949494;
+        outline: none;
+
+}
+.cust-form-number-flx {
+    display: flex;
+    justify-content: space-between;
+}
+.cust-form-code {
+    width: 48%;
+}
+.cust-form-phone {
+    width: 48%;
+}
+.cust-form-des p {
+    font-size: 14px;
+    font-weight: 500;
+    color: #454545;
+    line-height: 24px;
+     font-family: Assistant, sans-serif;
+         width: 100%;
+}
+.cust-form-btn {
+    background: #085a54;
+    color: #fff;
+    font-size: 16px;
+    padding: 12px 40px;
+      font-family: Assistant, sans-serif;
+    border: none;
+    border-radius: 50px;
+        margin-top: 20px;
+}
+
+@media screen and (max-width:767px){
+   .cust-form-sec {
+    padding: 30px 0;
+}
+    .cust-form-container {
+    padding: 0 20px;
+}
+    .cust-form-flx {
+    flex-direction: column;
+    display: flex;
+            row-gap: 20px;
+}
+.cust-form-text {
+    font-size: 27px;
+    text-align: center;
+}
+.cust-form-desp p {
+    width: 100%;
+    text-align: center;
+}
+.cust-form-first-col {
+    width: 100%;
+}
+.cust-form-col {
+    width: 100%;
+}
+.cust-form-number-flx {
+    display: flex;
+    flex-direction: column;
+}
+.cust-form-code {
+    width: 100%;
+}
+.cust-form-phone {
+    width: 100%;
+}
+.cust-form-des p {
+    font-size: 12px;
+    text-align: center;
+    width: 100%;
+}
+.cust-form-icon{
+    text-align: center;
+}
+}
+
+
+
+</style>
+<section class="cust-form-sec">
+  <div class="cust-form-container">
+    <div class="cust-form-flx">
+      <div class="cust-form-first-col">
+        <h2 class="cust-form-text">
+          {{ section.settings.lime-text }}
+        </h2>
+        <div class="cust-form-desp">
+          {{ section.settings.lime-desp }}
+        </div>
+      </div>
+      <div class="cust-form-col">
+        <form action="" class="cust-form">
+          <div class="cust-form-first-name">
+            <input type="text" placeholder="First Name*" name="content[first name]" class="cust-form-input">
+          </div>
+          <div class="cust-form-last-name">
+            <input type="text" placeholder="Last Name*" name="content[last name]" class="cust-form-input">
+          </div>
+          <div class="cust-form-email">
+            <input type="text" placeholder="Email Address*" name="content[email]" class="cust-form-input">
+          </div>
+          <div class="cust-form-number-flx">
+            <div class="cust-form-phone">
+              <input type="text" placeholder="Phone Number*" name="content[Phone Number]" class="cust-form-input">
+            </div>
+            <div class="cust-form-code">
+              <input type="text" placeholder="Zip/Postal Code*" name="content[Poatal Code]" class="cust-form-input">
+            </div>
+          </div>
+          <div class="cust-form-message">
+            <textarea
+              name="content[message]"
+              id=""
+              class="cust-form-input"
+              rows="4"
+              placeholder="Leave a comment"
+            ></textarea>
+          </div>
+          <div class="cust-form-button">
+            <div class="cust-form-des">
+              <p>
+                *By signing up, you agree to receive emails from Go Lime. You can unsubscribe anytime. Visit our Privacy
+                Policy & Website Terms of Use for details.
+              </p>
+            </div>
+            <div class="cust-form-icon">
+              <button type="submit" class="cust-form-btn">
+                Submit
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% schema %}
+{
+    "name": "Lime Form",
+    "settings": [
+        {
+            "type": "text",
+            "id": "lime-text",
+            "label": "Text"
+        },
+        {
+            "type": "richtext",
+            "id": "lime-desp",
+            "label": "Form Para"
+        },
+    ],
+    "presets": [
+        {
+            "name": "Lime Form",
+        },
+    ],
+}
+{% endschema %}

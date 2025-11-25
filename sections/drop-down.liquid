@@ -1,0 +1,1860 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+<link
+  rel="stylesheet"
+  href="{{ 'component-cart-notification.css' | asset_url }}"
+  media="print"
+  onload="this.media='all'"
+>
+<script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script>
+<style>
+    .cust-menu-col-div::after {
+      content: "";
+      position: absolute;
+      background: url({{ section.settings.sub-background-img |img_url:'master' }});
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      border-radius: 12px;
+      opacity: 0;
+      transition: opacity .3s ease-in-out;
+  }
+  .cust-col-2-div-3 {
+      position: relative;
+      height: 145px;
+      background-image: url({{ section.settings.sub-background-image |img_url:'master'}});
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      border-radius: 12px;
+      padding: 20px;
+
+  }
+  .cust-menu-2-title-div:hover {
+        background-image: url({{ section.settings.sub-background-hover-image |img_url:'master'}});
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+  }
+  .cust-menu-2-box {
+      background: #fff;
+      width: 33%;
+      padding: 20px;
+      position: relative;
+      height: 300px;
+      border-radius: 12px;
+       background-image: url({{ section.settings.sub-background-image-1 |img_url:'master'}});
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+  }
+</style>
+<div class="menu-overlay">
+  <span style="display: none;"></span>
+</div>
+<header class="cust-lime-header">
+  <div class="cust-lime-container">
+    <div class="cust-lime-flx">
+      <div class="cust-lime-logo-flx">
+        <a href="{{ section.settings.sub-cust-logo-anker }}" class="cust-logo-anker">
+          <div class="cust-lime-logo">
+            <div class="cust-lime-first-logo">
+              {% if section.settings['sub-cust-lime-first-img'] != blank %}
+                <img
+                  src="{{ section.settings.sub-cust-lime-first-img |img_url:'master' }}"
+                  alt="{{ section.settings.sub-cust-lime-first-img.alt | escape}}"
+                  class="cust-lime-first-img"
+                >
+              {% endif %}
+            </div>
+            <div class="cust-lime-second-logo">
+              {% if section.settings['sub-cust-lime-second-img'] != blank %}
+                <img
+                  src="{{ section.settings.sub-cust-lime-second-img |img_url:'master' }}"
+                  alt="{{ section.settings.sub-cust-lime-second-img.alt | escape }}"
+                  class="cust-lime-second-img"
+                >
+              {% endif %}
+            </div>
+          </div>
+        </a>
+        <div class="cust-lime-nav">
+          <ul class="cust-lime-menu">
+            {% for block in section.blocks %}
+              {% case block.type %}
+                {% when 'GetStarted' %}
+                  <li class="cust-lime-list">
+                    <span class="cust-lime-span-flx active">
+                      <span class="cust-lime-title">
+                        {{ block.settings['sub-cust-lime-title'] }}
+                      </span>
+                      <span class="cust-lime-svg">
+                        <i class="fa-solid fa-chevron-down"></i>
+                      </span>
+                    </span>
+                  </li>
+                {% when 'Info' %}
+                  <li class="cust-lime-list">
+                    <span class="cust-lime-title-1">
+                      {{ block.settings['sub-cust-lime-title-1'] }}
+                    </span>
+                  </li>
+                {% when 'About' %}
+                  <li class="cust-lime-list">
+                    <span class="cust-lime-title-2">
+                      {{ block.settings['sub-cust-lime-title-2'] }}
+                    </span>
+                  </li>
+                {% when 'Retail' %}
+                  <li class="cust-lime-list">
+                    <span class="cust-lime-title-3">
+                      {{ block.settings['sub-cust-lime-title-3'] }}
+                    </span>
+                  </li>
+                {% when 'Commercial' %}
+                  <li class="cust-lime-list">
+                    <span class="cust-lime-title-4">
+                      {{ block.settings['sub-cust-lime-title-4'] }}
+                    </span>
+                  </li>
+              {% endcase %}
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      <div class="cust-lime-icon">
+        <div class="cust-lime-seacrh-image">
+          {% if section.settings['sub-cust-lime-seacrh-img'] != blank %}
+            <img
+              src="{{ section.settings.sub-cust-lime-seacrh-img |img_url:'master' }}"
+              alt="{{ section.settings.sub-cust-lime-seacrh-img.alt | escape }}"
+              class="cust-lime-seacrh-img"
+            >
+          {% endif %}
+        </div>
+        <div class="cust-lime-cart-image">
+          <a
+            href="{{ routes.cart_url }}"
+            class="header__icon header__icon--cart link focus-inset"
+            id="cart-icon-bubble"
+          >
+            {% if cart == empty %}
+              {% if section.settings['sub-cust-lime-cart-img'] != blank %}
+                <img
+                  src="{{ section.settings.sub-cust-lime-cart-img |img_url:'master' }}"
+                  alt="{{ section.settings.sub-cust-lime-cart-img.alt | escape }}"
+                  class="cust-lime-cart-img"
+                >
+              {% endif %}
+            {% else %}
+              {% if section.settings['sub-cust-lime-cart-img'] != blank %}
+                <img
+                  src="{{ section.settings.sub-cust-lime-cart-img |img_url:'master' }}"
+                  alt="{{ section.settings.sub-cust-lime-cart-img.alt | escape }}"
+                  class="cust-lime-cart-img"
+                >
+              {% endif %}
+            {% endif %}
+            <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
+            {%- if cart != empty -%}
+              <div class="cart-count-bubble">
+                {%- if cart.item_count < 100 -%}
+                  <span aria-hidden="true">{{ cart.item_count }}</span>
+                {%- endif -%}
+                <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
+              </div>
+            {%- endif -%}
+          </a>
+        </div>
+        <div class="cust-lime-phone-image">
+          {% if section.settings['sub-cust-lime-phone-img'] != blank %}
+            <img
+              src="{{ section.settings.sub-cust-lime-phone-img |img_url:'master' }}"
+              alt=""
+              class="cust-lime-phone-img"
+            >
+          {% endif %}
+        </div>
+        <div class="cust-lime-menu-icon-div">
+          <i class="fa-solid fa-bars"></i>
+          <i class="fa-solid fa-xmark"></i>
+        </div>
+      </div>
+    </div>
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'GetStarted' %}
+          <div class="cust-menu-div">
+            <div class="cust-menu-row">
+              <div class="cust-menu-col">
+                <div class="cust-menu-flx">
+                  <a href="{{ block.settings.sub-cust-menu-col-div }}" class="cust-menu-col-div">
+                    <div class="cust-menu-image-flx">
+                      <div class="cust-menu-image">
+                        {% if block.settings['sub-cust-menu-img'] != blank %}
+                          <img
+                            src="{{ block.settings.sub-cust-menu-img |img_url:'master' }}"
+                            alt="{{ block.settings.sub-cust-menu-img.alt |escape }}"
+                            class="cust-menu-img"
+                          >
+                        {% endif %}
+                      </div>
+                      <span class="cust-menu-span">
+                        {{ block.settings['sub-cust-menu-span'] }}
+                      </span>
+                    </div>
+                    <div class="cust-menu-arrow-icon">
+                      <i class="fa fa-chevron-right"></i>
+                    </div>
+                  </a>
+                  <a href="{{ block.settings.sub-cust-menu-col-div-1 }}" class="cust-menu-col-div">
+                    <div class="cust-menu-image-flx">
+                      <div class="cust-menu-image">
+                        {% if block.settings['sub-cust-menu-img-1'] != blank %}
+                          <img
+                            src="{{ block.settings.sub-cust-menu-img-1 |img_url:'master' }}"
+                            alt="{{ block.settings.sub-cust-menu-img-1.alt |escape }}"
+                            class="cust-menu-img"
+                          >
+                        {% endif %}
+                      </div>
+                      <span class="cust-menu-span">
+                        {{ block.settings['sub-cust-menu-span-1'] }}
+                      </span>
+                    </div>
+                    <div class="cust-menu-arrow-icon">
+                      <i class="fa fa-chevron-right"></i>
+                    </div>
+                  </a>
+                  <a href="{{ block.settings.sub-cust-menu-col-div-2 }}" class="cust-menu-col-div">
+                    <div class="cust-menu-image-flx">
+                      <div class="cust-menu-image">
+                        {% if block.settings['sub-cust-menu-img-2'] != blank %}
+                          <img
+                            src="{{ block.settings.sub-cust-menu-img-2 |img_url:'master' }}"
+                            alt="{{ block.settings.sub-cust-menu-img-2.alt |escape }}"
+                            class="cust-menu-img"
+                          >
+                        {% endif %}
+                      </div>
+                      <span class="cust-menu-span">
+                        {{ block.settings['sub-cust-menu-span-2'] }}
+                      </span>
+                    </div>
+                    <div class="cust-menu-arrow-icon">
+                      <i class="fa fa-chevron-right"></i>
+                    </div>
+                  </a>
+                  <a href="{{ block.settings.sub-cust-menu-col-div-3 }}" class="cust-menu-col-div">
+                    <div class="cust-menu-image-flx">
+                      <div class="cust-menu-image">
+                        {% if block.settings['sub-cust-menu-img-3'] != blank %}
+                          <img
+                            src="{{ block.settings.sub-cust-menu-img-3 |img_url:'master' }}"
+                            alt="{{ block.settings.sub-cust-menu-img-3.alt |escape }}"
+                            class="cust-menu-img"
+                          >
+                        {% endif %}
+                      </div>
+                      <span class="cust-menu-span">
+                        {{ block.settings['sub-cust-menu-span-3'] }}
+                      </span>
+                    </div>
+                    <div class="cust-menu-arrow-icon">
+                      <i class="fa fa-chevron-right"></i>
+                    </div>
+                  </a>
+                  <a href="{{ block.settings.sub-cust-menu-col-div-4 }}" class="cust-menu-col-div">
+                    <div class="cust-menu-image-flx">
+                      <div class="cust-menu-image">
+                        {% if block.settings['sub-cust-menu-img-4'] != blank %}
+                          <img
+                            src="{{ block.settings.sub-cust-menu-img-4 |img_url:'master' }}"
+                            alt="{{ block.settings.sub-cust-menu-img-4.alt |escape }}"
+                            class="cust-menu-img"
+                          >
+                        {% endif %}
+                      </div>
+                      <span class="cust-menu-span">
+                        {{ block.settings['sub-cust-menu-span-4'] }}
+                      </span>
+                    </div>
+                    <div class="cust-menu-arrow-icon">
+                      <i class="fa fa-chevron-right"></i>
+                    </div>
+                  </a>
+                  <a href="{{ block.settings.sub-cust-menu-col-div-5 }}" class="cust-menu-col-div">
+                    <div class="cust-menu-image-flx">
+                      <div class="cust-menu-image">
+                        {% if block.settings['sub-cust-menu-img-5'] != blank %}
+                          <img
+                            src="{{ block.settings.sub-cust-menu-img-5 |img_url:'master' }}"
+                            alt="{{ block.settings.sub-cust-menu-img-5.alt |escape }}"
+                            class="cust-menu-img"
+                          >
+                        {% endif %}
+                      </div>
+                      <span class="cust-menu-span">
+                        {{ block.settings['sub-cust-menu-span-5'] }}
+                      </span>
+                    </div>
+                    <div class="cust-menu-arrow-icon">
+                      <i class="fa fa-chevron-right"></i>
+                    </div>
+                  </a>
+                  <a href="{{ block.settings.sub-cust-menu-col-div-6 }}" class="cust-menu-col-div">
+                    <div class="cust-menu-image-flx">
+                      <div class="cust-menu-image">
+                        {% if block.settings['sub-cust-menu-img-6'] != blank %}
+                          <img
+                            src="{{ block.settings.sub-cust-menu-img-6 |img_url:'master' }}"
+                            alt="{{ block.settings.sub-cust-menu-img-6.alt |escape }}"
+                            class="cust-menu-img"
+                          >
+                        {% endif %}
+                      </div>
+                      <span class="cust-menu-span">
+                        {{ block.settings['sub-cust-menu-span-6'] }}
+                      </span>
+                    </div>
+                    <div class="cust-menu-arrow-icon">
+                      <i class="fa fa-chevron-right"></i>
+                    </div>
+                  </a>
+                  <a href="{{ block.settings.sub-cust-menu-col-div-7 }}" class="cust-menu-col-div">
+                    <div class="cust-menu-image-flx">
+                      <div class="cust-menu-image">
+                        {% if block.settings['sub-cust-menu-img-7'] != blank %}
+                          <img
+                            src="{{ block.settings.sub-cust-menu-img-7 |img_url:'master' }}"
+                            alt="{{ block.settings.sub-cust-menu-img-7.alt |escape }}"
+                            class="cust-menu-img"
+                          >
+                        {% endif %}
+                      </div>
+                      <span class="cust-menu-span">
+                        {{ block.settings['sub-cust-menu-span-7'] }}
+                      </span>
+                    </div>
+                    <div class="cust-menu-arrow-icon">
+                      <i class="fa fa-chevron-right"></i>
+                    </div>
+                  </a>
+                  <a href="{{ block.settings.sub-cust-menu-col-div-8 }}" class="cust-menu-col-div">
+                    <div class="cust-menu-image-flx">
+                      <div class="cust-menu-image">
+                        {% if block.settings['sub-cust-menu-img-8'] != blank %}
+                          <img
+                            src="{{ block.settings.sub-cust-menu-img-8 |img_url:'master' }}"
+                            alt="{{ block.settings.sub-cust-menu-img-8.alt |escape }}"
+                            class="cust-menu-img"
+                          >
+                        {% endif %}
+                      </div>
+                      <span class="cust-menu-span">
+                        {{ block.settings['sub-cust-menu-span-8'] }}
+                      </span>
+                    </div>
+                    <div class="cust-menu-arrow-icon">
+                      <i class="fa fa-chevron-right"></i>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="cust-menu-col-1">
+                <div class="cust-menu-text-div">
+                  <div class="cust-text-image">
+                    {% if block.settings['sub-cust-text-img'] != blank %}
+                      <img
+                        src="{{ block.settings.sub-cust-text-img |img_url:'master' }}"
+                        alt="{{ block.settings.sub-cust-text-img.alt | escape }}"
+                        class="cust-text-img"
+                      >
+                    {% endif %}
+                  </div>
+                  <div class="cust-text-div">
+                    <div class="cust-title-image">
+                      {% if block.settings['sub-cust-title-img'] != blank %}
+                        <img
+                          src="{{ block.settings.sub-cust-title-img |img_url:'master' }}"
+                          alt="{{ block.settings.sub-cust-title-img.alt | escape }}"
+                          class="cust-title-img"
+                        >
+                      {% endif %}
+                    </div>
+                    <div class="cust-title-desp">
+                      <p>
+                        {{ block.settings['sub-cust-title-desp'] }}
+                      </p>
+                      <p>
+                        {{ block.settings['sub-cust-title-desp-1'] }}
+                      </p>
+                    </div>
+                    <div class="cust-menu-2-icon-div-1">
+                      <i class="fa fa-chevron-right"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="cust-menu-text-div">
+                  <div class="cust-text-image">
+                    {% if block.settings['sub-cust-text-img-1'] != blank %}
+                      <img
+                        src="{{ block.settings.sub-cust-text-img-1 |img_url:'master' }}"
+                        alt="{{ block.settings.sub-cust-text-img-1.alt | escape }}"
+                        class="cust-text-img"
+                      >
+                    {% endif %}
+                  </div>
+                  <div class="cust-text-div-1">
+                    <div class="cust-title-desp">
+                      <p>
+                        {{ block.settings['sub-cust-title-desp-2'] }}
+                      </p>
+                      <p>
+                        {{ block.settings['sub-cust-title-desp-3'] }}
+                      </p>
+                    </div>
+                  </div>
+                  <div class="cust-menu-2-icon-div-1">
+                    <i class="fa fa-chevron-right"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% when 'About' %}
+          <div class="cust-menu-2-div">
+            <div class="cust-menu-2-flx">
+              <div class="cust-menu-2-col">
+                <div class="cust-menu-2-image">
+                  {% if block.settings['sub-cust-menu-2-img'] != blank %}
+                    <img
+                      src="{{ block.settings.sub-cust-menu-2-img |img_url:'master' }}"
+                      alt="{{ block.settings.sub-cust-menu-2-img.alt | escape }}"
+                      class="cust-menu-2-img"
+                    >
+                  {% endif %}
+                </div>
+                <div class="cust-menu-2-text-div">
+                  <div class="cust-menu-2-desp">
+                    <p>
+                      {{ block.settings['sub-cust-title-desp-4'] }}
+                    </p>
+                    <p>
+                      {{ block.settings['sub-cust-title-desp-5'] }}
+                    </p>
+                  </div>
+                </div>
+                <div class="cust-menu-2-icon-div">
+                  <i class="fa fa-chevron-right"></i>
+                </div>
+              </div>
+              <div class="cust-menu-2-col-1">
+                <div class="cust-menu-2-text-div-1">
+                  <div class="cust-menu-2-desp">
+                    <p>
+                      {{ block.settings['sub-cust-title-desp-6'] }}
+                    </p>
+                    <p>
+                      {{ block.settings['sub-cust-title-desp-7'] }}
+                    </p>
+                  </div>
+                </div>
+                <div class="cust--col-1-image">
+                  {% if block.settings['sub-cust-menu-col-1-img'] != blank %}
+                    <img
+                      src="{{ block.settings.sub-cust-menu-col-1-img |img_url:'master' }}"
+                      alt="{{ block.settings.sub-cust-menu-col-1-img.alt | escape }}"
+                      class="cust-menu-col-1-img"
+                    >
+                  {% endif %}
+                </div>
+                <div class="cust-menu-2-icon-div">
+                  <i class="fa fa-chevron-right"></i>
+                </div>
+              </div>
+              <div class="cust-menu-2-col-2">
+                <div class="cust-col-2-div-2">
+                  <div class="cust-menu-2-text-div-2">
+                    <div class="cust-menu-2-desp">
+                      <p>
+                        {{ block.settings['sub-cust-title-desp-8'] }}
+                      </p>
+                      <p>
+                        {{ block.settings['sub-cust-title-desp-9'] }}
+                      </p>
+                    </div>
+                  </div>
+                  <div class="cust-menu-2-icon-div">
+                    <i class="fa fa-chevron-right"></i>
+                  </div>
+                </div>
+                <div class="cust-col-2-div-3">
+                   <a href="{{ block.settings.cust-col-div-3 }}" class="cust-col-div-3">
+                  <div class="cust-menu-2-text-div-3">
+                    <div class="cust-menu-2-desp">
+                      <p>
+                        {{ block.settings['sub-cust-title-desp-10'] }}
+                      </p>
+                      <p>
+                        {{ block.settings['sub-cust-title-desp-11'] }}
+                      </p>
+                    </div>
+                  </div>
+                  <div class="cust-menu-2-icon-div">
+                    <i class="fa fa-chevron-right"></i>
+                  </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% when 'Retail' %}
+          <div class="cust-menu-2-div">
+            <a href="{{ block.settings.sub-cust-menu-2-title-anker }}" class="cust-menu-2-title-anker">
+              <div class="cust-menu-2-title-div">
+                <div class="cust-menu-2-title-desp">
+                  <p>
+                    {{ block.settings['sub-cust-title-desp-12'] }}
+                  </p>
+                  <p>
+                    {{ block.settings['sub-cust-title-desp-13'] }}
+                  </p>
+                </div>
+                <div class="cust-menu-2-icon-div">
+                  <i class="fa fa-chevron-right"></i>
+                </div>
+              </div>
+            </a>
+          </div>
+        {% when 'Commercial' %}
+          <div class="cust-menu-2-div">
+            <div class="cust-menu-2-row">
+              <div class="cust-menu-2-box">
+                <div class="cust-box-text-div">
+                  <div class="cust-box-desp">
+                    <p>
+                      {{ block.settings['sub-cust-title-desp-14'] }}
+                    </p>
+                    <p>
+                      {{ block.settings['sub-cust-title-desp-15'] }}
+                    </p>
+                  </div>
+                </div>
+                <div class="cust-menu-2-icon-div">
+                  <i class="fa fa-chevron-right"></i>
+                </div>
+              </div>
+              <div class="cust-menu-2-box-2">
+                <div class="cust-box-text-div">
+                  <div class="cust-box-desp">
+                    <p>
+                      {{ block.settings['sub-cust-title-desp-16'] }}
+                    </p>
+                    <p>
+                      {{ block.settings['sub-cust-title-desp-17'] }}
+                    </p>
+                  </div>
+                </div>
+                <div class="cust-menu-2-icon-div">
+                  <i class="fa fa-chevron-right"></i>
+                </div>
+              </div>
+              <div class="cust-menu-2-box-3">
+                <div class="cust-box-text-div">
+                  <div class="cust-box-desp">
+                    <p>
+                      {{ block.settings['sub-cust-title-desp-18'] }}
+                    </p>
+                    <p>
+                      {{ block.settings['sub-cust-title-desp-19'] }}
+                    </p>
+                  </div>
+                </div>
+                <div class="cust-menu-2-icon-div">
+                  <i class="fa fa-chevron-right"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% when 'Info' %}
+          <div class="cust-menu-3-div">
+            <div class="cust-menu-3-row">
+              <div class="cust-menu-2-left-col">
+                <div class="cust-left-col-div">
+                  <div class="cust-left-col-desp">
+                    <p>
+                      {{ block.settings['sub-cust-title-desp-20'] }}
+                    </p>
+                    <p>
+                      {{ block.settings['sub-cust-title-desp-21'] }}
+                    </p>
+                  </div>
+                  <div class="cust-left-col-anker-div">
+                    <a href="#" class="cust-left-col-anker">
+                      {{ block.settings['sub-cust-left-col-anker'] }}
+                    </a>
+                    <a href="#" class="cust-left-col-anker">
+                      {{ block.settings['sub-cust-left-col-anker-1'] }}
+                    </a>
+                    <a href="#" class="cust-left-col-anker">
+                      {{ block.settings['sub-cust-left-col-anker-2'] }}
+                    </a>
+                    <a href="#" class="cust-left-col-anker">
+                      {{ block.settings['sub-cust-left-col-anker-3'] }}
+                    </a>
+                  </div>
+                  <div class="cust-left-col-span-div">
+                    <span class="cust-left-col-span">
+                      {{ block.settings['sub-cust-left-col-span'] }}
+                    </span>
+                    <span class="cust-left-col-span-icon">
+                      <i class="fa fa-chevron-right"></i>
+                    </span>
+                  </div>
+                </div>
+                <div class="cust-left-col-div-1">
+                  <div class="cust-left-col-image">
+                    {% if block.settings['sub-cust-left-col-img'] != blank %}
+                      <img
+                        src="{{ block.settings.sub-cust-left-col-img |img_url:'master' }}"
+                        alt="{{ block.settings.sub-cust-left-col-img.alt | escape }}"
+                        class="cust-left-col-img"
+                      >
+                    {% endif %}
+                  </div>
+                  <div class="cust-menu-2-icon-div">
+                    <i class="fa fa-chevron-right"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="cust-menu-2-right-col">
+                <div class="cust-right-col-box-div">
+                  <a href="{{ block.settings.sub-cust-right-anker }}" class="cust-right-anker">
+                    <div class="cust-right-col-box-1">
+                      <div class="cust-right-col-box-1-desp">
+                        <p>
+                          {{ block.settings['sub-cust-title-desp-22'] }}
+                        </p>
+                        <p>
+                          {{ block.settings['sub-cust-title-desp-23'] }}
+                        </p>
+                      </div>
+                      <div class="cust-rigth-col-image">
+                        {% if block.settings['sub-cust-right-col-img'] != blank %}
+                          <img
+                            src="{{ block.settings.sub-cust-right-col-img |img_url:'master' }}"
+                            alt="{{ block.settings.sub-cust-right-col-img.alt | escape }}"
+                            class="cust-right-col-img"
+                          >
+                        {% endif %}
+                      </div>
+                      <div class="cust-menu-2-icon-div">
+                        <i class="fa fa-chevron-right"></i>
+                      </div>
+                    </div>
+                  </a>
+                  <div class="cust-right-col-box-3-flx">
+                    <div class="cust-rigth-col-box-2">
+                      <div class="cust-rigth-col-box-2-row">
+                        <div class="cust-rigth-col-box-2-div">
+                          <div class="cust-right-col-box-desp">
+                            <p>
+                              {{ block.settings['sub-cust-title-desp-24'] }}
+                            </p>
+                            <p>
+                              {{ block.settings['sub-cust-title-desp-25'] }}
+                            </p>
+                          </div>
+                          <div class="cust-rigth-col-faq-main">
+                            <div class="cust-rigth-col-faq">
+                              <div class="cust-right-col-question">
+                                <div class="cust-rigth-col-faq-des">
+                                  {{ block.settings['sub-cust-rigth-col-faq-des-1'] }}
+                                </div>
+                                <i class="fa fa-plus icon"></i>
+                              </div>
+                              <div class="cust-rigth-col-answer">
+                                <div class="cust-rigth-col-faq-desp">
+                                  <p>
+                                    {{ block.settings['sub-cust-rigth-col-faq-desp-1'] }}
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="cust-rigth-col-faq">
+                              <div class="cust-right-col-question">
+                                <div class="cust-rigth-col-faq-des">
+                                  {{ block.settings['sub-cust-rigth-col-faq-des-2'] }}
+                                </div>
+                                <i class="fa fa-plus icon"></i>
+                              </div>
+                              <div class="cust-rigth-col-answer">
+                                <div class="cust-rigth-col-faq-desp">
+                                  <p>
+                                    {{ block.settings['sub-cust-rigth-col-faq-desp-2'] }}
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="cust-rigth-col-faq">
+                              <div class="cust-right-col-question">
+                                <div class="cust-rigth-col-faq-des">
+                                  {{ block.settings['sub-cust-rigth-col-faq-des-3'] }}
+                                </div>
+                                <i class="fa fa-plus icon"></i>
+                              </div>
+                              <div class="cust-rigth-col-answer">
+                                <div class="cust-rigth-col-faq-desp">
+                                  <p>
+                                    {{ block.settings['sub-cust-rigth-col-faq-desp-3'] }}
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="cust-rigth-col-faq">
+                              <div class="cust-right-col-question">
+                                <div class="cust-rigth-col-faq-des">
+                                  {{ block.settings['sub-cust-rigth-col-faq-des-4'] }}
+                                </div>
+                                <i class="fa fa-plus icon"></i>
+                              </div>
+                              <div class="cust-rigth-col-answer">
+                                <div class="cust-rigth-col-faq-desp">
+                                  <p>
+                                    {{ block.settings['sub-cust-rigth-col-faq-desp-4'] }}
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="cust-right-col-box-2-icon-flx">
+                          <div class="cust-right-col-box-2-span-div">
+                            <span class="cust-right-col-box-span">
+                              {{ block.settings['sub-cust-right-col-box-span'] }}
+                            </span>
+                            <span class="cust-box-span-icon">
+                              <i class="fa fa-chevron-right"></i>
+                            </span>
+                          </div>
+                          <div class="cust-menu-2-icon-div">
+                            <i class="fa fa-chevron-right"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="cust-rigth-col-box-3-div">
+                      <div class="cust-rigth-col-box-3">
+                        <div class="custm_vdo_slider owl-carousel">
+                          <div class="item">
+                            <div class="cust-rigth-box-3-image">
+                              {% if block.settings['sub-cust-rigth-box-3-img'] != blank %}
+                                <img
+                                  src="{{ block.settings.sub-cust-rigth-box-3-img |img_url:'master' }}"
+                                  alt="{{ block.settings.sub-cust-rigth-box-3-img.alt | escape }}"
+                                  class="cust-rigth-box-3-img"
+                                >
+                              {% endif %}
+                            </div>
+                          </div>
+                          <div class="item">
+                            <div class="cust-rigth-box-3-image">
+                              {% if block.settings['sub-cust-rigth-box-3-img-1'] != blank %}
+                                <img
+                                  src="{{ block.settings.sub-cust-rigth-box-3-img-1 |img_url:'master' }}"
+                                  alt="{{ block.settings.sub-cust-rigth-box-3-img-1.alt | escape }}"
+                                  class="cust-rigth-box-3-img"
+                                >
+                              {% endif %}
+                            </div>
+                          </div>
+                          <div class="item">
+                            <div class="cust-rigth-box-3-image">
+                              {% if block.settings['sub-cust-rigth-box-3-img-2'] != blank %}
+                                <img
+                                  src="{{ block.settings.sub-cust-rigth-box-3-img-2 |img_url:'master' }}"
+                                  alt="{{ block.settings.sub-cust-rigth-box-3-img-2.alt | escape }}"
+                                  class="cust-rigth-box-3-img"
+                                >
+                              {% endif %}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <a href="{{ block.settings.sub-cust-left-anker }}" class="cust-left-anker">
+                        <div class="cust-rigth-col-box-4">
+                          <div class="cust-rigth-col-box-4-image">
+                            {% if block.settings['sub-cust-rigth-col-box-4-img'] != blank %}
+                              <img
+                                src="{{ block.settings.sub-cust-rigth-col-box-4-img |img_url:'master' }}"
+                                alt="{{ block.settings.sub-cust-rigth-col-box-4-img.alt | escape }}"
+                                class="cust-rigth-col-box-4-img"
+                              >
+                            {% endif %}
+                          </div>
+                          <div class="cust-rigth-col-box-4-desp">
+                            <p>
+                              {{ block.settings['sub-cust-title-desp-26'] }}
+                            </p>
+                            <p>
+                              {{ block.settings['sub-cust-title-desp-27'] }}
+                            </p>
+                          </div>
+                          <div class="cust-menu-2-icon-div">
+                            <i class="fa fa-chevron-right"></i>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      {% endcase %}
+    {% endfor %}
+
+    <div class="mobile-div">
+      <div class="mobile-nav">
+        <ul class="mobile-menu">
+          {% for block in section.blocks %}
+            {% case block.type %}
+              {% when 'GetStarted' %}
+                <div class="mobile-li">
+                  <li class="mobile-list">
+                    <span class="mobile-list-span-flx active">
+                      <span class="mobile-list-span-title">
+                        {{ block.settings['sub-cust-lime-title'] }}
+                      </span>
+                      <i class="fa-solid fa-chevron-down"></i>
+                    </span>
+                  </li>
+                  <div class="cust-mobile-menu-div">
+                    <div class="cust-menu-flx">
+                      <div class="cust-menu-col-div">
+                        <div class="cust-menu-image-flx">
+                          <div class="cust-menu-image">
+                            {% if block.settings['sub-cust-menu-img'] != blank %}
+                              <img
+                                src="{{ block.settings.sub-cust-menu-img |img_url:'master' }}"
+                                alt="{{ block.settings.sub-cust-menu-img.alt |escape }}"
+                                class="cust-menu-img"
+                              >
+                            {% endif %}
+                          </div>
+                          <span class="cust-menu-span">
+                            {{ block.settings['sub-cust-menu-span'] }}
+                          </span>
+                        </div>
+                        <div class="cust-menu-arrow-icon">
+                          <i class="fa fa-chevron-right"></i>
+                        </div>
+                      </div>
+                      <div class="cust-menu-col-div">
+                        <div class="cust-menu-image-flx">
+                          <div class="cust-menu-image">
+                            {% if block.settings['sub-cust-menu-img-1'] != blank %}
+                              <img
+                                src="{{ block.settings.sub-cust-menu-img-1 |img_url:'master' }}"
+                                alt="{{ block.settings.sub-cust-menu-img-1.alt |escape }}"
+                                class="cust-menu-img"
+                              >
+                            {% endif %}
+                          </div>
+                          <span class="cust-menu-span">
+                            {{ block.settings['sub-cust-menu-span-1'] }}
+                          </span>
+                        </div>
+                        <div class="cust-menu-arrow-icon">
+                          <i class="fa fa-chevron-right"></i>
+                        </div>
+                      </div>
+                      <div class="cust-menu-col-div">
+                        <div class="cust-menu-image-flx">
+                          <div class="cust-menu-image">
+                            {% if block.settings['sub-cust-menu-img-2'] != blank %}
+                              <img
+                                src="{{ block.settings.sub-cust-menu-img-2 |img_url:'master' }}"
+                                alt="{{ block.settings.sub-cust-menu-img-2.alt |escape }}"
+                                class="cust-menu-img"
+                              >
+                            {% endif %}
+                          </div>
+                          <span class="cust-menu-span">
+                            {{ block.settings['sub-cust-menu-span-2'] }}
+                          </span>
+                        </div>
+                        <div class="cust-menu-arrow-icon">
+                          <i class="fa fa-chevron-right"></i>
+                        </div>
+                      </div>
+                      <div class="cust-menu-col-div">
+                        <div class="cust-menu-image-flx">
+                          <div class="cust-menu-image">
+                            {% if block.settings['sub-cust-menu-img-3'] != blank %}
+                              <img
+                                src="{{ block.settings.sub-cust-menu-img-3 |img_url:'master' }}"
+                                alt="{{ block.settings.sub-cust-menu-img-3.alt |escape }}"
+                                class="cust-menu-img"
+                              >
+                            {% endif %}
+                          </div>
+                          <span class="cust-menu-span">
+                            {{ block.settings['sub-cust-menu-span-3'] }}
+                          </span>
+                        </div>
+                        <div class="cust-menu-arrow-icon">
+                          <i class="fa fa-chevron-right"></i>
+                        </div>
+                      </div>
+                      <div class="cust-menu-col-div">
+                        <div class="cust-menu-image-flx">
+                          <div class="cust-menu-image">
+                            {% if block.settings['sub-cust-menu-img-4'] != blank %}
+                              <img
+                                src="{{ block.settings.sub-cust-menu-img-4 |img_url:'master' }}"
+                                alt="{{ block.settings.sub-cust-menu-img-4.alt |escape }}"
+                                class="cust-menu-img"
+                              >
+                            {% endif %}
+                          </div>
+                          <span class="cust-menu-span">
+                            {{ block.settings['sub-cust-menu-span-4'] }}
+                          </span>
+                        </div>
+                        <div class="cust-menu-arrow-icon">
+                          <i class="fa fa-chevron-right"></i>
+                        </div>
+                      </div>
+                      <div class="cust-menu-col-div">
+                        <div class="cust-menu-image-flx">
+                          <div class="cust-menu-image">
+                            {% if block.settings['sub-cust-menu-img-5'] != blank %}
+                              <img
+                                src="{{ block.settings.sub-cust-menu-img-5 |img_url:'master' }}"
+                                alt="{{ block.settings.sub-cust-menu-img-5.alt |escape }}"
+                                class="cust-menu-img"
+                              >
+                            {% endif %}
+                          </div>
+                          <span class="cust-menu-span">
+                            {{ block.settings['sub-cust-menu-span-5'] }}
+                          </span>
+                        </div>
+                        <div class="cust-menu-arrow-icon">
+                          <i class="fa fa-chevron-right"></i>
+                        </div>
+                      </div>
+                      <div class="cust-menu-col-div">
+                        <div class="cust-menu-image-flx">
+                          <div class="cust-menu-image">
+                            {% if block.settings['sub-cust-menu-img-6'] != blank %}
+                              <img
+                                src="{{ block.settings.sub-cust-menu-img-6 |img_url:'master' }}"
+                                alt="{{ block.settings.sub-cust-menu-img-6.alt |escape }}"
+                                class="cust-menu-img"
+                              >
+                            {% endif %}
+                          </div>
+                          <span class="cust-menu-span">
+                            {{ block.settings['sub-cust-menu-span-6'] }}
+                          </span>
+                        </div>
+                        <div class="cust-menu-arrow-icon">
+                          <i class="fa fa-chevron-right"></i>
+                        </div>
+                      </div>
+                      <div class="cust-menu-col-div">
+                        <div class="cust-menu-image-flx">
+                          <div class="cust-menu-image">
+                            {% if block.settings['sub-cust-menu-img-7'] != blank %}
+                              <img
+                                src="{{ block.settings.sub-cust-menu-img-7 |img_url:'master' }}"
+                                alt="{{ block.settings.sub-cust-menu-img-7.alt |escape }}"
+                                class="cust-menu-img"
+                              >
+                            {% endif %}
+                          </div>
+                          <span class="cust-menu-span">
+                            {{ block.settings['sub-cust-menu-span-7'] }}
+                          </span>
+                        </div>
+                        <div class="cust-menu-arrow-icon">
+                          <i class="fa fa-chevron-right"></i>
+                        </div>
+                      </div>
+                      <div class="cust-menu-col-div">
+                        <div class="cust-menu-image-flx">
+                          <div class="cust-menu-image">
+                            {% if block.settings['sub-cust-menu-img-8'] != blank %}
+                              <img
+                                src="{{ block.settings.sub-cust-menu-img-8 |img_url:'master' }}"
+                                alt="{{ block.settings.sub-cust-menu-img-8.alt |escape }}"
+                                class="cust-menu-img"
+                              >
+                            {% endif %}
+                          </div>
+                          <span class="cust-menu-span">
+                            {{ block.settings['sub-cust-menu-span-8'] }}
+                          </span>
+                        </div>
+                        <div class="cust-menu-arrow-icon">
+                          <i class="fa fa-chevron-right"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {% when 'Info' %}
+                <div class="mobile-li">
+                  <li class="mobile-list">
+                    <span class="mobile-list-span-flx-1">
+                      <span class="mobile-list-span-title-1">
+                        {{ block.settings['sub-cust-lime-title-1'] }}
+                      </span>
+                      <i class="fa-solid fa-chevron-down"></i>
+                    </span>
+                  </li>
+                  <div class="cust-mobile-menu-div">
+                    <div class="mobile-slider">
+                      <div class="cust-menu-2-left-col">
+                        <div class="cust-left-col-div">
+                          <div class="cust-left-col-desp">
+                            <p>
+                              {{ block.settings['sub-cust-title-desp-20'] }}
+                            </p>
+                            <p>
+                              {{ block.settings['sub-cust-title-desp-21'] }}
+                            </p>
+                          </div>
+                        </div>
+                        <div class="cust-left-col-div-1">
+                          <div class="cust-left-col-image">
+                            {% if block.settings['sub-cust-left-col-img'] != blank %}
+                              <img
+                                src="{{ block.settings.sub-cust-left-col-img |img_url:'master' }}"
+                                alt="{{ block.settings.sub-cust-left-col-img.alt | escape }}"
+                                class="cust-left-col-img"
+                              >
+                            {% endif %}
+                          </div>
+                          <div class="cust-menu-2-icon-div">
+                            <i class="fa fa-chevron-right"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="cust-right-col-box-1">
+                        <div class="cust-right-col-box-1-desp">
+                          <p>
+                            {{ block.settings['sub-cust-title-desp-22'] }}
+                          </p>
+                          <p>
+                            {{ block.settings['sub-cust-title-desp-23'] }}
+                          </p>
+                        </div>
+                        <div class="cust-rigth-col-image">
+                          {% if block.settings['sub-cust-right-col-img'] != blank %}
+                            <img
+                              src="{{ block.settings.sub-cust-right-col-img |img_url:'master' }}"
+                              alt="{{ block.settings.sub-cust-right-col-img.alt | escape }}"
+                              class="cust-right-col-img"
+                            >
+                          {% endif %}
+                        </div>
+                        <div class="cust-menu-2-icon-div">
+                          <i class="fa fa-chevron-right"></i>
+                        </div>
+                      </div>
+                      <div class="cust-rigth-col-box-2">
+                        <div class="cust-rigth-col-box-2-row">
+                          <div class="cust-rigth-col-box-2-div">
+                            <div class="cust-right-col-box-desp">
+                              <p>
+                                {{ block.settings['sub-cust-title-desp-24'] }}
+                              </p>
+                              <p>
+                                {{ block.settings['sub-cust-title-desp-25'] }}
+                              </p>
+                            </div>
+                          </div>
+                          <div class="cust-menu-2-icon-div">
+                            <i class="fa fa-chevron-right"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="cust-rigth-col-box-4">
+                        <div class="cust-rigth-col-box-4-image">
+                          {% if block.settings['sub-cust-rigth-col-box-4-img'] != blank %}
+                            <img
+                              src="{{ block.settings.sub-cust-rigth-col-box-4-img |img_url:'master' }}"
+                              alt="{{ block.settings.sub-cust-rigth-col-box-4-img.alt | escape }}"
+                              class="cust-rigth-col-box-4-img"
+                            >
+                          {% endif %}
+                        </div>
+                        <div class="cust-rigth-col-box-4-desp">
+                          <p>
+                            {{ block.settings['sub-cust-title-desp-26'] }}
+                          </p>
+                          <p>
+                            {{ block.settings['sub-cust-title-desp-27'] }}
+                          </p>
+                        </div>
+                        <div class="cust-menu-2-icon-div">
+                          <i class="fa fa-chevron-right"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {% when 'About' %}
+                <div class="mobile-li">
+                  <li class="mobile-list">
+                    <span class="mobile-list-span-flx-1">
+                      <span class="mobile-list-span-title-1">
+                        {{ block.settings['sub-cust-lime-title-2'] }}
+                      </span>
+                      <i class="fa-solid fa-chevron-down"></i>
+                    </span>
+                  </li>
+                  <div class="cust-mobile-menu-div">
+                    <div class="mobile-slider-1">
+                      <div class="cust-menu-2-col">
+                        <div class="cust-menu-2-image">
+                          {% if block.settings['sub-cust-menu-2-img'] != blank %}
+                            <img
+                              src="{{ block.settings.sub-cust-menu-2-img |img_url:'master' }}"
+                              alt="{{ block.settings.sub-cust-menu-2-img.alt | escape }}"
+                              class="cust-menu-2-img"
+                            >
+                          {% endif %}
+                        </div>
+                        <div class="cust-menu-2-text-div">
+                          <div class="cust-menu-2-desp">
+                            <p>
+                              {{ block.settings['sub-cust-title-desp-4'] }}
+                            </p>
+                            <p>
+                              {{ block.settings['sub-cust-title-desp-5'] }}
+                            </p>
+                          </div>
+                        </div>
+                        <div class="cust-menu-2-icon-div">
+                          <i class="fa fa-chevron-right"></i>
+                        </div>
+                      </div>
+                      <div class="cust-menu-2-col-1">
+                        <div class="cust-menu-2-text-div-1">
+                          <div class="cust-menu-2-desp">
+                            <p>
+                              {{ block.settings['sub-cust-title-desp-6'] }}
+                            </p>
+                            <p>
+                              {{ block.settings['sub-cust-title-desp-7'] }}
+                            </p>
+                          </div>
+                        </div>
+                        <div class="cust--col-1-image">
+                          {% if block.settings['sub-cust-menu-col-1-img'] != blank %}
+                            <img
+                              src="{{ block.settings.sub-cust-menu-col-1-img |img_url:'master' }}"
+                              alt="{{ block.settings.sub-cust-menu-col-1-img.alt | escape }}"
+                              class="cust-menu-col-1-img"
+                            >
+                          {% endif %}
+                        </div>
+                        <div class="cust-menu-2-icon-div">
+                          <i class="fa fa-chevron-right"></i>
+                        </div>
+                      </div>
+                      <div class="cust-menu-2-col-2">
+                        <div class="cust-col-2-div-2">
+                          <div class="cust-menu-2-text-div-2">
+                            <div class="cust-menu-2-desp">
+                              <p>
+                                {{ block.settings['sub-cust-title-desp-8'] }}
+                              </p>
+                              <p>
+                                {{ block.settings['sub-cust-title-desp-9'] }}
+                              </p>
+                            </div>
+                          </div>
+                          <div class="cust-menu-2-icon-div">
+                            <i class="fa fa-chevron-right"></i>
+                          </div>
+                        </div>
+                        <div class="cust-col-2-div-3">
+                          <div class="cust-menu-2-text-div-3">
+                            <div class="cust-menu-2-desp">
+                              <p>
+                                {{ block.settings['sub-cust-title-desp-10'] }}
+                              </p>
+                              <p>
+                                {{ block.settings['sub-cust-title-desp-11'] }}
+                              </p>
+                            </div>
+                          </div>
+                          <div class="cust-menu-2-icon-div">
+                            <i class="fa fa-chevron-right"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {% when 'Retail' %}
+                <div class="mobile-li">
+                  <li class="mobile-list">
+                    <span class="mobile-list-span-flx-1">
+                      <span class="mobile-list-span-title-1">
+                        {{ block.settings['sub-cust-lime-title-3'] }}
+                      </span>
+                      <i class="fa-solid fa-chevron-down"></i>
+                    </span>
+                  </li>
+                  <div class="cust-mobile-menu-div">
+                    <div class="cust-menu-2-title-div">
+                      <div class="cust-menu-2-title-desp">
+                        <p>
+                          {{ block.settings['sub-cust-title-desp-12'] }}
+                        </p>
+                        <p>
+                          {{ block.settings['sub-cust-title-desp-13'] }}
+                        </p>
+                      </div>
+                      <div class="cust-menu-2-icon-div">
+                        <i class="fa fa-chevron-right"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {% when 'Commercial' %}
+                <div class="mobile-li">
+                  <li class="mobile-list">
+                    <span class="mobile-list-span-flx-1">
+                      <span class="mobile-list-span-title-1">
+                        {{ block.settings['sub-cust-lime-title-4'] }}
+                      </span>
+                      <i class="fa-solid fa-chevron-down"></i>
+                    </span>
+                  </li>
+                  <div class="cust-mobile-menu-div">
+                    <div class="mobile-slider-3">
+                      <div class="cust-menu-2-box">
+                        <div class="cust-box-text-div">
+                          <div class="cust-box-desp">
+                            <p>
+                              {{ block.settings['sub-cust-title-desp-14'] }}
+                            </p>
+                            <p>
+                              {{ block.settings['sub-cust-title-desp-15'] }}
+                            </p>
+                          </div>
+                        </div>
+                        <div class="cust-menu-2-icon-div">
+                          <i class="fa fa-chevron-right"></i>
+                        </div>
+                      </div>
+                      <div class="cust-menu-2-box-2">
+                        <div class="cust-box-text-div">
+                          <div class="cust-box-desp">
+                            <p>
+                              {{ block.settings['sub-cust-title-desp-16'] }}
+                            </p>
+                            <p>
+                              {{ block.settings['sub-cust-title-desp-17'] }}
+                            </p>
+                          </div>
+                        </div>
+                        <div class="cust-menu-2-icon-div">
+                          <i class="fa fa-chevron-right"></i>
+                        </div>
+                      </div>
+                      <div class="cust-menu-2-box-3">
+                        <div class="cust-box-text-div">
+                          <div class="cust-box-desp">
+                            <p>
+                              {{ block.settings['sub-cust-title-desp-18'] }}
+                            </p>
+                            <p>
+                              {{ block.settings['sub-cust-title-desp-19'] }}
+                            </p>
+                          </div>
+                        </div>
+                        <div class="cust-menu-2-icon-div">
+                          <i class="fa fa-chevron-right"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            {% endcase %}
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+ 
+</header>
+{%- if settings.cart_type == 'notification' -%}
+  {%- render 'cart-notification',
+    color_scheme: section.settings.color_scheme,
+    desktop_menu_type: section.settings.menu_type_desktop
+  -%}
+{%- endif -%}
+
+
+{% schema %}
+{
+  "name": "Drop Down",
+  "settings": [
+    {
+      "type": "url",
+      "id": "sub-cust-logo-anker",
+      "label": "Button Anker"
+    },
+    {
+      "type": "image_picker",
+      "id": "sub-cust-lime-first-img",
+      "label": "Image"
+    },
+
+    {
+      "type": "image_picker",
+      "id": "sub-cust-lime-second-img",
+      "label": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "sub-cust-lime-seacrh-img",
+      "label": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "sub-cust-lime-cart-img",
+      "label": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "sub-cust-lime-phone-img",
+      "label": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "sub-background-img",
+      "label": "BackgroundImage"
+    },
+    {
+      "type": "image_picker",
+      "id": "sub-background-image",
+      "label": "BackgroundImage"
+    },
+    {
+      "type": "image_picker",
+      "id": "sub-background-hover-image",
+      "label": "BackgroundImage"
+    },
+    {
+      "type": "image_picker",
+      "id": "sub-background-image-1",
+      "label": "BackgroundImage"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "GetStarted",
+      "name": "GetStarted",
+      "settings": [
+        {
+          "type": "text",
+          "id": "sub-cust-lime-title",
+          "label": "Text"
+        },
+        {
+          "type": "url",
+          "id": "sub-cust-menu-col-div",
+          "label": "Home-page"
+        },
+        {
+          "type": "image_picker",
+          "id": "sub-cust-menu-img",
+          "label": "Image"
+        },
+      
+        {
+          "type": "text",
+          "id": "sub-cust-menu-span",
+          "label": "Text"
+        },
+           {
+          "type": "url",
+          "id": "sub-cust-menu-col-div-1",
+          "label": "Home-page"
+        },
+        
+        {
+          "type": "image_picker",
+          "id": "sub-cust-menu-img-1",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "sub-cust-menu-span-1",
+          "label": "Text"
+        },
+           {
+          "type": "url",
+          "id": "sub-cust-menu-col-div-2",
+          "label": "Home-page"
+        },
+        {
+          "type": "image_picker",
+          "id": "sub-cust-menu-img-2",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "sub-cust-menu-span-2",
+          "label": "Text"
+        },
+            {
+          "type": "url",
+          "id": "sub-cust-menu-col-div-3",
+          "label": "Home-page"
+        },
+        {
+          "type": "image_picker",
+          "id": "sub-cust-menu-img-3",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "sub-cust-menu-span-3",
+          "label": "Text"
+        },
+           {
+          "type": "url",
+          "id": "sub-cust-menu-col-div-4",
+          "label": "Home-page"
+        },
+        {
+          "type": "image_picker",
+          "id": "sub-cust-menu-img-4",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "sub-cust-menu-span-4",
+          "label": "Text"
+        },
+         {
+          "type": "url",
+          "id": "sub-cust-menu-col-div-5",
+          "label": "Home-page"
+        },
+        {
+          "type": "image_picker",
+          "id": "sub-cust-menu-img-5",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "sub-cust-menu-span-5",
+          "label": "Text"
+        },
+         {
+          "type": "url",
+          "id": "sub-cust-menu-col-div-6",
+          "label": "Home-page"
+        },
+        {
+          "type": "image_picker",
+          "id": "sub-cust-menu-img-6",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "sub-cust-menu-span-6",
+          "label": "Text"
+        },
+         {
+          "type": "url",
+          "id": "sub-cust-menu-col-div-7",
+          "label": "Home-page"
+        },
+        {
+          "type": "image_picker",
+          "id": "sub-cust-menu-img-7",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "sub-cust-menu-span-7",
+          "label": "Text"
+        },
+         {
+          "type": "url",
+          "id": "sub-cust-menu-col-div-8",
+          "label": "Home-page"
+        },
+        {
+          "type": "image_picker",
+          "id": "sub-cust-menu-img-8",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "sub-cust-menu-span-8",
+          "label": "Text"
+        },
+        {
+          "type": "image_picker",
+          "id": "sub-cust-text-img",
+          "label": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "sub-cust-title-img",
+          "label": "Image"
+        },
+        {
+          "type": "richtext",
+          "id": "sub-cust-title-desp",
+          "label": "Para"
+        },
+        {
+          "type": "richtext",
+          "id": "sub-cust-title-desp-1",
+          "label": "Para"
+        },
+        {
+          "type": "image_picker",
+          "id": "sub-cust-text-img-1",
+          "label": "Image"
+        },
+        {
+          "type": "richtext",
+          "id": "sub-cust-title-desp-2",
+          "label": "Para"
+        },
+        {
+          "type": "richtext",
+          "id": "sub-cust-title-desp-3",
+          "label": "Para"
+        }
+      ]
+    },
+    {
+      "type": "Info",
+      "name": "Info",
+      "settings": [
+        {
+          "type": "text",
+          "id": "sub-cust-lime-title-1",
+          "label": "Text"
+        },
+
+        {
+          "type": "richtext",
+          "id": "sub-cust-title-desp-20",
+          "label": "Para"
+        },
+        {
+          "type": "richtext",
+          "id": "sub-cust-title-desp-21",
+          "label": "Para"
+        },
+        {
+          "type": "text",
+          "id": "sub-cust-left-col-anker",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "sub-cust-left-col-anker-1",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "sub-cust-left-col-anker-2",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "sub-cust-left-col-anker-3",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "sub-cust-left-col-span",
+          "label": "Text"
+        },
+        {
+          "type": "image_picker",
+          "id": "sub-cust-left-col-img",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "sub-cust-right-anker",
+          "label": "FAQs Links"
+        },
+        {
+          "type": "richtext",
+          "id": "sub-cust-title-desp-22",
+          "label": "Para"
+        },
+        {
+          "type": "richtext",
+          "id": "sub-cust-title-desp-23",
+          "label": "Para"
+        },
+        {
+          "type": "image_picker",
+          "id": "sub-cust-right-col-img",
+          "label": "Image"
+        },
+        {
+          "type": "richtext",
+          "id": "sub-cust-title-desp-24",
+          "label": "Para"
+        },
+        {
+          "type": "richtext",
+          "id": "sub-cust-title-desp-25",
+          "label": "Para"
+        },
+        {
+          "type": "text",
+          "id": "sub-cust-rigth-col-faq-des-1",
+          "label": "Text"
+        },
+        {
+          "type": "richtext",
+          "id": "sub-cust-rigth-col-faq-desp-1",
+          "label": "Para"
+        },
+        {
+          "type": "text",
+          "id": "sub-cust-rigth-col-faq-des-2",
+          "label": "Text"
+        },
+        {
+          "type": "richtext",
+          "id": "sub-cust-rigth-col-faq-desp-2",
+          "label": "Para"
+        },
+        {
+          "type": "text",
+          "id": "sub-cust-rigth-col-faq-des-3",
+          "label": "Text"
+        },
+        {
+          "type": "richtext",
+          "id": "sub-cust-rigth-col-faq-desp-3",
+          "label": "Para"
+        },
+        {
+          "type": "text",
+          "id": "sub-cust-rigth-col-faq-des-4",
+          "label": "Text"
+        },
+        {
+          "type": "richtext",
+          "id": "sub-cust-rigth-col-faq-desp-4",
+          "label": "Para"
+        },
+        {
+          "type": "text",
+          "id": "sub-cust-right-col-box-span",
+          "label": "Text"
+        },
+        {
+          "type": "image_picker",
+          "id": "sub-cust-rigth-box-3-img",
+          "label": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "sub-cust-rigth-box-3-img-1",
+          "label": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "sub-cust-rigth-box-3-img-2",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "sub-cust-left-anker",
+          "label": "Left Button"
+        },
+        {
+          "type": "image_picker",
+          "id": "sub-cust-rigth-col-box-4-img",
+          "label": "Image"
+        },
+        {
+          "type": "richtext",
+          "id": "sub-cust-title-desp-26",
+          "label": "Para"
+        },
+        {
+          "type": "richtext",
+          "id": "sub-cust-title-desp-27",
+          "label": "Para"
+        }
+      ]
+    },
+    {
+      "type": "About",
+      "name": "About",
+      "settings": [
+        {
+          "type": "text",
+          "id": "sub-cust-lime-title-2",
+          "label": "Text"
+        },
+        {
+          "type": "image_picker",
+          "id": "sub-cust-menu-2-img",
+          "label": "Image"
+        },
+        {
+          "type": "richtext",
+          "id": "sub-cust-title-desp-4",
+          "label": "Para"
+        },
+        {
+          "type": "richtext",
+          "id": "sub-cust-title-desp-5",
+          "label": "Para"
+        },
+        {
+          "type": "richtext",
+          "id": "sub-cust-title-desp-6",
+          "label": "Para"
+        },
+        {
+          "type": "richtext",
+          "id": "sub-cust-title-desp-7",
+          "label": "Para"
+        },
+        {
+          "type": "image_picker",
+          "id": "sub-cust-menu-col-1-img",
+          "label": "Image"
+        },
+        {
+          "type": "richtext",
+          "id": "sub-cust-title-desp-8",
+          "label": "Para"
+        },
+        {
+          "type": "richtext",
+          "id": "sub-cust-title-desp-9",
+          "label": "Para"
+        },
+        
+        {
+          "type": "url",
+          "id": "cust-col-div-3",
+          "label": "About Btn"
+        },
+        {
+          "type": "richtext",
+          "id": "sub-cust-title-desp-10",
+          "label": "Para"
+        },
+        {
+          "type": "richtext",
+          "id": "sub-cust-title-desp-11",
+          "label": "Para"
+        }
+      ]
+    },
+    {
+      "type": "Retail",
+      "name": "Retail",
+      "settings": [
+        {
+          "type": "text",
+          "id": "sub-cust-lime-title-3",
+          "label": "Text"
+        },
+        {
+          "type": "url",
+          "id": "sub-cust-menu-2-title-anker",
+          "label": "Title Btn"
+        },
+        {
+          "type": "richtext",
+          "id": "sub-cust-title-desp-12",
+          "label": "Para"
+        },
+        {
+          "type": "richtext",
+          "id": "sub-cust-title-desp-13",
+          "label": "Para"
+        }
+      ]
+    },
+    {
+      "type": "Commercial",
+      "name": "Commercial",
+      "settings": [
+        {
+          "type": "text",
+          "id": "sub-cust-lime-title-4",
+          "label": "Text"
+        },
+        {
+          "type": "url",
+          "id": "sub-menu-box-anker",
+          "label": "Menu Button"
+        },
+        {
+          "type": "richtext",
+          "id": "sub-cust-title-desp-14",
+          "label": "Para"
+        },
+        {
+          "type": "richtext",
+          "id": "sub-cust-title-desp-15",
+          "label": "Para"
+        },
+        {
+          "type": "richtext",
+          "id": "sub-cust-title-desp-16",
+          "label": "Para"
+        },
+        {
+          "type": "richtext",
+          "id": "sub-cust-title-desp-17",
+          "label": "Para"
+        },
+        {
+          "type": "richtext",
+          "id": "sub-cust-title-desp-18",
+          "label": "Para"
+        },
+        {
+          "type": "richtext",
+          "id": "sub-cust-title-desp-19",
+          "label": "Para"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Drop Down"
+    }
+  ]
+}
+{% endschema %}

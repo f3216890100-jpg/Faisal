@@ -1,0 +1,97 @@
+<style>
+   .server-sec{
+    padding:50px 0;
+} 
+.server-container{
+    max-width:1400px;
+    margin:0 auto;
+    padding:0 50px;
+    width:100%;
+}
+.server-flx {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 40px;
+}
+.server-text {
+    font-size: 28px;
+    font-weight: 600;
+    color: #454545;
+    text-align: center;
+    padding-bottom: 30px;
+}
+.server-anker {
+    color: #454545;
+    font-size: 16px;
+    font-weight: 500;
+}
+@media screen and (max-width:767px){
+       .server-sec{
+    padding:30px 0;
+} 
+.server-container{
+    padding:0 20px;
+}
+    .server-flx {
+        display: flex;
+        flex-wrap: wrap;
+       column-gap: 16px;
+    }
+    .server-text {
+    font-size: 20px;
+    padding-bottom: 20px;
+}
+    .server-anker {
+    color: #454545;
+    font-size: 14px;
+    font-weight: 500;
+}
+}
+</style>
+<section class="server-sec">
+    <div class="server-container">
+        <h2 class="server-text">
+            {{ section.settings.server-text }}
+        </h2>
+        <div class="server-flx">
+            {% for block in section.blocks %}
+            <div class="server-col">
+                <a href="" class="server-anker">
+                    {{ block.settings.server-anker }}
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% schema %}
+{
+    "name": "Server",
+    "settings": [
+        {
+            "type": "text",
+            "id": "server-text",
+            "label": "Text"
+        },
+    ],
+    "blocks": [
+        {
+            "type": "Server",
+            "name": "Server",
+            "settings": [
+                 {
+            "type": "text",
+            "id": "server-anker",
+            "label": "Text"
+        }, 
+            ],
+        },
+    ],
+    "presets": [
+        {
+            "name": "Server",
+        },
+    ],
+}
+{% endschema %}

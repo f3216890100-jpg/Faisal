@@ -1,0 +1,235 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
+<style>
+  .video-sec {
+    padding: 50px 0;
+}
+  .video-contianer {
+      max-width: 1400px;
+      padding: 0 50px;
+      width: 100%;
+      margin: 0 auto;
+  }
+  .video-flx {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+  }
+  .video-content-col {
+      width: 43%;
+  }
+  .video-img {
+      width: 100%;
+      max-width: 50px;
+  }
+  .video-text {
+      font-size: 40px;
+      color: #454545;
+      font-weight: 600;
+      width: 80%;
+      padding: 25px 0;
+      margin: 0;
+  }
+  .video-desp p {
+      color: #454545;
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 500;
+  }
+  .video-button {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+  }
+  .video-anker {
+      text-decoration: none;
+      color: #454545;
+      font-size: 20px;
+      font-weight: 500;
+  }
+  i.fa.fa-chevron-right {
+      color: #454545;
+      font-size: 15px;
+  }
+  .video-main {
+      position: relative;
+  }
+  .video-btn {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      padding: 20px;
+  }
+  .video-play-img {
+      width: 100%;
+      max-width: 60px;
+  }
+
+  .video-pasue-img{
+   width: 100%;
+      max-width: 60px;
+  }
+  .video-pasue-image {
+    display: none;
+}
+  .video-col {
+      width: 54%;
+  }
+  .video-play {
+      width: 100%;
+     height: 480px;
+      object-fit: cover;
+      border-radius: 12px;
+  }
+  @media screen and (max-width:767px){
+      .video-sec {
+    padding: 30px 0;
+}
+    .video-contianer {
+      padding: 0 20px;
+  }
+  .video-flx {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+  }
+      .video-content-col {
+      width: 100%;
+      text-align: center;
+  }
+  .video-col {
+      width: 100%;
+  }
+  .video-text {
+      font-size: 27px;
+      width: 100%;
+      padding: 20px 0;
+  }
+  .video-anker {
+      font-size: 15px;
+  }
+  .video-button{
+      display: flex;
+      justify-content: center;
+  }
+
+  }
+</style>
+<section class="video-sec">
+  <div class="video-contianer">
+    <div class="video-flx">
+      <div class="video-content-col">
+        <div class="video-image">
+          {% if section.settings['sub-video-img'] != blank %}
+            <img src="{{ section.settings.sub-video-img |img_url:'master' }}" alt="" class="video-img">
+          {% endif %}
+        </div>
+        <h1 class="video-text">
+          {{ section.settings['sub-video-text'] }}
+        </h1>
+        <div class="video-desp">
+          {{ section.settings['sub-video-desp'] }}
+        </div>
+        <div class="video-button">
+          <a href="#" class="video-anker">
+            {{ section.settings['sub-video-anker'] }}
+          </a>
+          <i class="fa fa-chevron-right"></i>
+        </div>
+      </div>
+      <div class="video-col">
+        <div class="video-main">
+          <div class="video-div">
+            {% if section.settings.sub-video-play !=blank %}
+            <video
+              src="{{ section.settings.sub-video-play.sources[1].url }}"
+              autoplay
+              muted
+              loop
+              class="video-play"
+            ></video>
+        {% endif %}
+          </div>
+          <div class="video-btn">
+            <div class="video-play-image">
+              {% if section.settings['sub-video-play-img'] != blank %}
+                <img src="{{ section.settings.sub-video-play-img |img_url:'master' }}" alt="" class="video-play-img">
+              {% endif %}
+            </div>
+            <div class="video-pasue-image">
+              {% if section.settings['sub-video-pasue-img'] != blank %}
+                <img src="{{ section.settings.sub-video-pasue-img |img_url:'master' }}" alt="" class="video-pasue-img">
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+     <script>
+        const video = document.querySelector('.video-play');
+        const playBtn = document.querySelector('.video-play-image');
+        const pauseBtn = document.querySelector('.video-pasue-image');
+
+        
+        playBtn.addEventListener('click', () => {
+            video.pause();
+            playBtn.style.display = 'none';
+            pauseBtn.style.display = 'block';
+        });
+
+        
+        pauseBtn.addEventListener('click', () => {
+            video.play();
+            pauseBtn.style.display = 'none';
+            playBtn.style.display = 'block';
+        });
+    </script>
+{% schema %}
+{
+  "name": "Video Sec",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "sub-video-img",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "sub-video-text",
+      "label": "Text"
+    },
+    {
+      "type": "richtext",
+      "id": "sub-video-desp",
+      "label": "Para"
+    },
+    {
+      "type": "text",
+      "id": "sub-video-anker",
+      "label": "Text"
+    },
+    {
+        "type": "video",
+        "id": "sub-video-play",
+        "label": "Select Video"
+    },
+    {
+      "type": "image_picker",
+      "id": "sub-video-play-img",
+      "label": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "sub-video-pasue-img",
+      "label": "Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video Sec",
+    },
+  ],
+}
+{% endschema %}

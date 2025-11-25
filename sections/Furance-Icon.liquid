@@ -1,0 +1,259 @@
+<style>
+  *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.fur-icon-sec {
+    background: #F9F7F2;
+    padding: 60px 0;
+}
+.fur-icon-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 50px;
+}
+.fur-icon-flx {
+    justify-content: space-between;
+    display: flex;
+    flex-wrap: wrap;
+        row-gap: 15px;
+}
+.fur-icon-col {
+    width: 32.5%;
+}
+.fur-icon-first-col {
+    width: 32.5%;
+        background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+}
+.fur-icon-first-col:hover{
+    background-color: #D7FA96;
+}
+.fur-icon-text {
+    font-size: 25px;
+    color: #003733;
+    font-weight: 600;
+    font-family: "Avenir-Next", sans-serif;
+    letter-spacing: 1px;
+        padding-bottom: 20px;
+            line-height: 32px;
+}
+.fur-icon-tick-flx {
+    display: flex;
+    align-items: center;
+    padding-bottom: 10px;
+}
+.fur-icon-tick-img {
+    width: 100%;
+    max-width: 20px;
+}
+.fur-icon-span {
+    font-size: 17px;
+    font-family: "Avenir-Next", sans-serif;
+    color: #000000;
+    font-weight: 500;
+    padding-left: 10px;
+}
+.fur-icon-img {
+    width: 100%;
+    max-width: 50px;
+}
+.fur-icon-titile {
+    font-size: 19px;
+    color: #121212;
+    font-weight: 600;
+    font-family: "Avenir-Next", sans-serif;
+    padding-top: 15px;
+}
+.fur-icon-des {
+    font-size: 16px;
+    font-family: "Avenir-next", sans-serif;
+    font-weight: 500;
+    color: #000000;
+    line-height: 25px;
+    padding-top: 15px;
+    letter-spacing: 0.5px;
+}
+@media screen and (max-width:480px){
+ .fur-icon-sec {
+    padding: 40px 0;
+}
+    .fur-icon-container {
+    padding: 0 15px;
+}
+    .fur-icon-col {
+    width: 49%;
+}
+.fur-icon-first-col {
+    width: 49%;
+}
+.fur-icon-img {
+    max-width: 30px;
+}
+.fur-icon-titile {
+    font-size: 14px;
+        padding-top: 10px;
+}
+.fur-icon-des {
+    font-size: 13px;
+    line-height: 20px;
+}
+.fur-icon-text {
+    font-size: 15px;
+    line-height: 22px;
+}
+.fur-icon-span {
+    font-size: 14px;
+}
+.fur-icon-tick-img {
+    width: 100%;
+    max-width: 15px;
+}
+}
+</style>
+  <section class="fur-icon-sec">
+        <div class="fur-icon-container">
+            <div class="fur-icon-flx">
+              {% for block in section.blocks %}
+                {% case block.type %}
+                  {% when 'image' %}
+                <div class="fur-icon-col">
+                    <h3 class="fur-icon-text">
+                       {{ block.settings.sub-fur-icon-text }}
+                    </h3>
+                    <div class="fur-icon-tick-flx">
+                        <div class="fur-icon-tick-image">
+                          {% if block.settings.sub-fur-icon-tick-img !=blank%}
+                            <img src="{{ block.settings.sub-fur-icon-tick-img |img_url:'master' }}" alt="" class="fur-icon-tick-img">
+                          {% endif %}
+                        </div>
+                        <span class="fur-icon-span">
+                          {{ block.settings.sub-fur-icon-span }}
+                        </span>
+                    </div>
+                    <div class="fur-icon-tick-flx">
+                        <div class="fur-icon-tick-image">
+                          {% if block.settings.sub-fur-icon-tick-img-1 !=blank%}
+                            <img src="{{ block.settings.sub-fur-icon-tick-img-1 |img_url:'master' }}" alt="" class="fur-icon-tick-img">
+                          {% endif %}
+                        </div>
+                        <span class="fur-icon-span">
+                          {{ block.settings.sub-fur-icon-span-1 }}
+                        </span>
+                    </div>
+                    <div class="fur-icon-tick-flx">
+                        <div class="fur-icon-tick-image">
+                            {% if block.settings.sub-fur-icon-tick-img-2 !=blank%}
+                            <img src="{{ block.settings.sub-fur-icon-tick-img-2 |img_url:'master' }}" alt="" class="fur-icon-tick-img">
+                          {% endif %}
+                        </div>
+                        </div>
+                        <span class="fur-icon-span">
+                          {{ block.settings.sub-fur-icon-span-2 }}
+                        </span>
+                    </div>
+             
+              {% endcase %}
+              {% endfor %}
+              {% for block in section.blocks %}
+                {% case block.type %}
+                  {% when 'data' %}
+                 <div class="fur-icon-first-col">
+                    <div class="fur-icon-image">
+                      {% if block.settings.sub-fur-icon-img !=blank%}
+                        <img src="{{ block.settings.sub-fur-icon-img |img_url:'master' }}" alt="" class="fur-icon-img">
+                      {% endif %}
+                    </div>
+                    <h3 class="fur-icon-titile">
+                  {{ block.settings.sub-fur-icon-titile }}
+                  </h3>
+                    <div class="fur-icon-desp">
+                        <p class="fur-icon-des">
+                          {{ block.settings.sub-fur-icon-des }}
+</p>
+                    </div>
+                 </div>
+          {% endcase %}
+               {% endfor %}
+            </div>
+             </div>
+        </div>
+    </section>
+{% schema %}
+  {
+    "name": "Furance Icon",
+    "settings": [],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Image",
+        "settings": [
+          {
+            "type": "text",
+            "id": "sub-fur-icon-text",
+            "label": "Text"
+          },
+          {
+            "type": "image_picker",
+            "id": "sub-fur-icon-tick-img",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "sub-fur-icon-span",
+            "label": "Text"
+          },
+           {
+            "type": "image_picker",
+            "id": "sub-fur-icon-tick-img-1",
+            "label": "Image"
+          },
+           {
+            "type": "text",
+            "id": "sub-fur-icon-span-1",
+            "label": "Text"
+          },
+           {
+            "type": "image_picker",
+            "id": "sub-fur-icon-tick-img-2",
+            "label": "Image"
+          },
+           {
+            "type": "text",
+            "id": "sub-fur-icon-span-2",
+            "label": "Text"
+          },
+        ],
+      },
+      {
+        "type": "data",
+        "name": "Data",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "sub-fur-icon-img",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "sub-fur-icon-titile",
+            "label": "Text"
+          },
+             {
+            "type": "text",
+            "id": "sub-fur-icon-des",
+            "label": "Text"
+          },
+        ],
+      },
+    ],
+    "presets": [
+      {
+        "name": "Furance Icon"
+      },
+    ],
+  }
+{% endschema %}

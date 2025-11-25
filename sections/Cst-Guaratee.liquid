@@ -1,0 +1,201 @@
+<style>
+  *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box
+}
+.cst-sec {
+    position: relative;
+    overflow: hidden;
+}
+.cst-container {
+    width: 100%;
+}
+.cst-desktop-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.cst-mobile-img {
+    display: none;
+}
+.cst-text-main {
+    position: absolute;
+    left: 50%;
+    top: 20%;
+}
+.cst-img {
+    width: 100%;
+    max-width: 90px;
+}
+.cst-title {
+    font-size: 24px;
+    font-family: "Avenir-next", sans-serif;
+    font-weight: 600;
+    color: #000;
+    line-height: 30px;
+}
+.cst-des {
+    font-size: 16px;
+    font-family: "Avenir-next", sans-serif;
+    font-weight: 400;
+    color: #000;
+    width: 67%;
+    line-height: 25px;
+    padding-top: 20px;
+    letter-spacing: 1px;
+}
+.cst-button {
+    margin-top: 50px;
+}
+.cst-btn {
+    display: inline-block;
+    text-decoration: none;
+    background: #075a54;
+    color: #fff;
+    font-size: 15px;
+    font-family: "Avenir-next", sans-serif;
+    font-weight: 700;
+    padding: 16px;
+    width: 43%;
+    text-align: center;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.cst-btn-1 {
+    display: inline-block;
+    text-decoration: none;
+    background: #075a54;
+    color: #fff;
+    font-size: 15px;
+    font-family: "Avenir-next", sans-serif;
+    font-weight: 700;
+    padding: 16px;
+    width: 43%;
+    text-align: center;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.cst-button-mobile {
+    display: none;
+}
+
+@media screen and (max-width:767px){
+    .cst-desktop-img{
+        display: none;
+    }
+    .cst-mobile-img{
+        display: block;
+        width: 100%;
+    }
+    .cst-button-mobile {
+        display: block;
+       text-align: center;
+    }
+    .cst-button {
+        display: none;
+    }
+    .cst-text-main {
+        top: 0;
+        left: 0;
+               padding: 10px 18px;
+    }
+    .cst-des {
+        width: 100%;
+        line-height: 17px;
+        padding-top: 10px;
+        font-size: 18px;
+    }
+    .cst-btn-1 {
+        width: 70%;
+        font-size: 14px;
+        
+    }
+    .cst-heading {
+        font-size: 18px;
+        width: 100%;
+        padding: 10px 0 0;
+        line-height: 14px;
+    }
+    
+}
+</style>
+  <section class="cst-sec">
+        <div class="cst-container">
+                <div class="cst-image">
+                  {% if section.settings.sub-cst-desktop-img !=blank%}
+                    <img src="{{ section.settings.sub-cst-desktop-img |img_url:'master' }}" alt="" class="cst-desktop-img">
+                  {% endif %}
+                  {% if section.settings.sub-cst-mobile-img !=blank%}
+                    <img src="{{ section.settings.sub-cst-mobile-img |img_url:'master' }}" alt="" class="cst-mobile-img">
+                  {% endif %}
+                </div>
+                <div class="cst-text-main">
+                    <div class="cst-text">
+                      {% if section.settings.sub-cst-img !=blank%}
+                        <img src="{{ section.settings.sub-cst-img |img_url:'master' }}" alt="" class="cst-img">
+                      {% endif %}
+                        <h3 class="cst-title">
+                            <p class="cst-heading">
+                              {{ section.settings.sub-cst-heading }}
+                            </p>
+                        </h3>
+                    </div>
+                    <div class="cst-desp">
+                        <p class="cst-des">
+                          {{ section.settings.sub-cst-des }}
+                        </p>
+                      </div>
+                      <div class="cst-button">
+                        <a href="#" class="cst-btn">
+                          {{ section.settings.sub-cst-btn }}
+                        </a>
+                      </div>
+                </div>
+                <div class="cst-button-mobile">
+                    <a href="#" class="cst-btn-1">Ready To Give Us A Try?</a>
+                  </div>
+        </div>
+    </section>
+{% schema %}
+  {
+    "name": "Cst Guaratee",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "sub-cst-desktop-img",
+        "label": "Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "sub-cst-mobile-img",
+        "label": "Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "sub-cst-img",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "sub-cst-heading",
+        "label": "text"
+      },
+      {
+        "type": "text",
+        "id": "sub-cst-des",
+        "label": "text"
+      },
+      {
+        "type": "text",
+        "id": "sub-cst-btn",
+        "label": "text"
+      },
+    ],
+    "presets": [
+      {
+        "name": "Cst Guaratee",
+      }
+    ],
+  }
+{% endschema %}

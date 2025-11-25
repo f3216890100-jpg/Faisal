@@ -1,0 +1,136 @@
+<style>
+      *{
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+  }
+  .go-flx-sec {
+      padding: 60px 0;
+  }
+  .go-flx-container {
+      max-width:1337px;
+      margin: 0 auto;
+      padding: 0 50px;
+      width: 100%;
+  }
+  .go-flx-content {
+      margin-bottom: 50px;
+  }
+  .go-flx-heading {
+      font-size: 40px;
+      color: #454545;
+      font-family: Assistant, sans-serif;
+      text-align: center;
+      font-weight: 600;
+  }
+  .gol-flx-row {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      align-items: center;
+      row-gap: 15px;
+  }
+  .go-flx-box {
+      width: 32%;
+      border: 1px solid #d9d9d9;
+      padding: 28px;
+      text-align: center;
+      border-radius: 20px;
+  }
+  .go-flx-img {
+      width: 100%;
+        max-width: 50px;
+      height: 50px;
+      object-fit: cover;
+  }
+  .go-flx-text {
+      font-size: 20px;
+      font-family: Assistant, sans-serif;
+      color: #454545;
+      font-weight: 500;
+      padding-top: 15px;
+  }
+
+  @media screen and (max-width:767px){
+      .go-flx-sec {
+      padding: 30px 0;
+  }
+  .go-flx-container {
+      padding: 0 20px;
+  }
+  .go-flx-content {
+      margin-bottom: 30px;
+  }
+  .go-flx-heading {
+      font-size: 24px;
+  }
+  .go-flx-box {
+      width: 32%;
+      padding: 20px;
+  }
+  .go-flx-text {
+      font-size: 10px;
+      padding-top: 10px;
+      line-height: 15px;
+  }
+  }
+</style>
+<section class="go-flx-sec">
+  <div class="go-flx-container">
+    <div class="go-flx-content">
+      <h3 class="go-flx-heading">
+        {{ section.settings.go-flx-heading }}
+      </h3>
+    </div>
+    <div class="gol-flx-row">
+        {% for block in section.blocks %}
+      <div class="go-flx-box">
+        <div class="go-flx-logo">
+            {% if block.settings.go-flx-img !=blank %}
+          <img src="{{ block.settings.go-flx-img |img_url:'master' }}" alt="" class="go-flx-img">
+            {% endif %}
+        </div>
+        <div class="go-flx-text">
+            {{ block.settings.go-flx-text }}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+    "name": "Go Flx",
+    "settings": [
+        {
+            "type": "text",
+            "id": "go-flx-heading",
+            "label": "Text"
+        },
+    ],
+    "blocks": [
+        {
+            "type": "Go-Flx",
+            "name": "Go Flx",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "go-flx-img",
+                    "label": "Image"
+                },
+                  {
+            "type": "text",
+            "id": "go-flx-text",
+            "label": "Text"
+        },
+            ],
+        },
+    ],
+    "presets": [
+        {
+            "name": "Go Flx",
+        },
+    ],
+}
+{% endschema %}

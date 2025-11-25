@@ -1,0 +1,256 @@
+<style>
+   .saving-sec {
+    padding: 50px 0;
+}
+    .saving-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 50px;
+    width: 100%;
+}
+.upper-content {
+    text-align: center;
+    margin-bottom: 50px;
+}
+.upper-anker {
+    font-size: 16px;
+    text-decoration: none;
+    color: #454545;
+    font-weight: 500;
+    background: #c2d6d5;
+    padding: 8px 20px;
+    display: inline-block;
+    border-radius: 50px;
+}
+.upper-text {
+    font-size: 28px;
+    font-weight: 600;
+    text-align: center;
+    color: #454545;
+    padding: 25px 0;
+}
+.upper-desp p {
+    font-size: 18px;
+    font-weight: 500;
+    color: #454545;
+    text-align: center;
+    width: 58%;
+    margin: 0 auto;
+    line-height: 24px;
+}
+.saving-flx {   
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap:20px;
+}
+    .saving-image-col {
+    width: 45%;
+}
+.saving-image {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+}
+.saving-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+.saving-col {
+    width: 52%;
+}
+.saving-content-col {
+    margin-bottom: 15px;
+}
+.saving-image {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+}
+.saving-text {
+    font-size: 20px;
+    font-weight: 600;
+    color: #454545;
+    padding-bottom: 25px;
+    width: 80%;
+}
+.saving-content-row {
+    display: flex;
+    gap: 30px;
+}
+.saving-logo-img {
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
+}
+.saving-heading {
+    font-size: 16px;
+    color: #454545;
+    font-weight: 600;
+}
+.saving-desp p
+ {
+    font-size: 14px;
+    font-weight: 500;
+    color: #454545;
+    line-height: 20px;
+    padding-top: 10px;
+}
+@media screen and (max-width:767px){
+       .saving-sec {
+    padding: 30px 0;
+}
+    .saving-container {
+    padding: 0 20px;
+}
+.upper-content {
+    margin-bottom: 30px;
+}
+.upper-anker {
+    font-size: 14px;
+}
+.upper-text {
+    font-size: 20px;
+    padding: 15px 0;
+}
+.upper-desp p {
+    font-size: 14px;
+    width: 100%;
+    line-height: 22px;
+}
+    .saving-image-col {
+    width: 100%;
+}
+.saving-col {
+    width: 100%;
+}
+.saving-text {
+    font-size: 22px;
+    padding-bottom: 15px;
+    width: 100%;
+}
+.saving-heading {
+    font-size: 14px;
+}
+.saving-desp p {
+    font-size: 14px;
+    line-height: 18px;
+    padding-top: 8px;
+}
+}
+</style>
+<section class="saving-sec">
+    <div class="saving-container">
+        <div class="upper-content">
+            <a href="" class="upper-anker">
+                {{ section.settings.upper-anker }}
+            </a>
+            <h2 class="upper-text">
+                 {{ section.settings.upper-text }}
+            </h2>
+            <div class="upper-desp">
+                 {{ section.settings.upper-desp }}
+            </div>
+        </div>
+        <div class="saving-flx">
+            <div class="saving-image-col">
+                <div class="saving-image">
+                    {% if section.settings.saving-img !=blank %}
+                    <img src="{{ section.settings.saving-img |img_url:'master' }}" alt="" class="saving-img">
+                    {% endif %}
+                </div>
+            </div>
+            <div class="saving-col">
+                 <div class="saving-content">
+                    <h2 class="saving-text">
+                        {{ section.settings.saving-text }}
+                    </h2>
+                </div>
+            {% for block in section.blocks %}
+            <div class="saving-content-col">
+               
+                <div class="saving-content-row">
+                    <div class="saving-logo-image">
+                        {% if block.settings.saving-logo-img !=blank %}
+                        <img src="{{ block.settings.saving-logo-img |img_url:'master' }}" alt="" class="saving-logo-img">
+                        {% endif %}
+                    </div>
+                    <div class="saving-title">
+                        <h4 class="saving-heading">
+                            {{ block.settings.saving-heading }}
+                        </h4>
+                        <div class="saving-desp">
+                            {{ block.settings.saving-desp }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% schema %}
+{
+    "name": "Saving Sec",
+    "settings": [
+        
+        {
+            "type": "text",
+            "id": "upper-anker",
+            "label": "Text"
+        },
+        {
+            "type": "text",
+            "id": "upper-text",
+            "label": "Text"
+        },
+        {
+            "type": "richtext",
+            "id": "upper-desp",
+            "label": "Para"
+        },
+        {
+            "type": "image_picker",
+            "id": "saving-img",
+            "label": "Image"
+        },
+           {
+            "type": "text",
+            "id": "saving-text",
+            "label": "Text"
+        },
+    ],
+    "blocks": [
+        {
+            "type": "Saving-Sec",
+            "name": "Saving Sec",
+         "settings": [
+          
+          {
+            "type": "image_picker",
+            "id": "saving-logo-img",
+            "label": "Image"
+        },
+        {
+            "type": "text",
+            "id": "saving-heading",
+            "label": "Text"
+        },
+         {
+            "type": "richtext",
+            "id": "saving-desp",
+            "label": "Para"
+        },
+         ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Saving Sec",
+        },
+    ],
+}
+{% endschema %}

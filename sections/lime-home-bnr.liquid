@@ -1,0 +1,310 @@
+<style>
+  
+.hpb-flx {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 37px;
+        align-items: center;
+}
+.hpb-row{
+    background-image:url({{ section.settings.sub-hpb-row |img_url:'master' }});
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+        padding: 120px 0;
+}
+.hpb-content {
+    width: 37%;
+}
+.hpb-text {
+    font-size: 46px;
+    color: #fff;
+    width: 86%;
+}
+.hpb-desp p {
+    font-size: 20px;
+    color: #fff;
+     font-weight: 500;
+   width: 95%;
+}
+.hpb-image-flx {
+    width: 61%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.hpb-image-col {
+    width: 49%;
+    transition: all .3s ease-in-out;
+    overflow: hidden;
+}
+
+.hpb-image-col:hover{
+    transform: scale(1.05);
+}
+.hpb-image-text {
+    font-size: 29px;
+    color: #fff;
+    font-weight: 700;
+    width: 50%;
+    padding-bottom: 10px;
+}
+.hpb-btn {
+    text-decoration: none;
+    font-size: 11px;
+    color: #fff;
+}
+.hpb-image-btn-flx {
+    background: #ff0015;
+    padding: 4px 13px;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border-radius: 50px;
+    margin-bottom: 10px;
+}
+.hpb-span {
+    font-size: 12px;
+    color: #fff;
+    font-weight: 500;
+}
+.hpb-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+     transition: all .3s ease-in-out;
+}
+.hpb-image-main {
+    position: relative;
+}
+.hpb-image-row {
+    position: absolute;
+    top: 0;
+    padding: 30px;
+    height: 100%;
+}
+.hpb-btn-img {
+    width: 100%;
+    max-width: 15px;
+}
+.hpb-image-span-flx {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+.hpb-span-img {
+    width: 100%;
+    max-width: 15px;
+}
+.hpb-image-content-flx {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 100%;
+}
+.hpb-image-desp p {
+    font-size: 11px;
+    font-weight: 500;
+    color: #fff;
+    text-align: center;
+}
+.hpb-heading {
+    font-size: 37px;
+    font-weight: 600;
+    color: #fff;
+     padding-bottom: 10px;
+}
+.hpb-bton {
+    font-size: 16px;
+    background: #ffffff;
+    padding: 10px 20px;
+    display: inline-block;
+    border-radius: 50px;
+    text-decoration: none;
+    color: #454545;
+}
+@media screen and (max-width:767px){
+    .hpb-image-desp p {
+    display: none;
+}
+.hpb-row {
+    padding: 100px 0;
+}
+.hpb-flx {
+    flex-direction: column;
+    padding: 15px;
+}
+.hpb-content {
+    width: 100%;
+    text-align:center;
+}
+.hpb-image-flx {
+    width: 100%;
+}
+.hpb-image-col {
+    width: 100%;
+}
+.hpb-text
+ {
+    font-size: 27px;
+    width: 100%;
+}
+.hpb-desp p {
+    font-size: 18px;
+    width: 100%;
+}
+}
+</style>
+<section class="Hpb sec">
+    
+  <div class="hpb-container">
+    <div class="hpb-row">
+      <div class="hpb-flx">
+        <div class="hpb-content">
+          <h1 class="hpb-text">
+            {{ section.settings.sub-hpb-text }}
+          </h1>
+          <div class="hpb-desp">
+            {{ section.settings.sub-hpb-desp }}
+          </div>
+        </div>
+        <div class="hpb-image-flx">
+            {% for block in section.blocks %}
+          <div class="hpb-image-col">
+            <div class="hpb-image-main">
+              <div class="hpb-image">
+                {% if block.settings.sub-hpb-img !=blank %}
+                <img src="{{ block.settings.sub-hpb-img |img_url:'master' }}" alt="" class="hpb-img">
+                {% endif %}
+              </div>
+              <div class="hpb-image-row">
+                <div class="hpb-image-content-flx">
+                  <div class="hpb-image-content">
+                    <h2 class="hpb-image-text">
+                        {{ block.settings.sub-hpb-image-text }}
+                    </h2>
+                    <div class="hpb-image-btn-flx">
+                        {% if block.settings.sub-hpb-btn-img !=blank %}
+                      <img src="{{ block.settings.sub-hpb-btn-img |img_url:'master' }}" alt="" class="hpb-btn-img">
+                      {% endif %}
+                      <a href="#" class="hpb-btn">
+                        {{ block.settings.sub-hpb-btn }}
+                      </a>
+                    </div>
+                    <div class="hpb-image-span-flx">
+                        {% if block.settings.sub-hpb-span-img !=blank %}
+                      <img src="{{ block.settings.sub-hpb-span-img |img_url:'master' }}" alt="" class="hpb-span-img">
+                      {% endif %}
+                      <span class="hpb-span">
+                        {{ block.settings.sub-hpb-span }}
+                      </span>
+                    </div>
+                  </div>
+                  <div class="hpb-image-content">
+                    <div class="hpb-heading">
+                        {{ block.settings.sub-hpb-heading }}
+                    </div>
+                    <div class="hpb-button">
+                      <a href="#" class="hpb-bton">
+                        {{ block.settings.sub-hpb-bton }}
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="hpb-image-desp">
+             {{ block.settings.sub-hpb-image-desp }}
+            </div>
+          </div>
+         {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+    "name": "Lime Home Bnr",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "sub-hpb-row",
+            "label": "Background Image"
+        },
+        {
+            "type": "text",
+            "id": "sub-hpb-text",
+            "label": "Text"
+        },
+        {
+            "type": "richtext",
+            "id": "sub-hpb-desp",
+            "label": "Para"
+        },
+    ],
+    "blocks": [
+        {
+            "type": "Lime-Home-Bnr",
+            "name": "Lime Home Bnr",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "sub-hpb-img",
+                    "label": "Image"
+                },
+                {
+                    "type": "text",
+                    "id": "sub-hpb-image-text",
+                    "label": "Text"
+                },
+                 {
+                    "type": "image_picker",
+                    "id": "sub-hpb-btn-img",
+                    "label": "Image"
+                },
+                  {
+                    "type": "text",
+                    "id": "sub-hpb-btn",
+                    "label": "Text"
+                },
+                  {
+                    "type": "image_picker",
+                    "id": "sub-hpb-span-img",
+                    "label": "Image"
+                },
+                 {
+                    "type": "text",
+                    "id": "sub-hpb-span",
+                    "label": "Text"
+                },
+                 {
+                    "type": "text",
+                    "id": "sub-hpb-heading",
+                    "label": "Text"
+                },
+                 {
+                    "type": "text",
+                    "id": "sub-hpb-bton",
+                    "label": "Text"
+                },
+                 {
+                    "type": "richtext",
+                    "id": "sub-hpb-image-desp",
+                    "label": "Para"
+                },
+            ],
+        },
+
+    ],
+    "presets": [
+        {
+            "name": "Lime Home Bnr",
+        },
+    ],
+}
+{% endschema %}

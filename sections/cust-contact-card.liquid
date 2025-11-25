@@ -1,0 +1,191 @@
+<style>
+  *{
+.cust-contact-sec {
+    padding: 60px 0;
+}
+  .cust-contact-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 50px;
+      width: 100%;
+  }
+  .cust-contact-flx {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+  }
+  .cust-contact-card {
+      width: 32.5%;
+      padding: 25px 25px 0;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      height: 100%;
+      border-radius: 20px;
+  }
+  #cust-contact-col{
+      background: #f0eade;
+  }
+  #cust-contact-col-1{
+      background: #eeeeee;
+  }
+  #cust-contact-col-2{
+      background: #e4f0e1;
+  }
+  .cust-contact-content{
+          text-align: center;
+      padding-bottom: 40px;
+  }
+  .cust-contact-text {
+      font-size: 28px;
+      font-weight: 600;
+      color: #454545;
+      padding-bottom: 15px;
+  }
+  .cust-contact-desp p {
+      font-size: 18px;
+      font-weight: 500;
+      color: #454545;
+       width: 94%;
+      margin: 0 auto;
+      line-height: 22px;
+        padding-bottom: 15px;
+  }
+  .cust-contact-btn {
+      text-decoration: none;
+      color: #454545;
+      font-size: 16px;
+      font-weight: 600;
+      padding: 12px;
+      display: inline-block;
+      border-radius: 50px;
+  }
+  #btn{
+      background: #e0d4bc;
+  }
+  #btn-1{
+      background: #d9d9d9;
+  }
+  #btn-2{
+      background: #2f7400;
+      color: #fff;
+  }
+  .cust-contact-image {
+      overflow: hidden;
+      position: relative;
+      padding-bottom: 100%;
+  }
+  .cust-contact-img {
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 10px;
+      height: 100%;
+      object-fit: cover;
+      transform: translateY(10%);
+      transition: all .5s ease-in-out;
+  }
+  .cust-contact-card:hover .cust-contact-img{
+       transform: translateY(1%);
+  }
+
+  @media screen and (max-width:767px){
+   .cust-contact-sec {
+    padding: 30px 0;
+} 
+    .cust-contact-image{
+          display: none;
+      }
+      .cust-contact-card{
+          width: 100%;
+      }
+      .cust-contact-container {
+      padding: 0 20px;
+  }
+  .cust-contact-text {
+      font-size: 20px;
+  }
+  .cust-contact-desp p {
+      font-size: 14px;
+      width: 100%;
+      line-height: 20px;
+      padding-bottom: 10px;
+  }
+  .cust-contact-btn {
+      font-size: 14px;
+  }
+
+  .cust-contact-content {
+      padding-bottom: 25px;
+  }
+
+  }
+</style>
+<section class="cust-contact-sec">
+  <div class="cust-contact-container">
+    <div class="cust-contact-flx">
+        {% for block in section.blocks %}
+      <div class="cust-contact-card" id="cust-contact-col">
+        <div class="cust-contact-content">
+          <h3 class="cust-contact-text">
+            {{ block.settings.sub-cust-contact-text }}
+          </h3>
+          <div class="cust-contact-desp">
+           {{ block.settings.sub-cust-contact-desp }}
+          </div>
+          <div class="cust-contact-anker">
+            <a href="#" class="cust-contact-btn" id="btn">
+                {{ block.settings.sub-cust-contact-btn }}
+            </a>
+          </div>
+        </div>
+        <div class="cust-contact-image">
+           {% if block.settings.sub-cust-contact-img !=blank %}
+          <img src="{{ block.settings.sub-cust-contact-img |img_url:'master' }}" alt="" class="cust-contact-img">
+         {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+    "name": "Cust Contact Card",
+    "settings": [],
+    "blocks": [
+        {
+            "type": "Cust-Contact-Card",
+            "name": "Cust Contact Card",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "sub-cust-contact-text",
+                    "label": "Text"
+                },
+                 {
+                    "type": "richtext",
+                    "id": "sub-cust-contact-desp",
+                    "label": "Para"
+                },
+                 {
+                    "type": "text",
+                    "id": "sub-cust-contact-btn",
+                    "label": "Text"
+                },
+                 {
+                    "type": "image_picker",
+                    "id": "sub-cust-contact-img",
+                    "label": "Image"
+                },
+            ],
+        },
+    ],
+    "presets": [
+        {
+            "name": "Cust Contact Card",
+        },
+    ],
+}
+{% endschema %}

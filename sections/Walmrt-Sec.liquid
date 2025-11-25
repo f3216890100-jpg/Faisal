@@ -1,0 +1,200 @@
+<style>
+      @font-face {
+      font-family: "Avenir-Next",sans-serif;
+      src: url(/font/Avenir\ Next\ LT\ Pro\ Regular.otf);
+  }
+  *{
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+  }
+  .cst-walmrt-sec {
+      padding: 50px 0;
+  }
+  .cst-walmrt-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 50px;
+      width: 100%;
+  }
+  .cst-walmrt-flx {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      row-gap: 15px;
+  }
+  .cst-walmrt-col {
+      background: #f7f9f2;
+      width: 32%;
+      padding: 40px 20px 20px;
+      border-radius: 20px;
+          transition: all .5s ease-in-out;
+  }
+  .cst-walmrt-text-div {
+      padding-left: 30px;
+  }
+  .cst-walmrt-star-img {
+      width: 100%;
+      max-width: 80px;
+  }
+  .cst-walmrt-image{
+      overflow: hidden;
+  }
+  .cst-walmrt-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+         transition: all .5s ease-in-out;
+  }
+
+  .cst-walmrt-text {
+      font-size: 26px;
+      font-family: "Avenir-Next", sans-serif;
+      font-weight: 500;
+  }
+  .cst-walmrt-star-flx {
+      display: flex;
+      align-items: center;
+      margin-top: 6px;
+  }
+  .cst-walmrt-span {
+      font-size: 16px;
+      font-family: "Avenir-Next", sans-serif;
+      opacity: .4;
+      margin-left: 15px;
+  }
+  .cst-walmrt-des {
+      font-size: 17px;
+      font-family: "Avenir-Next", sans-serif;
+      font-weight: 400;
+      color: #000000;
+      padding-top: 10px;
+  }
+  .cst-walmrt-btn {
+      text-decoration: none;
+      color: #000;
+      background: #E0D5BC;
+      width: 100%;
+      display: block;
+      text-align: center;
+      padding: 15px;
+      font-size: 17px;
+       font-family: "Avenir-Next", sans-serif;
+       font-weight: 500;
+      border-radius: 12px;
+      transition: all .5s ease-in-out;
+  }
+  .cst-walmrt-col:hover .cst-walmrt-img{
+  transform: scale(1.1);
+  }
+  .cst-walmrt-col:hover{
+      border: 1px solid #075a54;
+      background-color: #fff;
+  }
+  .cst-walmrt-col:hover .cst-walmrt-btn{
+      background-color:#075a54;
+      color: #fff;
+  }
+  @media screen and (max-width:767px){
+      .cst-walmrt-container {
+      padding: 0 15px;
+  }
+  .cst-walmrt-col {
+      width: 100%;
+  }
+
+  }
+</style>
+<section class="cst-walmrt-sec">
+  <div class="cst-walmrt-container">
+    <div class="cst-walmrt-flx">
+      {% for block in section.blocks %}
+        <div class="cst-walmrt-col">
+          <div class="cst-walmrt-text-div">
+            <h3 class="cst-walmrt-text">
+              {{ block.settings['sub-cst-walmrt-text'] }}
+            </h3>
+            <div class="cst-walmrt-star-flx">
+              <div class="cst-walmrt-star-image">
+                {% if block.settings['sub-cst-walmrt-star-img'] != blank %}
+                  <img
+                    src="{{ block.settings.sub-cst-walmrt-star-img |img_url:'master' }}"
+                    alt=""
+                    class="cst-walmrt-star-img"
+                  >
+                {% endif %}
+              </div>
+              <span class="cst-walmrt-span">
+                {{ block.settings['sub-cst-walmrt-span'] }}
+              </span>
+            </div>
+            <div class="cst-walmrt-desp">
+              <p class="cst-walmrt-des">
+                {{ block.settings['sub-cst-walmrt-des'] }}
+              </p>
+            </div>
+          </div>
+          <div class="cst-walmrt-image">
+            {% if block.settings['sub-cst-walmrt-img'] != blank %}
+              <img src="{{ block.settings.sub-cst-walmrt-img |img_url:'master' }}" alt="" class="cst-walmrt-img">
+            {% endif %}
+          </div>
+          <div class="cst-walmrt-button">
+            <a href="#" class="cst-walmrt-btn">
+              {{ block.settings['sub-cst-walmrt-btn'] }}
+            </a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Walmrt Sec",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "Walmrt-Sec",
+      "name": "Walmrt Sec",
+      "settings": [
+        {
+          "type": "text",
+          "id": "sub-cst-walmrt-text",
+          "label": "Text"
+        },
+        {
+          "type": "image_picker",
+          "id": "sub-cst-walmrt-star-img",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "sub-cst-walmrt-span",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "sub-cst-walmrt-des",
+          "label": "Text"
+        },
+        {
+          "type": "image_picker",
+          "id": "sub-cst-walmrt-img",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "sub-cst-walmrt-btn",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Walmrt Sec"
+    }
+  ]
+}
+{% endschema %}

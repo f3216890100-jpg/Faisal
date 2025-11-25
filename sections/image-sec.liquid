@@ -1,0 +1,170 @@
+<style>
+   .hp-image-sec {
+    padding: 40px 0;
+}
+  .hp-image-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 0 50px;
+  }
+  .hp-image-flx{
+      position: relative;
+      background-image: url({{ section.settings.sub-hp-image-flx |img_url:'master' }});
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      width: 100%;
+    height: 500px;
+      overflow: hidden;
+      border-radius: 20px;
+          z-index: 1;
+          padding: 60px;
+  }
+  .hp-image-overly {
+      position: absolute;
+      right: 0;
+      background: linear-gradient(to left, rgba(40, 40, 40, 1) 0%, rgba(40, 40, 40, 0.9) 50%, rgba(255, 255, 255, 0) 100%);
+      top: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 9999;
+      {% comment %} z-index: -1; {% endcomment %}
+  }
+  .hp-image-content {
+      display: flex;
+      justify-content: end;
+      align-items: end;
+  }
+  .hp-image-main {
+       max-width: 400px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+  }
+  .hp-img {
+      width: 100%;
+      max-width: 50px;
+      height: 50px;
+  }
+  .hp-span {
+      font-size: 20px;
+      color: #fff;
+      font-weight: 500;
+  }
+  .hp-text {
+      color: #cef34e;
+      font-size: 40px;
+          width: 80%;
+      margin: 0 auto;
+      text-align: center;
+      padding-top: 10px;
+  }
+  .hp-desp p {
+      font-size: 20px;
+      color: #fff;
+      text-align: center;
+      line-height: 30px;
+      font-weight: 500;
+      padding-top: 10px;
+      margin: 0
+  }
+  .hp-image {
+      margin-bottom: 15px;
+  }
+  @media screen and (max-width:767px){
+     .hp-image-sec {
+    padding: 20px 0;
+}
+    .hp-image-container {
+      padding: 0 20px;
+  }
+  .hp-span {
+      font-size: 18px;
+  }
+  .hp-text {
+      font-size: 24px;
+      width: 100%;
+      padding-top: 6px;
+  }
+  .hp-desp p {
+      font-size: 18px;
+      line-height: 24px;
+      padding-top: 6px;
+  }
+  .hp-image-flx {
+      width: 100%;
+      height: 450px;
+      padding: 60px 15px;
+  }
+  }
+</style>
+<section class="hp-image-sec">
+  <div class="hp-image-container">
+    <div class="hp-image-flx">
+      <div class="hp-image-overly"></div>
+      <div class="hp-image-content">
+        <div class="hp-image-main">
+          <div class="hp-image">
+            {% if section.settings['sub-sub-hp-image-flx'] != blank %}
+              <img
+                src="{{ section.settings.sub-sub-hp-image-flx |img_url:'master' }}"
+                alt="{{ section.settings.sub-sub-hp-image-flx.alt | escape }}"
+                class="hp-img"
+              >
+            {% endif %}
+          </div>
+          <span class="hp-span">
+            {{ section.settings['sub-hp-span'] }}
+          </span>
+          <h2 class="hp-text">
+            {{ section.settings['sub-hp-text'] }}
+          </h2>
+          <div class="hp-desp">
+            {{ section.settings.sub-hp-desp }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Image Sec",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "sub-hp-image-flx",
+      "label": "Image"
+    },
+    {
+       "type": "image_picker",
+      "id": "sub-sub-hp-image-flx",
+      "label": "Image" 
+    },
+    {
+        "type": "text",
+        "id": "sub-hp-span",
+        "label": "Text"
+    }, 
+      {
+        "type": "text",
+        "id": "sub-hp-text",
+        "label": "Text"
+    },
+       {
+        "type": "richtext",
+        "id": "sub-hp-desp",
+        "label": "Para"
+    },
+
+  ],
+  "presets": [
+    {
+        "name": "Image Sec",
+    },
+  ],
+}
+{% endschema %}

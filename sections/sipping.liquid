@@ -1,0 +1,121 @@
+<div class="shipping-box">
+  <h3>{{ section.settings.ship_title }}</h3>
+
+  <div class="ship-option">
+    <input type="radio" name="ship_select" id="s1" checked>
+    <label for="s1">
+      {{ section.settings.ship_1_title }}
+      <span class="s-price">{{ section.settings.ship_1_price }}</span>
+    </label>
+  </div>
+
+  <div class="ship-option">
+    <input type="radio" name="ship_select" id="s2">
+    <label for="s2">
+      {{ section.settings.ship_2_title }}
+      <span class="s-price">{{ section.settings.ship_2_price }}</span>
+    </label>
+  </div>
+
+  <div class="ship-option">
+    <input type="radio" name="ship_select" id="s3">
+    <label for="s3">
+      {{ section.settings.ship_3_title }}
+      <span class="s-price">{{ section.settings.ship_3_price }}</span>
+    </label>
+  </div>
+</div>
+
+<style>
+.shipping-box {
+  border: 1px solid #ddd;
+  padding: 16px;
+  border-radius: 12px;
+  margin: 20px 0;
+  background: #f6fff6;
+}
+.shipping-box h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+.ship-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 0;
+  border-bottom: 1px solid #eaeaea;
+}
+.ship-option:last-child {
+  border-bottom: none;
+}
+.ship-option label {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 15px;
+  cursor: pointer;
+}
+.s-price {
+  font-weight: bold;
+  color: #28a745;
+}
+</style>
+
+{% schema %}
+{
+  "name": "Shipping Bundle Options",
+  "settings": [
+    {
+      "type": "text",
+      "id": "ship_title",
+      "label": "Shipping Title",
+      "default": "Select Shipping Type"
+    },
+
+    {
+      "type": "text",
+      "id": "ship_1_title",
+      "label": "Option 1 Title",
+      "default": "Standard Shipping (3–5 Days)"
+    },
+    {
+      "type": "text",
+      "id": "ship_1_price",
+      "label": "Option 1 Price",
+      "default": "$5.00"
+    },
+
+    {
+      "type": "text",
+      "id": "ship_2_title",
+      "label": "Option 2 Title",
+      "default": "Express Shipping (1–2 Days)"
+    },
+    {
+      "type": "text",
+      "id": "ship_2_price",
+      "label": "Option 2 Price",
+      "default": "$12.00"
+    },
+
+    {
+      "type": "text",
+      "id": "ship_3_title",
+      "label": "Option 3 Title",
+      "default": "Same-Day Delivery"
+    },
+    {
+      "type": "text",
+      "id": "ship_3_price",
+      "label": "Option 3 Price",
+      "default": "$20.00"
+    }
+  ],
+  "presets": [
+    {
+        "name": "Shipping Bundle Options",
+    },
+  ],
+}
+{% endschema %}
