@@ -74,22 +74,25 @@
           </span>
         </button>
       </div>
+{% assign free_shipping_threshold = 500000 %}
+{% assign cart_total = 0 %}
 
-      {%- assign free_shipping_threshold = 500000 -%}
-      {%- assign cart_total = 0 -%}
+{% for item in cart.items %}
+  {% if item.requires_shipping %}
+    {% assign cart_total = cart_total | plus: item.final_line_price %}
+  {% endif %}
+{% endfor %}
 
-      {%- for item in cart.items -%}
-      {%- if item.requires_shipping -%}
-      {%- assign cart_total = cart_total | plus: item.final_line_price  -%}
-      {%- endif -%}
-      {%- endfor -%}
+{% assign amount_remaining = free_shipping_threshold | minus: cart_total %}
 
-      {%- assign amount_remaining = free_shipping_threshold | minus: cart_total -%}
+<div>
+  {% if amount_remaining > 0 %}
+    You need {{ amount_remaining | money }} more to get free shipping!
+  {% else %}
+     Congratulations! You got Free Shipping!
+  {% endif %}
+</div>
 
-     <div>
-
-     you need {{ amount_remaining | money_with_currency }} to get free shipping
-     </div> 
       <cart-drawer-items
         {% if cart == empty %}
           class=" is-empty"
