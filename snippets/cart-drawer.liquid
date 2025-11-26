@@ -88,7 +88,7 @@
 
      <div>
 
-     FREE SHIPPING BAR CODE HERE: {{ cart_total }} 
+     you need {{ amount_remaining | money_with_currency }} to get free shipping
      </div> 
       <cart-drawer-items
         {% if cart == empty %}
