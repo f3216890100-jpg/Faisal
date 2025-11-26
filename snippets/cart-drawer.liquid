@@ -77,8 +77,8 @@
 
       {%- assign Cart_total = 0 -%}
       {%- for item in cart items -%}
-      {%- if item requires_shipping -%}
-      {%- assign cart_total = cart_total | plus item.final_line_price  -%}
+      {%- if item.requires_shipping -%}
+      {%- assign cart_total = cart_total | plus: item.final_line_price  -%}
       {%- endif -%}
       {%- endfor -%}
 
