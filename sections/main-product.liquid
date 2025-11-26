@@ -117,6 +117,34 @@
                     price_class: 'price--large'
                   -%}
                 </div>
+              {% when 'Payment' %}
+                <div class="product-price-section">
+  <div class="price-selector">
+    <h3 class="price-selector-title">Select Payment Type:</h3>
+    
+    <div class="price-option subscription-option">
+      <div class="option-header">
+        <span class="option-name">Go Flex Monthly Subscription</span>
+        <a href="#" class="learn-more-link">Learn More ></a>
+      </div>
+      <div class="option-price">
+        <span class="price-amount">$19.96</span>
+        <span class="price-period">/mo</span>
+      </div>
+    </div>
+    
+    <div class="price-option outright-option">
+      <div class="option-name">Buy Outright</div>
+      <div class="option-price">
+        <span class="price-amount">$1,796</span>
+      </div>
+    </div>
+    
+    <div class="product-code">
+      <span>C - I - A M - J - I</span>
+    </div>
+  </div>
+</div>
                 {%- if product.quantity_price_breaks_configured? -%}
                   <div class="volume-pricing-note" id="Volume-Note-{{ section.id }}">
                     <span>{{ 'products.product.volume_pricing.note' | t }}</span>
