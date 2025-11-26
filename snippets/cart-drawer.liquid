@@ -74,7 +74,18 @@
           </span>
         </button>
       </div>
-     
+
+      {%- assign Cart_total = 0 -%}
+      {%- for item in cart items -%}
+      {%- if item requires_shipping -%}
+      {%- assign cart_total = cart_total | plus item.final_line_price  -%}
+      {%- endif -%}
+      {%- endfor -%}
+
+     <div>
+
+     FREE SHIPPING BAR CODE HERE: {{ cart_total }} 
+     </div> 
       <cart-drawer-items
         {% if cart == empty %}
           class=" is-empty"
