@@ -79,8 +79,6 @@
         <div class="product-gallery">
           {% render 'product-media-gallery', variant_images: variant_images %}
         </div>
-
-
       </div>
 
       <div class="product__info-wrapper grid__item{% if settings.page_width > 1400 and section.settings.media_size == "small" %} product__info-wrapper--extra-padding{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
@@ -810,7 +808,6 @@
   document.addEventListener('shopify:section:load', initStickyCart);
   document.addEventListener('page:load', initStickyCart);
 </script>
-
 
 {% schema %}
 {
@@ -2337,6 +2334,7 @@
       "label": "t:sections.all.padding.padding_bottom",
       "default": 36
     }
+
   ]
 }
 {% endschema %}
