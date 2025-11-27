@@ -136,6 +136,12 @@
   <div class="free_shipping_progress_bar"></div>
 </div>
 
+<script>
+document.addEventListener("cart-drawer:updated", {} => {
+console.log("cart-drawer:updated")
+})
+</script>
+
       <cart-drawer-items
         {% if cart == empty %}
           class=" is-empty"
