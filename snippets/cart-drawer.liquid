@@ -133,7 +133,9 @@ hohoho!!! you have achived free shipping
   top:0;
   transition: width 1s ease-out;
 }
-
+.free_shipping_progress_bar.active ::before {
+  width: {{ percentage_remaining }}%;
+}
 {% endstyle %}
 
 <div class="free_shipping">
