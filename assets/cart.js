@@ -190,7 +190,7 @@ class CartItems extends HTMLElement {
           });
 
 
-          document.dispatchEvent("cart-drawer:updated")
+          document.dispatchEvent(new CustomEvent("cart-drawer:updated"))
 
 
 
