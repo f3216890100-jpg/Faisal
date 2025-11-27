@@ -120,7 +120,7 @@
 }
 .free_shipping_progress_bar::before{
   content:"";
-  width:50%;
+  width:{{ percentage_remaining }}%;
   height:100%;
   background:green;
   position:absolute;
@@ -128,14 +128,12 @@
   top:0;
   transition: width 1s ease-out;
 }
-.free_shipping_progress_bar.active::before{
-  width: {{ percentage_remaining }}%;
-}
+
 {% endstyle %}
 
 <div class="free_shipping">
   <h4>You need <strong> {{ amount_remaining | money }} </strong> more to get free shipping</h4>
-  <div class="free_shipping_progress_bar active"></div>
+  <div class="free_shipping_progress_bar"></div>
 </div>
 
       <cart-drawer-items
