@@ -88,7 +88,6 @@
 {%- if amount_remaining <=0 -%}
 {%- assign amount_remaining = 0 -%}
 {%- capture free_shipping_message -%}
-  Congratulations!!! you have unlocked free_shipping
 {%- endcapture -%}
 {%- endif -%}
 
@@ -99,6 +98,8 @@
 {% style %}
 
 .free_shipping{
+  display: flex;
+    flex-direction: column;
   gap:10px;
   padding:20px;
   margin:10px 0;
@@ -134,7 +135,7 @@
 
 <div class="free_shipping">
   <h4>You need <strong> {{ amount_remaining | money }} </strong> more to get free shipping</h4>
-  <div class="free_shipping_progress_bar"></div>
+  <div class="free_shipping_progress_bar active"></div>
 </div>
 
       <cart-drawer-items
