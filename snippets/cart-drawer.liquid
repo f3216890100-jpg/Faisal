@@ -136,7 +136,15 @@
   <div class="free_shipping_progress_bar"></div>
 </div>
 
+<script>
+document.addEventListener("cart-drawer:updated", {} => {
+console.log("cart-drawer:updated")
+setTimeout(() => {
 
+document.querySeletor(".free_shipping_progress_bar")?.classList.add("active")
+}, 1000);
+})
+</script>
 
       <cart-drawer-items
         {% if cart == empty %}
