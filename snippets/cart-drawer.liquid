@@ -137,13 +137,15 @@
 </div>
 
 <script>
-document.addEventListener("cart-drawer:updated", {} => {
-console.log("cart-drawer:updated")
-setTimeout(() => {
+document.addEventListener("cart-drawer:updated", () => {
+  console.log("cart-drawer:updated");
 
-document.querySeletor(".free_shipping_progress_bar")?.classList.add("active")
-}, 1000);
-})
+  setTimeout(() => {
+    document.querySelector(".free_shipping_progress_bar")
+      ?.classList.add("active");
+  }, 1000);
+
+});
 </script>
 
       <cart-drawer-items
