@@ -85,6 +85,44 @@
 
 {% assign amount_remaining = free_shipping_threshold | minus: cart_total %}
 
+{% style %}
+
+.free_shipping{
+  display:flex;
+  fkex-direction:column;
+  gap:10px;
+  padding:20px;
+  margin:10px 0;
+  border_radius:5px;
+  background:#e9e9e9;
+}
+.free_shipping h4{
+  margin:0;
+}
+.free_shipping_progress_bar{
+  width:100%;
+  height:5px;
+  background:#e8c1c1;
+   border_radius:100px;
+   display:block !important;
+   position:relative;
+   overflow:hidden;
+}
+.free_shipping_progress_bar::before{
+  content:0;
+  width:50%;
+  height:100%;
+  background:green;
+  position:absolute;
+  left:0;
+  top:0;
+  transition: width 1s ease-out;
+}
+.free_shipping_progress_bar.active::before{
+  width: {{ percentage_remaining }}%;
+}
+{% endstyle %}
+
 <div class="free_shipping">
   <h4>You need <strong> {{ amount_remaining | money }} </strong> more to get free shipping</h4>
   <div class="free_shipping_progress_bar"></div>
