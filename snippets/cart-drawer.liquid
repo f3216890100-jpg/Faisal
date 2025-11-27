@@ -85,9 +85,14 @@
 
 {% assign amount_remaining = free_shipping_threshold | minus: cart_total %}
 
+{%- capture shipping_message -%}
+You need <strong> {{ amount_remaining | money }} </strong> more to get free shipping
+{%- endcapture -%}
+
 {%- if amount_remaining <=0 -%}
 {%- assign amount_remaining = 0 -%}
-{%- capture free_shipping_message -%}
+{%- capture shipping_message -%}
+hohoho!!! you have achived free shipping
 {%- endcapture -%}
 {%- endif -%}
 
@@ -132,7 +137,7 @@
 {% endstyle %}
 
 <div class="free_shipping">
-  <h4>You need <strong> {{ amount_remaining | money }} </strong> more to get free shipping</h4>
+  <h4>{{ shipping_message }}</h4>
   <div class="free_shipping_progress_bar"></div>
 </div>
 
