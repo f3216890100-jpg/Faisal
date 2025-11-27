@@ -87,7 +87,7 @@
 
 <div>
   {% if amount_remaining > 0 %}
-    You need {{ amount_remaining | money }} more to get free shipping!
+    You need <strong> {{ amount_remaining | money }} </strong> more to get free shipping!
   {% else %}
      Congratulations! You got Free Shipping!
   {% endif %}
