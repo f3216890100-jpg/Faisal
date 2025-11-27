@@ -137,9 +137,18 @@
 </div>
 
 <script>
-document.addEventListener("cart-drawer:updated", {} => {
-console.log("cart-drawer:updated")
-})
+document.addEventListener("DOMContentLoaded", function () {
+  const bar = document.querySelector(".free_shipping_progress_bar span");
+  const finalWidth = bar.getAttribute("data-width");
+
+  // Start from 0%
+  bar.style.width = "0%";
+
+  // Animate to final %
+  setTimeout(() => {
+    bar.style.width = finalWidth + "%";
+  }, 100);
+});
 </script>
 
       <cart-drawer-items
